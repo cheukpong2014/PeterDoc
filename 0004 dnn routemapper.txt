@@ -1,0 +1,28 @@
+http://10.0.1.111/DesktopModules/petertest/API/ModuleTask/HelloWorld
+
+add reference
+DNN.Web.dll
+DNN.WebUtility.dll
+DNN.dll
+System.Web.Http.dll
+System.Net.Http.dll
+
+Webservices.cs
+public class ModuleTaskController : DnnApiController
+    {
+        [AllowAnonymous]
+        [HttpGet]
+        public HttpResponseMessage HelloWorld()
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, "Hello World!");
+        }
+    }
+	
+RouteMapper.cs
+public class RouteMapper : IServiceRouteMapper
+    {
+        public void RegisterRoutes(IMapRoute mapRouteManager)
+        {
+            mapRouteManager.MapHttpRoute("petertest", "default", "{controller}/{action}", new[] { "Christoc.Modules.petertest.Components" });
+        }
+    }
