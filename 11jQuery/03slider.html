@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>03Slider</title>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<style>
+		#demo{
+			width: 200px;
+			height: 200px;
+			background-color: yellow;
+			position: absolute;
+		}
+		#wrap{
+			position: relative;
+			top: 300px;
+			width: 500px;
+			height: 350px;
+			border: 3px solid blue;
+			overflow: hidden;
+		}
+		#container{
+			width: 3000px;
+			height: 350px;
+			position: absolute;
+			left: 0px;
+			top: 0px;
+		}
+		.cell{
+			float: left;
+			z-index: 2;
+		}
+		#count{
+			position: absolute;
+			bottom: 10px;
+			right: 5px;
+			width: 148px;
+			height: 22px;
+		}
+		.num{
+			float: left;
+			width: 22px;
+			height: 22px;
+			border: 2px solid yellow;
+			z-index: 1;
+			color: white;
+			background-color: black;
+			margin-left: 10px;
+			text-align: center;
+			cursor: pointer;
+		}
+		#d1{
+			color: black;
+			background-color: white;
+		}
+	</style>
+	<script>
+	//#wrap>(ul>li*4>img[src=03slider/$.jpg])+ol>li*4
+		$(function(){
+			var $demo = $('#demo');
+			$demo.animate({
+				'left': '500px'
+			},400, function(){
+				$demo.css('border','1px solid blue');
+			});
+			$demo.click(function(){
+				$demo.css('left','0px');
+			})
+
+			var state=1;
+			var count = 1;
+			var $con = $('#container');
+			var $num = $('.num');
+			function changePos(picnum){
+				$con.animate({
+					'left':(picnum-1)*(-500)+'px'
+				},'slow');
+				var id = '#d'+picnum;
+				$(id).css('background-color','white').siblings().css('background-color','black');
+				$(id).css('color','black').siblings().css('color','white');
+			}
+			
+			$num.click(function(e){
+				count = parseInt($(e.target).text());
+				changePos(count);
+			});
+			$('#wrap').hover(function(e){
+				state = 0;
+			},function(e){
+				state = 1;
+			});
+
+			setInterval(function(){
+				if(state==1){
+					if(count==1){
+						$con.css('left','0px');
+					}
+					count = count + 1;
+					
+					if(count==5){
+						changePos(count);
+						$('#d1').css('background-color','white').siblings().css('background-color','black');
+						$('#d1').css('color','black').siblings().css('color','white');
+						count = 1;
+						
+					}else{
+						changePos(count);
+					}
+				}
+			},3000);
+		})
+	</script>
+</head>
+<body>
+	<div id="demo">111</div>
+	<div id="wrap">
+		<div id="container">
+			<div class="cell"><img src="03slider/1.jpg" alt=""></div>
+			<div class="cell"><img src="03slider/2.jpg" alt=""></div>
+			<div class="cell"><img src="03slider/3.jpg" alt=""></div>
+			<div class="cell"><img src="03slider/4.jpg" alt=""></div>
+			<div class="cell"><img src="03slider/1.jpg" alt=""></div>
+			<div class="cell"><img src="03slider/2.jpg" alt=""></div>
+		</div>
+		<div id="count">
+			<div id="d1" class="num">1</div>
+			<div id="d2" class="num">2</div>
+			<div id="d3" class="num">3</div>
+			<div id="d4" class="num">4</div>
+		</div>
+	</div>
+</body>
+</html>

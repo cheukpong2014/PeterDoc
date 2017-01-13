@@ -1,0 +1,112 @@
+咁講, 咁做好危險
+
+卓恆
+寬容
+親密行為說話
+張LUCKY帶俾人
+我唔算係好叻
+現實世界中，毫無才能的PETER
+每次食完野都努力一下
+worklife balance
+每日只要努力一下
+右手捉左手手臂
+FEAR
+我同你講丫
+未老先衰
+25years life and then die
+要覺得自己好危險/唔好彩
+驕兵必敗
+此時我已經30歲了
+
+
+拍片:
+BLOG功能
+  1.分類功能 (快)
+
+ADMIN功能 (快)
+  1.add->edite
+**講一個CODE (快)
+講Session 同 Security(慢)
+
+1.
+偽做cookie
+解決
+COPY MD5 再登入多次
+
+1.solve
+
+login.php
+setcookie('name' , $user['name']);
+setcookie('ccode' , ccode($user['name']));
+header('Location: artlist.php');
+
+func.php
+function ccode($name) {
+	$cfg = include(ROOT.'/lib/config.php');
+	$salt = $cfg['salt'];
+	return md5($salt . '|' . $name);
+}
+
+lib/config.php
+'salt'=>'L&#7sd":Adfqef]',
+
+function acc() {
+	if( !isset($_COOKIE['name']) || !isset($_COOKIE['ccode']) ) {
+		return false;
+	}
+	return $_COOKIE['ccode'] === ccode($_COOKIE['name']);
+}
+
+
+
+2.
+admin" or 1#
+asesd" or # we
+2.solve
+func.php
+function _addslashes($arr) {
+	foreach ($arr as $k=>$v) {
+		if(is_string($v)) {
+			$arr[$k] = addslashes($v);
+		} else if(is_array($v)) {
+			$arr[$k] = _addslashes($v);
+		}
+	}
+	return $arr;
+}
+init.php
+$_GET = _addslashes($_GET);
+$_POST = _addslashes($_POST);
+$_COOKIE = _addslashes($_COOKIE);
+
+
+
+待辦事項
+
+---------------------------------------------------------
+
+
+Faceshop or 高附加價值產品/服務 
+普及問題
+獨特
+現代教育->畫畫明星
+優質
+最大優點係貴 (吃的不是雪茄，而是身份)
+Value
+香港年輕人最大問題是努力沒有成果
+
+1130 1123 1110 1106 1104 1095 1083 1074 1029 1015 1016 963
+
+
+
+
+
+
+
+
+
+
+
+
+
+

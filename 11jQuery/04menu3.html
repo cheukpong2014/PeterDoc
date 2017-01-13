@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>04Menu3</title>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<style>
+		div{
+			display: none;
+		}
+
+	</style>
+	<script>
+		$(function(){
+			$('#head').show();
+			$('div').mouseover(function(){
+				$(this).children().show();
+			}).mouseleave(function(){
+				$(this).children().hide();
+			})
+		})
+	</script>
+</head>
+<body>
+	<div id="head">11111111111
+		<div>22222222222
+			<div>33333333333333
+				<div>4444444444444
+					<div>55555555555
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

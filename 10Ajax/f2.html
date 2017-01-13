@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#progress{
+			width: 500px;
+			height: 30px;
+			border: 1px solid green;
+		}
+		#bar{
+			width: 0%;
+			height: 100%;
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+<script>
+//39:22
+	function selfile(){
+		var fd = new FormData();
+		var pic = document.getElementsByTagName('input')[0].files[0];
+
+		fd.append(pic.name, pic);
+
+		var xhr = new XMLHttpRequest();
+		xhr.open('POST','f2.php',true);
+		xhr.onreadystatechange = function(){
+			if(this.readyState == 4){
+				document.getElementById('debug').innerHTML = this.responseText;
+			}
+		}
+
+		xhr.upload.onprogress = function(ev){
+			if(ev.lengthComputable){
+				var percent = 100* ev.loaded/ev.total;
+				document.getElementById('bar').style.width = percent + '%';
+			}
+		}
+		//dombj.addEventListener
+
+		xhr.send(fd);
+	}
+</script>
+	<input type="file" name="photo" onchange="selfile();" />
+	<div id="debug"></div>
+	<div id="progress">
+		<div id="bar"></div>
+	</div>
+</body>
+</html>

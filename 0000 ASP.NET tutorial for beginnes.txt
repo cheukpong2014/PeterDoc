@@ -1,0 +1,219 @@
+ASP.NET tutorial for beginnes
+
+
+^^^^Part 4
+Global.aspx
+void Application_Start(object sender, EventArgs e)
+void Application_End(object sender, EventArgs e)
+void Application_Error(object sender, EventArgs e)
+void Session_Start(object sender, EventArgs e)
+void Session_End(object sender, EventArgs e)
+web.config
+<sessionState mode="InProc" cookieless="true">
+
+
+^^^^Part 5
+protected void Page_Load(object sender, EventArgs e)
+{
+	if(!IsPostBack)
+	{
+		if(ViewState["Clicks"]==null)
+		{
+			ViewState["Clicks"] = 0;
+		}
+		TextBox1.Text = ViewState["Clicks"].ToString();
+	}
+}
+protected void Button1_Click(object sender, EventArgs e)
+{
+	int ClicksCount = (int)ViewState["Clicks"] + 1;
+	TextBox1.Text = ClicksCount.ToString();
+	ViewState["Clicks"] = ClicksCount;
+}
+
+SessionState.aspx
+(change ViewState to Session)
+ApplicationState.aspx
+(change ViewState to Application)
+
+
+^^^^Part 6
+protected void Page_PreInit(object sender, EventArgs e)
+{}
+Page_PreInit
+Page_Init
+Page_InitComplete
+Page_PreLoad
+Page_LoadComplete
+Page_PreRender
+Page_PreRenderComplete
+Page_Unload
+
+
+^^^^Part 7
+^^^^Part 17 load data from database
+1.web.config
+2.Default.aspx
+add a dropdownlist
+3.Default.aspx.cs
+if (!IsPostBack)
+{
+	string CS = ConfigurationManager.ConnectionStrings["PeterConn"].ConnectionString;
+	using (SqlConnection con = new SqlConnection(CS))
+	{
+		SqlCommand cmd = new SqlCommand("Select * from tblCity", con);
+		con.Open();
+		DropDownList1.DataTextField = "CityName";
+        DropDownList1.DataValueField = "CityId";
+		DropDownList1.DataSource = cmd.ExecuteReader();
+		DropDownList1.DataBind();
+	}
+}
+^^^^Part 18 load data from xml
+1.add a xml file
+2.Default.aspx
+add a dropdownlist
+3.Default.aspx.cs
+DataSet DS = new DataSet();
+string strPath = Server.MapPath("City.xml");
+DS.ReadXml(strPath);
+DropDownList1.DataTextField = "CityName";
+DropDownList1.DataValueField = "CityId";
+DropDownList1.DataSource = DS;
+DropDownList1.DataBind();
+
+
+^^^^Part 19
+Response.Write(Server.MapPath(".") + "<br />");
+Response.Write(Server.MapPath("..") + "<br />");
+Response.Write(Server.MapPath("~") + "<br />");
+Response.Write(Server.MapPath("../..") + "<br />");
+
+
+^^^^Part 20
+path example
+
+^^^^Part 21
+drop down list code
+
+
+^^^^Part 22  dropdownlist advance
+sql:
+Create Procedure spGetContinents
+as
+Begin
+	Select ContinentId, ContinentName from tblContinents
+End
+
+protected void Page_Load(object sender, EventArgs e)
+{
+	if (!IsPostBack)
+	{
+		DropDownList1.DataTextField = "ContinentName";
+		DropDownList1.DataValueField = "ContinentId";
+
+		DropDownList1.DataSource = GetData("spGetContinents", null);
+		DropDownList1.DataBind();
+
+		
+
+		ListItem liContinent = new ListItem("Select Continent", "-1");
+		DropDownList1.Items.Insert(0, liContinent);
+	}
+}
+private DataSet GetData(string SPName, SqlParameter SPParameter)
+{
+	string CS = ConfigurationManager.ConnectionStrings["PeterConn"].ConnectionString;
+	SqlConnection con = new SqlConnection(CS);
+	SqlDataAdapter da = new SqlDataAdapter(SPName, con);
+	da.SelectCommand.CommandType = CommandType.StoredProcedure;
+	if(SPParameter != null)
+	{
+		da.SelectCommand.Parameters.Add(SPParameter);
+	}
+	DataSet DS = new DataSet();
+	da.Fill(DS);
+
+	return DS;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Create Procedure spGetCountriesByContinentId
+@ContinentId int
+as
+Begin
+	Select CountryId, CountryName from tblCountries
+	where ContinentId = @ContinentId
+End
+
+
+
+^^^^Part 23 - checkboxlist
+button_click:
+foreach(ListItem li in CheckBoxList1.Items){
+	if(li.Selected == true){
+		Response.Write("Text = " + li.Text + ", ");
+		Response.Write("Text = " + li.Value + ", ");
+		Response.Write("Text = " + CheckBoxList1.Items.IndexOf(li));
+		Response.Write("<br />");
+	}
+}
+
+button_click:
+Response.Write(CheckBoxList1.SelectedIndex.ToString);
+Response.Write(CheckBoxList1.SelectedValue);
+if(CheckBoxList1.SelectedItem!=null){
+	Response.Write(CheckBoxList1.SelectedItem.Text);
+}
+
+
+^^^^Part 24
+CheckBoxList1.SelectedIndex = 1;
+button_click(select all):
+foreach(ListItem li in CheckBoxList1.Items)
+{
+	li.Selected = true;
+}
+
+button_click(deselect all):
+foreach(ListItem li in CheckBoxList1.Items)
+{
+	li.Selected = false;
+}
+
+
+^^^^Part 25 ListBox Control (ListBox, ListItem)
+SelectionMode = "Multiple"
+Rrespomse.Write("")
+
+
+^^^^26
+
+
+
+^^^^27
+
+
+
+
+
+
+

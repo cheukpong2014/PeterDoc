@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+<link rel="stylesheet" href="./css/reset.css">
+<link rel="stylesheet" href="./css/adm.css">
+</head>
+<body>
+    <header>
+        <h1>Blog管理介面</h1>
+    </header>
+    <div id="main">
+        <div id="lside">
+            <aside>
+                <h4>類別管理</h4>
+                <ul>
+                    <li><a href="catlist.php">類別列表</a></li>
+                    <li><a href="catadd.php">添加類別</a></li>
+                </ul>
+            </aside>
+            <aside>
+                <h4>文章管理</h4>
+                <ul>
+                    <li><a href="artlist.php">文章列表</a></li>
+                    <li><a href="artadd.php">發佈文章</a></li>
+                    <li><a href="commlist.php">留言列表</a></li>
+                </ul>
+            </aside>
+            <aside>
+                <h4>個人中心</h4>
+                <ul>
+                    <li><a href="">修改密碼</a></li>
+                    <li><a href="logout.php">登出</a></li>
+                </ul>
+            </aside>
+        </div>
+        <div id="rside">
+            <table>
+                <tr>
+                    <td>序號</td>
+                    <td>類別名稱</td>
+                    <td>文章數</td>
+                    <td>操作</td>
+                </tr>
+            <?php foreach ($arr as $a) { ?>
+                <tr>
+                    <td><?php echo $a['cat_id']; ?></td>
+                    <td><?php echo $a['cat_name']; ?></td>
+                    <td><span class="badge"><?php echo $a['num']; ?></span></td>
+                    <td>
+                        <!--<a href="./catedit.php?<?php echo 'cat_id=',$a['cat_id']; ?>">編輯</a>&nbsp-->
+                        <?php echo "<a href='./catedit.php?cat_id=$a[cat_id]'>編輯</a>" ?> &nbsp
+                        <a href="./catdel.php?<?php echo 'cat_id=',$a['cat_id']; ?>&<?php echo 'num=',$a['num']; ?>">删除</a>
+                    </td>
+                </tr>
+            <?php } ?>
+            </table>
+        </div>
+    </div>
+    <footer>
+        Copyright &copy; 2015 · GeneratePress · WordPress
+    </footer>
+</body>
+</html>

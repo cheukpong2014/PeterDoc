@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax</title>
+</head>
+<body>
+	<h1>A1&2&3&4</h1>
+	<p>其他投票方法:利用CSS,JS加載的特性，完成請求，原理與加載圖片完全一樣，自己測試</p>
+	<p>投票方法5:利用iframe的特性，ajax注冊，提交表單</p>
+	<script>
+		function vote3(){
+			var photo = document.createElement('img');
+			photo.setAttribute('src','./three.png');
+			document.getElementById('progress').appendChild(photo);
+		}
+		function vote4(){
+			var v2 = document.createElement('img');
+			v2.setAttribute('src','./a1.php');
+		}
+
+	</script>
+	<div>
+		<p><img src="one.png" alt=""></p>
+		<p><a href="a1.php">投票1</a></p>
+		<p><a href="a2.php">投票2</a></p>
+		<p><input type="button" value="投票3" onclick="vote3();"></p>
+		<p><input type="button" value="投票4" onclick="vote4();"></p>
+	</div>
+	<div id="progress"></div>
+
+
+
+	<h1>A5</h1>
+	<div id="regres"></div>	
+	<form action="a5.php" method="post" target="regzone">
+		<p>投票方法5</p>
+		<p>username: <input type="text" name="username"></p>
+		<p>email: <input type="text" name="email"></p>
+		<p><input type="submit" name="post"></p>
+	</form>
+	<iframe name="regzone"></iframe>
+	<iframe name="regzone2" src="" frameborder=""></iframe>
+</body>
+</html>

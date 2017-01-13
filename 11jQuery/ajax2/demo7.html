@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>demo7</title>
+	<script src="jquery.js"></script>
+</head>
+<body>
+	<form id="form">
+		用户名：<input type="text" name="username" id="username" /><br />
+		邮箱地址：<input type="text" name="email" id="email" /><br />
+		url地址：<input type="text" name="url" id="url" /><br />
+		qq：<input type="text" name="qq" id="qq" /><br />
+		sype：<input type="text" name="skype" id="skype" /><br />
+		<input type="button" value="提交" />
+	</form>
+	<script>
+		$('input[type=button]').click(function(){
+			var data=$('#form').serialize();
+			alert(data);
+			
+			$.ajax({
+				url:'demo7.php',
+				type:'post',
+				data:data,
+				success:function(){
+
+				}
+			});
+		});
+	</script>
+</body>
+</html>

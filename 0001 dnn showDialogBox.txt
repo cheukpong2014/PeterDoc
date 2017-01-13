@@ -1,0 +1,1 @@
+window.location.href = "javascript:dnnModal.show('<%=DotNetNuke.Common.Globals.NavigateURL("Edit","mid=" + ModuleId) + "?popUp=true&BookingStartDate=" %>" + date.format() + "&OfficeRegionID=" + OfficeRegionID + "&roomID=" + roomID +"',false,550,950,true,'javascript:$(\\'#calendar\\').fullCalendar(\\'refetchEvents\\');\')";

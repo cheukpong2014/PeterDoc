@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+<link rel="stylesheet" href="./css/reset.css">
+<link rel="stylesheet" href="./css/index.css">
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+<style>
+    .clear{
+        clear: both;
+    }
+    #jqcon{
+        background: white;
+        margin: 20px 0px;
+        padding: 40px;
+    }
+    #jqcon2{
+        width: 95%;
+        margin: 0 auto;
+    }
+    .zTitle{
+        border: 1px solid #abcdef;
+        padding: 10px;
+        float: left;
+        cursor: pointer;
+        margin-right: 2px;
+        border-bottom: 0px solid #abcdef;
+        border-radius: 5px;
+    }
+    .zFocus{
+        background: #abcdef;
+    }
+    .zContent{
+        border: 1px solid #abcdef;
+        height: 1100px;
+        display: block;
+        border-radius: 5px;
+    }
+    .zhide{
+        display: none;
+    }
+
+    #aa{
+        font-size: 24px;
+        text-align: center;
+    }
+    #aWrap{
+        border: 3px solid purple;
+        width: 600px;
+        height: 200px;
+        position: relative;
+        overflow: hidden;
+        margin: auto;
+    }
+    #aCon{
+        width: 2000px;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+    }
+    #aCon>img{
+        float: left;
+    }
+
+    #bWrap{
+        width: 500px;
+        height: 350px;
+        border: 1px solid blue;
+        position: relative;
+        overflow: hidden;
+        margin: auto;
+    }
+    #bImgCon{
+        width: 4000px;
+        height: 350px;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+    }
+    .bImgClass{
+        
+    }
+    #bCountCon{
+        position: absolute;
+        bottom: 10px;
+        right: 5px;
+        height: 22px;
+    }
+    .bCountClass{
+        float: left;
+        width: 22px;
+        height: 22px;
+        line-height: 22px;
+        border: 2px solid yellow;
+        color: white;
+        background-color: black;
+        margin-left: 10px;
+        text-align: center;
+        cursor: pointer;
+    }
+    #bCount1{
+        color: black;
+        background-color: white;
+    }
+
+    #cWrap>img{
+        float: left;
+    }
+    #cWrap>span{
+        width: 90px;
+        height: 30px;
+        line-height: 30px;
+        display: block;
+        float: left;
+    }
+    
+    #dWrap{
+        width: 200px;
+        height: 175px;
+    }
+    #dSelect{
+        border: 1px solid #abcdef;
+        width:200px;
+        height:32px;
+        background: url('./10input/select.jpg') right center no-repeat;
+    }
+    #dChoice{
+        border: 1px solid #abcdef;
+        width:200px;
+        height:96px;
+        display:none;
+        float:left;
+    }
+    #dChoice>p{
+        height: 32px;
+    }
+    .dOver{
+        background: #abcdef;
+    }
+
+    #eWrap{
+        
+    }
+    #eWrap>img{
+        display: inline;
+        float: left;
+    }
+    #eWrap>p{
+        width: 25px;
+        height: 30px;
+        line-height: 30px;
+        display: block;
+        float: left;
+    }
+    #eWrap>input{
+        float: left;
+        margin-right: 30px;
+    }
+
+    #fWrap{
+        width: 305px;
+        float: left;
+    }
+    #fmPhoto{
+        width: 300px;
+        height: 300px;
+    }
+    #fCon{
+        height: 54px;
+    }
+    #fmpdiv{
+        width: 302px;
+        position: relative;
+    }
+    #fbpDiv{
+        width: 400px;
+        height: 400px;
+        float: left;
+        display: none;
+        overflow: hidden;
+    }
+    #fbPhoto{
+        position: relative;
+        top: 0px;
+        left: 0px;
+    }
+    .fturn{
+        float: left;
+        height: 52px;
+        line-height: 52px;
+        width: 10px;
+        text-align: center;
+        border: 1px solid #ccc;
+        cursor: pointer;
+    }
+    #fsPhoto{
+        float: left;
+        width: 250px;
+        height: 54px;
+        margin: 0px 2px;
+        overflow: hidden;
+    }
+    #fspcon{
+        width: 1250px;
+        height: 52px;
+        position: relative;
+        top: 0px;
+        left: 0px;
+    }
+    #fmask{
+        width: 100px;
+        height: 100px;
+        background-color: #abcdef;
+        opacity: 0.5;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    #gWrap>div{
+        margin: 4px;
+        border: 2px solid green;
+        width: 30%;
+        float: left;
+    }
+    table{
+        width: 700px;
+        border: 1px solid #abcdef;
+        border-collapse: collapse;
+    }
+    tr{
+        height: 30px;
+    }
+    th,td{
+        border: 1px solid #abcdef;
+        text-align: center;
+    }
+    #idiv{
+        width: 50px;
+        height: 50px;
+        background: #f60;
+        position: relative;
+        left: 10px;
+        top: 50px;
+    }
+</style>
+<script>
+    $(function(){
+        $('.zTitle').click(function(e){
+            $(e.target).addClass('zFocus').siblings().removeClass('zFocus');
+            var zx = '#'+$(e.target).attr('id')+'c';
+            $(zx).removeClass('zhide').siblings('.zContent').addClass('zhide');
+        });
+//aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa  02slider
+        var status = 1;
+        var pos=0;
+        var $con = $('#aCon');
+        setInterval(function(){
+            if(status==0){
+
+            }else if(status==1){
+                if(pos<=-1000){
+                    pos=0;
+                }
+                pos-=2;             
+                $con.css('left',pos+'px');
+            }else if(status==2){
+                if(pos>=0){
+                    pos=-1000;
+                }
+                pos+=2;             
+                $con.css('left',pos+'px');
+            }
+        },30)
+        $('#aleft').click(function(){
+            status=1;
+        });
+        $('#aright').click(function(){
+            status=2;
+        });
+        $('#astop').click(function(){
+            status=0;
+        });
+
+//bbbbbbbbbbbbbbbbbbbbbbbb  03slider2
+        var s2c = 0;
+        function addbImage(loc){
+            s2c = s2c+1;
+            var image = document.createElement('img');
+            $(image).attr('src',loc);
+            $(image).attr('id','bImg'+s2c);
+            $(image).attr('class','bImgClass');
+            $(image).css('float','left');
+            $('#bImgCon').append(image);
+            var count = document.createElement('div');
+            $(count).attr('id','bCount'+s2c);
+            $(count).attr('class','bCountClass');
+            $(count).text(s2c);
+            $('#bCountCon').append(count);
+            $('#bCountCon').css('width',(10+22+4)*s2c+'px');
+        }
+        addbImage('./03slider/2.jpg');
+        addbImage('./03slider/3.jpg');
+        addbImage('./03slider/4.jpg');
+        //addbImage('./03slider/1.jpg');
+        //addbImage('./03slider/5.jpg');
+        function bChangePos(picnum){
+            $('#bImgCon').animate({
+                'left':(picnum-1)*(-500)+'px'
+            },'slow');
+            var id = '#bCount'+picnum;
+            $(id).css('background-color','white').siblings().css('background-color','black');
+            $(id).css('color','black').siblings().css('color','white');
+        }
+        var bState = 1;
+        function bmove(){
+            bState = bState+1;
+            bState = (bState>=s2c+1)?1:bState;
+            bChangePos(bState);
+        }
+        var bTime = setInterval(bmove,2500);
+        $('#bCountCon').delegate('.bCountClass','click',function(e){
+            var id = $(e.target).attr('id').substring(6,7);
+            bState = parseInt(id);
+            bChangePos(bState);
+        });
+        $('#bWrap').hover(function(){
+            clearInterval(bTime);
+        },function(){
+            bTime = setInterval(bmove,2500);
+        });
+
+//ccccccccccccccccccccccccccccccc
+        $('#cWrap>img').click(function(e){
+            var cb = $(e.target).next().next('input');
+            if(cb.prop('checked')){
+                cb.prop('checked','');
+                $(e.target).attr('src','./10input/checkOff.jpg');
+            }else{
+                cb.prop('checked','checked');
+                $(e.target).attr('src','./10input/checkOn.jpg');
+            }
+        });
+
+//ddddddddddddddddddddddddddddddd
+        $('#dSelect').click(function () {
+            if ($("#dChoice").is(":hidden")) {
+                $("#dChoice").slideDown("slow");
+            } else {
+                $("#dChoice").slideUp("slow");
+            }
+        });
+        $('#dChoice>p').mouseover(function(e){
+            $(e.target).addClass('dOver');
+        }).mouseout(function(e){
+            $(e.target).removeClass('dOver');
+        }).click(function(e){
+            var ttt = $(e.target).text();
+            $('#dSelect').text(ttt);
+            $('#dChoice').hide();
+            $('#dInput').val(ttt);
+        });
+
+//eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+        $('#eWrap>img').click(function (e) {
+            //alert($(e.target).next().html());
+            $(e.target).attr('src','./10input/radioOn.jpg');
+            $(e.target).siblings('img').attr('src','./10input/radioOff.jpg');
+            $(e.target).next().next().prop('checked','checked');
+        });
+//fffffffffffffffffffffffffffffffffffffff
+        var $spcon = $('#fspcon');
+        var mouseY;
+        var mouseX;
+        var $mask = $('#fmask');
+        function addphoto(loc){
+            var photo = document.createElement('img');
+            $(photo).attr('src',loc);
+            $(photo).css('width','50px');
+            $(photo).css('height','50px');
+            $(photo).css('border','2px solid #ccc');
+            $(photo).css('margin-left','5px');
+            $(photo).css('float','left');
+            $spcon.append(photo);
+        }
+        $('#fleft').click(function(){
+            var left = parseInt($spcon.css('left'));
+            $spcon.animate({'left': left+60+'px'},'fast');
+        });
+        $('#fright').click(function(){
+            var left = parseInt($spcon.css('left'));
+            $spcon.animate({'left': left-60+'px'},'fast');
+        });
+
+        addphoto('08zoom/1.jpg');
+        addphoto('08zoom/2.jpg');
+        addphoto('08zoom/3.jpg');
+        addphoto('08zoom/4.jpg');
+        addphoto('08zoom/5.jpg');
+        addphoto('08zoom/6.jpg');
+        addphoto('08zoom/water.jpg');
+        $('#fspcon>img').click(function(e){
+            var sloc = $(e.target).attr('src');
+            $('#fmPhoto').attr('src',sloc);
+            $('#fbPhoto').attr('src',sloc);
+        });
+
+        var minY = 0;
+        var maxY = $('#fmPhoto').innerHeight()-$mask.height();
+        var minX = 0;
+        var maxX = $('#fmPhoto').innerWidth()-$mask.width();
+
+        $('#fmpdiv').mousemove(function(e){
+            var maskY = e.pageY-$('#fmpdiv').offset().top-$mask.height()/2;
+            var maskX = e.pageX-$('#fmpdiv').offset().left-$mask.width()/2;
+            maskY = (maskY>maxY)?maxY:maskY;
+            maskX = (maskX>maxX)?maxX:maskX;
+            maskY = (maskY<minY)?minY:maskY;
+            maskX = (maskX<minX)?minX:maskX;
+            $('#fp0').text(maskY+','+maskX);
+            $mask.css('top',maskY);
+            $mask.css('left',maskX);
+            var bPhotoY = -1*($('#fbPhoto').height()-$('#fbpDiv').height())*maskY/200;
+            var bPhotoX = -1*($('#fbPhoto').width()-$('#fbpDiv').width())*maskX/200;
+            $('#fbPhoto').css('top',bPhotoY);
+            $('#fbPhoto').css('left',bPhotoX);
+            //$('#p1').html( "bPhot top: " + bPhotoY + ", bPhoto left: " + bPhotoX );
+        });
+        $('#fmpdiv').mouseenter(function(){
+            $mask.show();
+            $('#fbpDiv').show();
+        }).mouseleave(function(){
+            $mask.hide();
+            $('#fbpDiv').hide();
+        });
+//gggggggggggggggggggggggggggggggggggggggggggg
+        var arr = new Array();;
+        function addgImage(loc,intro){
+            var remainer = arr.length%3;
+            if(remainer==0){
+                var $con = $('#gleft');
+            }else if(remainer==1){
+                var $con = $('#gcenter');
+            }else if(remainer==2){
+                var $con = $('#gright');
+            }
+            var str = 'p'+arr.length;
+            arr.push(str);
+
+            var www = document.createElement('div');
+            $(www).css('margin-bottom','15px');
+            $(www).css('background-color','gray');
+
+            var photo = document.createElement('img');
+            $(photo).attr('src',loc);
+            $(photo).css('width','100%');
+
+            var text = document.createElement('span');
+            $(text).text(intro)
+
+            $(www).append(photo);
+            $(www).append(text);
+            $con.append(www);
+        }
+        addgImage('./09waterfall/1.jpg','1111');
+        addgImage('./09waterfall/2.jpg','2222');
+        addgImage('./09waterfall/3.jpg','1111');
+        addgImage('./09waterfall/4.jpg','2222'); 
+        addgImage('./09waterfall/5.jpg','1111');
+        addgImage('./09waterfall/6.jpg','2222'); 
+        addgImage('./09waterfall/7.jpg','1111');
+        addgImage('./09waterfall/8.jpg','2222'); 
+        addgImage('./09waterfall/9.jpg','1111');
+//hhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+        $('#hsearch').click(function(){
+            var text = $('#htext').val();
+
+            $('table tr:not("#hhead")').hide().filter(':contains("'+text+'")').show();
+        });
+    });
+</script>
+</head>
+<body>
+    <header>
+        <h1>Blog</h1>
+        <h4>天行健，君子以自強不息。地勢坤，君子以厚德載物</h4>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="./index.php">首頁</a></li>
+            <li><a href="./jQuery.php">jQuery</a></li>
+            <li><a href="./produce.php">產生認證碼</a></li>
+            <li><a href="./login.php">Admin</a></li>
+        </ul>
+    </nav>
+    <div id="jqcon">
+        <div id="jqcon2">
+
+            <!--tab -->
+            <div id="z1" class="zTitle zFocus">多張圖的無縫滾動</div>
+            <div id="z2" class="zTitle">圖片輪播</div>
+            <div id="z3" class="zTitle">表單美化</div>
+            <div id="z4" class="zTitle">放大鏡</div>
+            <div id="z5" class="zTitle">瀑布流</div>
+            <div id="z6" class="zTitle">表格搜尋</div>
+            <div id="z7" class="zTitle">動畫</div>
+            <div class="clear"></div>
+<!-- aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -->
+            <div id="z1c" class="zContent">
+                <!--a slider -->
+                <div align="center" style="font-size: 44px;">
+                    <span id="aleft">左</span>
+                    <span id="aright">右</span>
+                    <span id="astop">停</span>
+                </div>
+                <div id="aWrap">
+                    <div id="aCon">
+                        <img src="./02slider/1.jpg" alt="">
+                        <img src="./02slider/2.jpg" alt="">
+                        <img src="./02slider/3.jpg" alt="">
+                        <img src="./02slider/4.jpg" alt="">
+                        <img src="./02slider/5.jpg" alt="">
+                        <img src="./02slider/1.jpg" alt="">
+                        <img src="./02slider/2.jpg" alt="">
+                        <img src="./02slider/3.jpg" alt="">
+                        <img src="./02slider/4.jpg" alt="">
+                        <img src="./02slider/5.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+<!-- bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb -->
+            <div id="z2c" class="zContent zhide">
+                <div id="bWrap">
+                    <div id="bImgCon">
+                        <!--bImg$ -->
+                    </div>
+                    <div id="bCountCon">
+                        <!--bCount$ -->
+                    </div>
+                </div>
+            </div>
+
+<!-- ccccccccccccccccccccccccccccccccccccc -->
+            <div id="z3c" class="zContent zhide">
+                <form id="cWrap" action="cResult.php" method="post" target="_blank">
+                    <img src="./10input/checkOff.jpg" alt=""><span>PHP</span><input class="hide" type="checkbox" name="a[]" id="" value="PHP">
+                    <div class="clear"></div>
+
+                    <img src="./10input/checkOff.jpg" alt=""><span>JAVA</span><input class="hide" type="checkbox" name="a[]" id="" value="JAVA">
+                    <div class="clear"></div>
+
+                    <img src="./10input/checkOff.jpg" alt=""><span>JAVASCRIPT</span><input class="hide" type="checkbox" name="a[]" id="" value="JAVASCRIPT">
+                    <div class="clear"></div>
+                    
+                    <img src="./10input/checkOff.jpg" alt=""><span>MYSQL</span><input class="hide" type="checkbox" name="a[]" id="" value="MYSQL">
+                    <div class="clear"></div>
+                    <button type="submit">submit</button>
+                    <div class="clear"></div>
+                </form>
+<br>
+<!-- ddddddddddddddddddddddddddddddddddddddd -->
+                <form id="dWrap" action="cResult.php" method="post" target="_blank">
+                    <input id="dInput" type="text" name="color" id="">
+                    <div id="dSelect"></div>
+                    <div id="dChoice">
+                        <p>yellow</p>
+                        <p>blue</p>
+                        <p>purple</p>
+                    </div>
+                    <div class="clear"></div>
+                    <button type="submit">submit</button>
+                    <div class="clear"></div>
+                </form>
+
+<!-- eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee -->
+                <form id="eWrap" action="cResult.php" method="post" target="_blank">
+                    <img src="./10input/radioOff.jpg"><p>男</p><input type="radio" name="gender" value="male">
+                    
+                    <img src="./10input/radioOff.jpg"><p>女</p><input type="radio" name="gender" value="female">
+                    
+                    <img src="./10input/radioOff.jpg"><p>保密</p><input type="radio" name="gender" value="secret">
+                    <div class="clear"></div>
+                    <button type="submit">submit</button>
+                    <div class="clear"></div>
+                </form>
+            </div>
+<!-- fffffffffffffffffffffffffffffffffffff-->
+            <div id="z4c" class="zContent zhide">
+                <div id="fWrap">
+                    <div id="fmpdiv">
+                        <img id="fmPhoto" src="08zoom/1.jpg" alt="">
+                        <div id="fmask"></div>
+                    </div>
+                    <div class="clear"></div>
+                    <div id="fCon">
+                        <div id="fleft" class="fturn"><</div>
+                        <div id="fsPhoto">
+                            <div id="fspcon"></div>
+                        </div>
+                        <div id="fright" class="fturn">></div>
+                    </div>
+                </div>
+                <div id="fbpDiv"><img id="fbPhoto" src="08zoom/1.jpg" alt=""></div>
+                <div class="clear"></div>
+                <span id="fp0">&nbsp</span>
+            </div>
+<!-- gggggggggggggggggggggggggggggggggggggggggggggg-->
+            <div id="z5c" class="zContent zhide">
+                <div id="gWrap">
+                    <div id="gleft"></div>
+                    <div id="gcenter"></div>
+                    <div id="gright"></div>
+                </div>
+            </div>
+<!-- hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh-->
+            <div id="z6c" class="zContent zhide">
+                <table>
+                    <tr id="hhead">
+                        <th>姓名</th>
+                        <th>性別</th>
+                        <th>電話</th>
+                    </tr>
+
+                    <tr>
+                        <td>Mary</td>
+                        <td>女</td>
+                        <td>61238482</td>
+                    </tr>
+                    <tr>
+                        <td>May</td>
+                        <td>女</td>
+                        <td>81375378</td>
+                    </tr>
+                    <tr>
+                        <td>Jack</td>
+                        <td>男</td>
+                        <td>54897135</td>
+                    </tr>
+                    <tr>
+                        <td>Jacky</td>
+                        <td>男</td>
+                        <td>56117013</td>
+                    </tr>
+                </table>
+                <input type="text" name="" id="htext" />
+                <input type="button" id="hsearch" value="搜尋" />
+            </div>
+            <div id="z7c" class="zContent zhide">
+                <p>是否停止執行下一個animate function, 是否跳到動作完成的時刻</p>
+                <button id="ibtn">.animate()</button>
+                <input id="iStop3" type="button" value=".stop(false,true)" />
+                <input id="iStop4" type="button" value=".stop(false,false)" />
+                <input id="iStop1" type="button" value=".stop(true,true)" />
+                <input id="iStop2" type="button" value=".stop(true,false)" />
+                
+                <input id="iDequeue" type="button" value=".dequeue()" />
+                <input id="iFinish" type="button" value=".finish()" />
+                <div id="idiv"></div>
+
+                <script>
+                    $('#ibtn').click(function(){
+                        $('#idiv').animate({
+                            'top':'400px'
+                        },1500).animate({
+                            'left':'400px'
+                        },1500).animate({
+                            'top':'50px'
+                        },1500).animate({
+                            'left':'10px'
+                        },1500);
+                    });
+
+                    $('#iStop1').click(function(){
+                        $('#idiv').stop(true,true);
+                    });
+
+                    $('#iStop2').click(function(){
+                        $('#idiv').stop(true,false);
+                    });
+
+                    $('#iStop3').click(function(){
+                        $('#idiv').stop(false,true);
+                    });
+
+                    $('#iStop4').click(function(){
+                        $('#idiv').stop(false,false);
+                    });
+
+                    $('#iDequeue').click(function(){
+                        $('#idiv').dequeue();
+                    });
+
+                    $('#iFinish').click(function(){
+                        $('#idiv').finish();
+                    });
+                </script>
+            </div>
+            <div id="z8c" class="zContent zhide">c8</div>
+        </div>
+    </div>
+    <footer>
+        Copyright &copy; 2015 · GeneratePress · WordPress
+    </footer>
+</body>
+</html>

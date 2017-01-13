@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>别踩白块</title>
+    <style type="text/css">
+    html,
+    body {
+        height: 100%;
+        font-size: 62.5%;
+    }
+    
+    body,
+    div,
+    ul,
+    li {
+        padding: 0;
+        margin: 0;
+    }
+    
+    section {
+        width: 95%;
+        height: 100%;
+        position: relative;
+    }
+    
+    #container {
+        position: absolute;
+        top: -80%;
+        padding: 0 20px;
+        width: 100%;
+        height: 100%;
+        background: #eee;
+    }
+    
+    .row {
+        margin-top: 30px;
+        overflow: hidden;
+        list-style: none;
+        display: flex;
+    }
+    
+    .col {
+        flex: 1;
+        margin-right: 3%;
+        margin-bottom: 5px;
+        height: 20rem;
+        border-radius: 5px;
+        border: 1px solid gray;
+        box-shadow: 5px 5px 5px gray;
+        background: #fff;
+    }
+    
+    .col:last-child {
+        margin: 0 5px 5px 0;
+    }
+    
+    footer {
+        position: fixed;
+        bottom: 0;
+        height: 28%;
+        width: 100%;
+        text-align: center;
+        font: bold 5rem/100px "microsoft yahei";
+        background: gray;
+    }
+    
+    .action {
+        width: 300px;
+        height: 100px;
+        font-size: inherit;
+    }
+    
+    .black {
+        background: #000;
+    }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div id="container"></div>
+    </section>
+    <footer>
+        <button class="action" onclick="star()">Action</button>
+        <div class="level">第<span id="chapter">1</span>关</div>
+        <div class="score">您的总分是:<span id="num">0</span></div>
+    </footer>
+    <script>
+    //设置定时器操作句柄
+    var clock = null;
+    //设置游戏状态 0:游戏进行中 1：游戏暂停 2：游戏失败
+    var state = 0;
+    //设置游戏速度，默认速度为2
+    var speed = 2;
+    //根据id获取元素
+    function $(id) {
+        return document.getElementById(id);
+    }
+    //创建div
+    function createDiv(className) {
+        var div = document.createElement("div");
+        div.className = className;
+        return div;
+    }
+    //创建row
+    function createRow() {
+        var con = $("container");
+        var row = createDiv("row");
+        var classes = createBlank();
+        for (var i = 0; i < 4; i++) {
+            row.appendChild(createDiv(classes[i]));
+        }
+        //判断container内是否有子元素
+        if (con.firstChild == null) {
+            con.appendChild(row);
+        } else {
+            con.insertBefore(row, con.firstChild)
+        }
+
+    }
+    //创建随机黑块
+    function createBlank() {
+        var arr = ['col', 'col', 'col', 'col'];
+        var i = Math.floor(Math.random() * 4);
+        arr[i] = 'col black';
+        return arr;
+    }
+    //向下滑动动画
+    function move() {
+        var con = $("container");
+        var top = parseInt(window.getComputedStyle(con, null)["top"]);
+        if (speed + top > 0) { //如果一步走过头，则强制top等于零
+            top = 0;
+        } else {
+            top += speed;
+        }
+        con.style.top = top + "px";
+        //如果最上的块完全掉下来时top==0，此时需在这行上追加一行
+        if (top == 0) {
+            createRow();
+            con.style.top = "-23rem";
+            var rows = con.children;
+            if ((rows.length == 5) && (rows[rows.length - 1].pass != 1)) {
+                fail();
+            } else {
+                deleteRow();
+            }
+        }
+    }
+    //加速函数
+    function accelerate() {
+        speed += 2;
+        if (speed == 20) {
+            alert("饶了我吧，你的电脑太卡了！");
+        }
+    }
+    //删除最后一行
+    function deleteRow() {
+        var con = $("container");
+        con.removeChild(con.lastChild);
+    }
+    //动画开始
+    function star() {
+        clock = window.setInterval('move()', 10);
+    }
+    //点击黑块颜色变白
+    $("container").onclick = function(event) {
+            judge(event);
+        }
+    //判断是成功还是失败
+    function judge(event) {
+        if (state == 2) {
+            alert("游戏失败，请重新开始！");
+            gameInit();
+            return;
+        }
+        if (event.target.className.indexOf("black") == -1) {
+            fail();
+        } else {
+            event.target.className = "col";
+            event.target.parentNode.pass = 1;
+            score();
+        }
+    }
+    //游戏失败或结束
+    function fail() {
+        clearInterval(clock);
+        state = 2;
+        alert("游戏失败，请重新开始！");
+        var con = $("container");
+        con.style.top = "-276px";
+        gameInit();
+    }
+    //游戏初始化
+    function gameInit() {
+        var con = $("container");
+        var childNum = con.children.length;
+        for (var i = 0; i < childNum; i++) {
+            deleteRow();
+        }
+        init();
+        $('num').innerHTML = 0;
+        state = 0;
+    }
+    //页面初始化
+    function init() {
+        for (var i = 0; i < 4; i++) {
+            createRow();
+        }
+    }
+    //计分
+    function score() {
+        var newScore = parseInt($('num').innerHTML) + 1;
+        var newChpater = parseInt($('chapter').innerHTML) + 1
+        $('num').innerHTML = newScore;
+        if (newScore % 20 == 0) {
+            $("chapter").innerHTML = newChpater;
+            accelerate();
+        }
+    }
+    init();
+    </script>
+</body>
+
+</html>

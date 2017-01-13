@@ -1,0 +1,113 @@
+http://moddev2.loc/DesktopModules/MyFirstModule/API/ModuleTask/HelloWorld
+******************************************************************************************************************************
+^^^^^RouteMapper.cs
+using DotNetNuke.Web.Api;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace Christoc.Modules.StandUp.Models
+{
+    public class RouteMapper : IServiceRouteMapper
+    {
+        public void RegisterRoutes(IMapRoute mapRouteManager)
+        {
+            mapRouteManager.MapHttpRoute("StandUp", "default", "{controller}/{action}", new[] { "Christoc.Modules.StandUp.Models" });
+        }
+    }
+}
+******************************************************************************************************************************
+^^^^Task.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace Christoc.Modules.StandUp.Models
+{
+    public class Task
+    {
+        public int TaskId { get; set; }
+        public string TaskName { get; set; }
+        public string TaskDescription { get; set; }
+        public bool isComplete { get; set; }
+        public int ModuleId { get; set; }
+        public int UserId { get; set; }
+    }
+}
+******************************************************************************************************************************
+^^^^TaskController.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Collections.Generic;
+using DotNetNuke.Common.Utilities;
+using DotNetNuke.Data;
+
+namespace Christoc.Modules.StandUp.Models
+{
+    public class TaskController
+    {
+        public IList<Task> GetTasks(int ModuleID)
+        {
+            return CBO.FillCollection<Task>(DataProvider.Instance().ExecuteReader("CBP_GetTasks", ModuleID));
+        }
+    }
+}
+******************************************************************************************************************************
+^^^^Webservices.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using DotNetNuke.Common.Utilities;
+using DotNetNuke.Entities.Users;
+using DotNetNuke.Web.Api;
+
+namespace Christoc.Modules.StandUp.Models
+{
+    public class ModuleTaskController : DnnApiController
+    {
+        [AllowAnonymous]
+        [HttpGet]
+        public HttpResponseMessage HelloWorld()
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, "Hello World!");
+        }
+    }
+}
+******************************************************************************************************************************
+^^^^SqlDataProvider
+IF NOT EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'{databaseOwner}[{objectQualifier}CBP_Tasks]') and OBJECTPROPERTY(id, N'IsTable') = 1)
+
+BEGINCREATE TABLE {databaseOwner}[{objectQualifier}CBP_Tasks](
+[TaskID] [int] IDENTITY(1,1) NOT NULL,
+[TaskName] [nvarchar](max) NOT NULL,
+[TaskDescription] [nvarchar](max) NULL,
+[IsComplete] [bit] NOT NULL,
+[ModuleID] [int] NOT NULL,
+[UserID] [int] NOT NULL
+) 
+
+ALTER TABLE {databaseOwner}[{objectQualifier}CBP_Tasks] ADD CONSTRAINT [PK_{databaseOwner}{objectQualifier}CBP_Tasks] PRIMARY KEY CLUSTERED  ([TaskID])
+END
+
+GO
+
+
+
+IF EXISTS (select * FROM dbo.sysobjects WHERE id = object_id(N'{databaseOwner}[{objectQualifier}CBP_GetTasks]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+    DROP PROCEDURE {databaseOwner}{objectQualifier}CBP_GetTasks
+GO
+
+
+******************************************************************************************************************************
+^^^^Uninstall.SqlDataProvider
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'{databaseOwner}[{objectQualifier}CBP_Tasks]') and OBJECTPROPERTY(id, N'IsTable') = 1)
+DROP TABLE {databaseOwner}[{objectQualifier}CBP_Tasks]
+GO

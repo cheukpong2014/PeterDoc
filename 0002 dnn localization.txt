@@ -1,0 +1,11 @@
+View.ascx
+<asp:Literal ID="ltlTest2" runat="server"></asp:Literal>
+<label id="apple" runat="server"></label>
+
+View.ascx.cs
+ltlTest2.Text = Localization.GetString("ltlTest2", LocalResourceFile);
+apple.InnerHtml = Localization.GetString("apple", LocalResourceFile);
+
+View.ascx.zh-HK.resx
+apple.Text = qwer;
+ltlTest2.Text = zxcv;

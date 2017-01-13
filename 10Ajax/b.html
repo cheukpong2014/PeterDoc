@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+	<meta charset="UTF-8">
+	<title>Ajax</title>
+	<h1>1. 簡單Ajax</h1>
+	<p>true代表異步，false代表同步，改true/false</p>
+	<script>
+		console.log(new XMLHttpRequest());
+		function createXHR(){
+			return new XMLHttpRequest();
+		}
+
+		var xhr = createXHR()
+		function vote1(){
+			xhr.open('GET','./b.php',true);
+			xhr.send(null);
+			xhr.onreadystatechange = function(){
+				var pg = document.getElementById('progress');
+				pg.innerHTML = pg.innerHTML+''+this.readyState+'<br />';
+				if(this.readyState==4){
+					alert('[1.簡單Ajax] readyState=4. Request finished');
+				}
+			}
+			alert(xhr.responseText);
+		}
+		function stop1(){
+			xhr.abort();
+		}
+	</script>
+	<p><input type="button" value="vote1" onclick="vote1();"></p>
+	<p><input type="button" value="stop1" onclick="stop1();"></p>
+	<div id="progress"></div>
+	<h1>XHR advance</h1>
+	<pre>
+XMLHttpRequest:
+responseText
+responseXML
+status
+statusText
+readyState
+onreadystatechange
+
+open()
+send(null)
+setRequestHeader(key,value)
+abort()
+getResponseHeader('Content-Type,Content-Length')
+getAllResponseHeaders()
+responseXML
+
+cache -> database
+     gzip
+cache <- database
+	</pre>
+<h1>2. ajax register</h1>
+<script>
+	function reg2(){
+		var xhr = createXHR();
+		xhr.open('POST','./b2.php',true);
+		xhr.onreadystatechange = function(){
+			if(this.readyState == 4){
+				alert('[2.ajax register] '+this.responseText);
+				var xmldom = this.responseText;
+			}
+		}
+		var un = document.getElementsByName('user')[0].value;
+		var eml = document.getElementsByName('email')[0].value;
+		xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
+		xhr.send('user='+un+'&email='+eml);
+	}
+</script>
+	<form action="b2.php" method="post" onsubmit="reg2();">
+		<p>User: <input type="text" name="user"></p>
+		<p>Email: <input type="text" name="email"></p>
+		<p><input type="submit" name="submit"></p>
+	</form>
+
+
+	<h1>3&4&5. 測試返回值</h1>
+	<script>
+		function test3(){
+			var xhr = createXHR();
+			xhr.open('GET','b3.php',true);
+			xhr.onreadystatechange = function(){
+				if(this.readyState==4){
+					alert(this.responseXML);
+					var xmldom = this.responseXML;
+					var chs = xmldom.getElementsByTagName('book')[0];
+					document.getElementById('bktitle').value = chs.firstChild.firstChild.wholeText;
+					document.getElementById('bkintro').value = chs.lastChild.lastChild.wholeText;
+				}
+			}
+			xhr.send(null);
+		}
+
+
+		function test4(){
+			var xhr = createXHR();
+			xhr.open('GET','b4.php',true);
+			xhr.onreadystatechange = function(){
+				if(this.readyState==4){
+					document.getElementById('news').innerHTML = this.responseText;
+				}
+			}
+			xhr.send(null);
+		}
+
+
+		function test5(){
+			var xhr = createXHR();
+			xhr.open('GET','b5.php',true);
+			xhr.onreadystatechange = function(){
+				if(this.readyState==4){
+					//alert(this.responseText);
+					var book = eval('('+this.responseText+')');
+					//var book = eval(this.responseText);
+					document.getElementById('bktitle').value = book.title;
+					document.getElementById('bkintro').value = book.intro;
+				}
+			}
+			xhr.send(null);
+		}
+
+
+	</script>
+	<input type="text" id="bktitle"><br>
+	<input type="text" id="bkintro"><br>
+	<input type="button" value="3測試返回值xml" onclick="test3();">
+	<input type="button" value="4測試返回值html" onclick="test4();">
+	<input type="button" value="5測試返回值json" onclick="test5();">
+	<div id="news"></div>
+
+	<h1>6 ch055 19:45</h1>
+	<script>
+		function sear(){
+			var km = document.getElementsByName('keyword')[0].value;
+			var url = 'https://developers.google.com/custom-search/'+km;
+			var scr = document.createElement('script');
+			scr.setAttribute('type','text/javascript');
+			scr.setAttribute('src',url);
+			document.getElementsByTagName('head')[0].appendChild(scr);
+		}
+		function aa(res){
+			console.log(res);
+		}
+	</script>
+	<input type="text" name="keyword"><br>
+	<input type="button" value="search" onclick="sear()">
+
+	<h1>7 異步原理，改true false，優點: 不阻止後面CODE的執行</h1>
+	<script>
+		var xhr = new XMLHttpRequest();
+		xhr.open('GET','b7.php',true);
+		xhr.onreadystatechange = function(){
+			if(this.readyState == 4){
+				//alert(this.responseText);
+			}
+		}
+		xhr.send(null);
+	</script>
+	<div style="width:200px;height:200px;background:blue;"></div>
+
+</body>
+</html>

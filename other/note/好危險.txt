@@ -1,0 +1,41 @@
+﻿定目標時: 好危險
+平時: 咁做唔得，咁講唔得
+
+jquery
+1.圓邊 border-radius: 5px
+冇底線 border-bottom
+置中 margin: auto
+cursor: pointer
+改css入面個left
+
+2.mouseover要clearInterval
+可以加圖 addbImage function
+
+3.文字係圖既中間幾難，
+因為要display: block同設定height, line-height
+改prop
+
+3.2 div background，比較少用，所以都有難度
+
+4.可以加圖，反而幾簡單，放大條式有D難，
+唔係真正放大，如果我張個放大鏡移去右邊，應該見唔到手機
+
+5.縮細
+
+6.border-collapse: collapse;
+hide all->filter(contains)->show
+:not("#head")
+
+7.完全停止
+
+(NOTE)第一個係true既話就會完全停
+note
+1.可以打CODE
+2.可以隔行
+3.display - D字會自動落下一行
+4.AJAX
+
+var wrapWidth = wrap.width();
+
+-------------------------------------------------------
+对报补习班

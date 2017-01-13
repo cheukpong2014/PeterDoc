@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	function selfile(){
+		var pic = document.getElementsByTagName('input')[0].files[0];
+		console.log(pic);
+		var debug = document.getElementById('debug');
+		var cont = '';
+		cont += '文件名稱: '+pic.name + '<br />';
+		cont += '文件大小: '+pic.size + '<br />';
+		debug.innerHTML=cont;
+
+		var tmping = document.createElement('img');
+		tmping.src = window.URL.createObjectURL(pic);
+		document.getElementsByTagName('body')[0].appendChild(tmping);
+	}
+</script>
+<style>
+	img{
+		width: 500px;
+		height: 500px;
+	}
+</style>
+	<input type="file" name="pic" onchange="selfile();" />
+	<div id="debug"></div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>10Checkbox</title>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<style>
+		.clear{
+			clear: both;
+		}
+		.cImg{
+			float: left;
+		}
+		.cSpan{
+			width: 90px;
+			height: 30px;
+			line-height: 30px;
+			display: block;
+			float: left;
+		}
+	</style>
+	<script>
+		$(function(){
+			$('#cCon').click(function(e){
+				var cb = $(e.target).parent().children(':checkbox');
+				if(cb.prop('checked')){
+					cb.prop('checked','');
+					$(e.target).parent().children('img').attr('src','./images/checkOff.jpg');
+				}else{
+					cb.prop('checked','checked');
+					$(e.target).parent().children('img').attr('src','./images/checkOn.jpg');
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<form action="result.php" method="post">
+		<div id="cCon">
+			<div><img class="cImg" src="./images/checkOff.jpg" alt="1"><span class="cSpan">PHP</span><input class="hide" type="checkbox" name="a[]" id="" value="run"></div>
+			<div class="clear"></div>
+
+			<div><img class="cImg" src="./images/checkOff.jpg" alt="2"><span class="cSpan">JAVA</span><input class="hide" type="checkbox" name="a[]" id="" value="swim"></div>
+			<div class="clear"></div>
+
+			<div><img class="cImg" src="./images/checkOff.jpg" alt="3"><span class="cSpan">JAVASCRIPT</span><input class="hide" type="checkbox" name="a[]" id="" value="play"></div>
+			<div class="clear"></div>
+			
+			<div><img class="cImg" src="./images/checkOff.jpg" alt="4"><span class="cSpan">MYSQL</span><input class="hide" type="checkbox" name="a[]" id="" value="eat"></div>
+		</div>
+		<div class="clear"></div>
+		<input type="submit" value="submit">
+	</form>
+</body>
+</html>

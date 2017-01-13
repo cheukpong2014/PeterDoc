@@ -1,0 +1,222 @@
+learn: C#mvc, dnn, hr system
+0. part-time
+0. asp.net
+0. milton module & dnn user structure
+1. java & (asp.net+dnn) & JS
+2. typescript & angular2 & nodeJS & html5 & css3 & LESS & SASS
+2. server coding
+2. network & http & ftp & 鳥哥 & socket & mail server(SMTP) & ad server
+3. SERVER (php?)
+4. LINUX
+5. Security & hacking & regular expression
+99. wordpress & github blog & java(think in java) & ThinkPHP & regular expression
+Task:
+1. all milton module
+1. java tutorial
+1. 
+
+1 staff
+submit
+M1
+2 direct supervisor
+agree		disagree
+staff		staff
+3 staff
+agree		disagree
+M2			M1
+ccM1
+4 team head
+agree		disagree
+staff		M1
+ccM1		ccstaff
+5 staff
+agree		disagree
+M3			M1
+ccM2M1
+6 department head
+agree		disagree
+staff		M2
+ccM2M1		ccM1 staff
+7 staff
+agree		disagree
+staffM1M2M3	M1
+8 complete
+
+Finished:
+--Introduction 係中期績效評估既INTRO
+//uttons need more details to introduce
+--placeholder disappeared
+//未到BOSS填，BOSS果PART要HIDE左佢
+--disableTextbox() is not working after the form is saved
+--submit btn change color
+--change hide details function
+//when dummy03 disagree, it will change dummy02 goal's comment
+--part B dummy03 and dummy 04 agree disagree conflict( ysM2Agree )
+//change color of the error message
+--cap photo
+//black color the intro
+--2decimal 
+--check status to change to submit text
+--fix changeSubmitText Function
+--submit button change when all agree/disagree radio checked
+--禁CLEAR, DELETE GOAL 果時要再計多次AVG MARKS
+--disable textarea should hide placeholder
+--disable text box black color font
+--cal Ass Mark
+--submit button
+--fix part4 disable textarea radio button
+--click h2 and then slide
+--13 radio button marks
+--click hide details and then slide
+--clear button
+--alert when client click the remove button
+--fix remove button
+--change goal title textarea size
+--Delete返YEAR START GOAL既'自我評分(1-4分)'同埋'直屬上司評分 (1-4分)'
+--placeholder
+--TextBox的長度
+--.tg 的css
+--改textarea既width, border
+--加返LOADING BAR
+
+
+/////////////////////////////////////////////////////////////////////////
+
+1. 預左失業，預左冇得升職，預左唔夠人勁，預左唔夠冷門
+
+所以，第一，我唔夠人勁，學歷唔夠人好，所以要做1D安全性高D既工作，唔好咁易有人爭
+但問題係我份工好快玩完，咁我到時就PK了
+
+
+
+業
+畫師
+魚
+
+1. 學得太慢
+2. 承諾冇哂
+3. 好冇效率
+4. 成日唔做野
+5. 太多廢時間(係床到哂哂)
+6. 想25小時工作，但又會FAIL，諗D野好唔現實，又想做多D，但結果仲衰
+
+SOLUTION
+1. 合理既工作，唔好超現實
+2. 多!!!!
+
+優質，特式
+教育，藥物，醫療，色情，美容
+
+
+互相說服.txt
+目的: 避免車輪戰
+目的2: 把人既政治立場完美分開
+過程: 可以1打100個
+
+
+
+install:
+greenshot
+notepad++
+sublime text 3
+Simple resxEditor
+WinMerge
+
+
+
+信長之野望
+
+近戰正常流 1.火甲->毒泉 2.-30% 3.吹箭/法術書->吉地 4.毒刀 
+
+百地
+庫 火甲 吹箭 手劍 電   清酒
+庫 火甲 吹箭 毒刀 電   清酒
+庫 毒泉 吹箭 毒刀 電   清酒
+庫 毒泉 吹箭 毒刀 -30% 清酒
+庫 毒泉 吉地 毒刀 -30% 清酒
+庫 毒泉 吉地 毒刀 地王 清酒
+庫 神息 吉地 毒刀 地王 清酒
+庫 神息 神息 毒刀 地王 清酒
+
+庫 火甲 吹箭 手劍 電   清酒
+庫 火甲 吹箭 毒刀 電   水
+庫 -30% 吹箭 毒刀 電   水
+庫 -30% 吹箭 毒刀 法書 水 or 毒泉
+庫 -30% 吹箭 毒刀 9100 水 or 神息流
+庫 地王 吹箭 毒刀 9100 水
+
+風魔
+庫 法   HP   電   MP   水
+庫 法   毒泉 電   MP   水
+庫 法   毒泉 毒刀 MP   水
+庫 法兜 毒泉 毒刀 涷云 水
+庫 法兜 長船 毒刀 涷云 水
+庫 7800 長船 毒刀 涷云 水
+庫 7800 長船 正宗 涷云 水
+
+上3
+庫 法   清酒 手劍 電   MP
+庫 法   吉剛 手劍 電   MP
+庫 法兜 吉剛 手劍 電   水
+庫 法兜 吉剛 毒泉 電   水
+庫 法兜 吉剛 毒泉 長船 水
+庫 凍云 吉剛 毒泉 長船 水
+白 凍云 吉剛 毒泉 長船 水
+白 凍云 吉剛 9100 長船 水
+
+立花甲裝
+庫   回魔 回魔 電卷 魔水 閃介
+庫   狐火甲 回魔 電卷 魔水 閃介
+庫   狐火甲 仙豆甲 電卷 魔水 閃介
+庫   狐火甲 仙豆甲 紅電 魔水 閃介
+庫   狐火甲 仙豆甲 紅電 平蜘蛛 閃介
+庫   狐火甲 仙豆甲 黑風 平蜘蛛 閃介
+地王/大炎/流離光機
+
+光秀 (要攻速加暈加食兵)
+庫 水 回魔
+庫 水 吉地 
+
+$#
+1.12LV吹箭閃介4黃點
+2.閃介回魔手劍落石屌地
+
+
+1200+650+850 = 2700
+               1300 = 4000 (400 blood)
+
+1500+1500    =      = 3000 (300 blood)
+
+1900+1900           = 3800 (500 blood)
+
+
+     獨孤九劍 兩儀刀法 辟邪劍法 西毒杖法 黯然銷魂掌 胡家刀法 野球拳 降龍十八掌 打狗棒法 六脈神劍
+根骨                     *29      *29        27       *31     *31      *30         26          
+悟性  *34        25       20       22        20       *29      20                           19  
+經脈  *32       *32       18      *28       *28       *33     *33      *33         22       24  
+福緣  *30        25                19        21        24      24       24        *32      *32  
+膽魄   25        25       23      *28       *28               *28      *28         22       22  
+醫術  *32       *32       23       23                  21     *30      *30         25       25   
+      128       114       95      108       104       117     122      121        105      103
+
+合適門派:
+      恆山      恆山     華山                         血刀             丐幫                      
+      武當                                  古墓      星宿                                      
+需要內功:
+     洗髓經     洗髓經 龍象般若功 蛤蟆功     蛤蟆功  神照經  神照經   太玄經   北冥神功 北冥神功
+     易筋經                     龍象般若功         小無相功  太玄經                   
+
+
+
+          小無相功  神照經  北冥神功  太玄經  洗髓經  易筋經  蛤蟆功  龍象般若功
+效果      氣血回復  暴擊率  法力回復  攻移速    回血  5000攻    減速    加攻速
+武功傷害      +30%    +50%      +40%   +100%    +70%    +80%    +60%      +90%
+內力         +100     +60      +150     +30    +130    +120     +80       +50
+絕學點         +3      +3        +4      +5      +3      +4      +2        +1
+暴擊率         +5%    +16%       +8%    +15%    +12%     +6%    +10%      +20%
+吸收傷害      +30%    +15%      +25%    +20%    +20%    +40%    +10%      +20%
+技能                                      有      有
+
+
+
+

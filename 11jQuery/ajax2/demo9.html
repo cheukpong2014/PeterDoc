@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>demo9</title>
+	<script src="jquery.js"></script>
+</head>
+<body>
+	<input type="button" value="获取数据" />
+	<div></div>
+	<span style="color:red"></span>
+	<script>
+		$('input').click(function(){
+			$.ajax({
+				url:'demo9.php?'+Math.random(),
+				type:'get',
+				timeout:1000,
+				success:function(data){
+					$('div').html(data);
+				},
+				error:function(jqXHR,textStatus,errrorThrown){
+					if(errrorThrown=='Not Found'){
+						$('span').html('你请求的地址不存在');
+					}
+					if(textStatus=='timeout'){
+						$('span').html('请求超时，请刷新页面重新操作');
+					}
+				}
+			});
+		});
+
+		$(document).ajaxError(function(){
+			$('span').html('ajax请求发生错');
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>note</title>
+	<style>
+		#container{
+			margin: 0 auto;
+			width: 50%;
+			
+			word-break: break-all;
+		}
+		ul{
+			list-style-type: none;
+			margin: 0px;
+			padding: 0px;
+		}
+		#list button{
+			float: right;
+		}
+		textarea{
+			width: 100%;
+		}
+		.tc{
+			float: left;
+		}
+		#clear{
+			clear: both;
+		}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+<body>
+	<div id="container">
+		<h1><a href="index.php">HOME</a></h1><br>
+		<div id="main">
+			<ul id="list"></ul>
+			<textarea name="" id="txt" cols="30" rows="5" value="aa"></textarea>
+			<button id="submit">submit</button>
+			<div id="clear"></div>
+			<br><h1><a href="index.php">What Next?</a></h1>
+			<form id="tt">
+				<div id="t1" class="tc"></div>
+				<div id="t2" class="tc"></div>
+			</form>
+			<div id="clear"></div>
+			<button id="update">update</button><br><br><br>
+			<button id="empty">clear</button>
+			<script>
+				function nl2br (str, is_xhtml) {   
+				    var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';    
+				    return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1'+ breakTag +'$2');
+				}
+				function getList(content){
+					$('#list').append("<div id='li"+content['id']+"'><li>"+"id: "+content['id']+" "+"<button id="+'btn'+content['id']+">Delete</button></li><li>"+nl2br( content['content'] )+"</li><hr></div>");
+				}
+				function delList(id){
+					var newid = '#li'+id;
+					$(newid).remove();
+				}
+				$.ajax({
+					url: 'getNote.php',
+					type: 'get',
+					success:function(data){
+						var content = JSON.parse(data);
+						for(var i=0;i<content.length;i++){
+							getList(content[i]);
+						}
+					}
+				});
+				$("#list").delegate("button", "click", function(e) {
+					var id = $(e.target).attr('id').substring(3);
+					var data = {
+						'del': id
+					};
+					$.ajax({
+						url:'del.php',
+						type:'POST',
+						data: data,
+						success:function(data){
+							var deleteid = JSON.parse(data);
+							delList(deleteid);
+						}
+					});
+				});
+				$('#submit').click(function(){
+					var ct = $.trim($("#txt").val());
+					var data = {
+						'content': ct
+					};
+					$.ajax({
+						type:'POST',
+						url:'add.php',
+						data: data,
+						success:function(data){
+							var newContent = JSON.parse(data);
+							getList(newContent);
+							$("#txt").val("");
+						}
+					});
+				});
+				function tableCreate(start,end) {
+					//var form = document.getElementById('timetable');
+				    var tbl = document.createElement('table');
+					//tbl.style.width = '100%';
+				    tbl.setAttribute('border', '1px solid black');
+				    tbl.setAttribute('style', 'border-collapse:collapse');
+				    //var tbdy = document.createElement('tbody');
+				    for (var i = start; i < end; i++) {
+				        var tr = document.createElement('tr');
+				        for (var j = 0; j < 2; j++) {
+				            var td = document.createElement('td');
+				            if(j%2===0){
+				            	var q=(i%2===0?':00':':30');
+				            	var e=(j===2?Math.floor(i/2)+6:Math.floor(i/2));
+								e=(e<10?'0'+e:e);
+								td.appendChild(document.createTextNode(e+q));
+				            }else{
+				            	var input = document.createElement('input');
+				            	var name = i+1;
+				            	input.setAttribute('name', 't'+name);
+				            	td.appendChild(input);
+				            }
+				            tr.appendChild(td);
+				        }
+				        //tbdy.appendChild(tr);
+				        tbl.appendChild(tr);
+				    }
+					//form.appendChild(tbl);
+					return tbl;
+				}
+				$('#t1').append(tableCreate(0,12));
+				$('#t2').append(tableCreate(12,24));
+
+				$.ajax({
+					url: 'getTimeTable.php',
+					type: 'get',
+					success:function(data){
+						var content = JSON.parse(data);
+						for(var x=1;x<=24;x++){
+							var id = 't'+x;
+							$('input[name="'+id+'"]').val(content[id]);
+						}
+					}
+				});
+				$('#update').click(function(){
+					var data=$('#tt').serialize();
+					$.ajax({
+						url:'postTimeTable.php',
+						type:'post',
+						data:data,
+						success:function(){
+
+						}
+					});
+				});
+				$('#empty').click(function(){
+					$('#tt :input').val("");
+				});
+			</script>
+			
+		</div>
+	</div>
+</body>
+</html>

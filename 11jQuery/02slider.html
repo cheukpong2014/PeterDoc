@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>02Slider</title>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<style>
+		body{
+			margin: 50px;
+		}
+		#sliderWrap{
+			border: 3px solid purple;
+			width: 600px;
+			height: 200px;
+			position: relative;
+			overflow: hidden;
+		}
+		#sliderCon{
+			width: 2000px;
+			position: absolute;
+			left: 0px;
+			top: 0px;
+		}
+		.sliderImg{
+			float: left;
+		}
+	</style>
+	<script>
+		$(function(){
+			var status = 1;
+			var pos=0;
+			var $con = $('#sliderCon');
+			setInterval(function(){
+				if(status==0){
+
+				}else if(status==1){
+					if(pos<=-1000){
+						pos=0;
+					}
+					pos-=2;				
+					$con.css('left',pos+'px');
+				}else if(status==2){
+					if(pos>=0){
+						pos=-1000;
+					}
+					pos+=2;				
+					$con.css('left',pos+'px');
+				}
+			},30)
+			$('#tleft').click(function(){
+				status=1;
+			});
+			$('#tright').click(function(){
+				status=2;
+			});
+			$('#tstop').click(function(){
+				status=0;
+			});
+		})
+	</script>
+</head>
+<body>
+	<a id="tleft">左</a> <a id="tright">右</a> <a id="tstop">停</a>
+	<div id="sliderWrap">
+		<div id="sliderCon">
+			<img class="sliderImg" src="./02slider/1.jpg" alt="">
+			<img class="sliderImg" src="./02slider/2.jpg" alt="">
+			<img class="sliderImg" src="./02slider/3.jpg" alt="">
+			<img class="sliderImg" src="./02slider/4.jpg" alt="">
+			<img class="sliderImg" src="./02slider/5.jpg" alt="">
+			<img class="sliderImg" src="./02slider/1.jpg" alt="">
+			<img class="sliderImg" src="./02slider/2.jpg" alt="">
+			<img class="sliderImg" src="./02slider/3.jpg" alt="">
+			<img class="sliderImg" src="./02slider/4.jpg" alt="">
+			<img class="sliderImg" src="./02slider/5.jpg" alt="">
+		</div>
+	</div>
+</body>
+</html>

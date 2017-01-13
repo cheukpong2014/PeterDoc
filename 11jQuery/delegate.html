@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Practice</title>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <style>span {display:none;}</style>
+</head>
+<body>
+
+<p><input type="text" id="abc"><span>focusin fire</span></p>
+<div>
+<p><input type="text" /> <span>focusin fire</span></p>
+<p><input type="password" /> <span>focusin fire</span></p>
+</div>
+<script>
+$('#abc').focus(function(){
+  $(this).parents('p').find("span").css('display','inline').fadeOut(1000);
+});
+$("div").focusin(function(e) {
+  $(e.target).parents('p').find("span").css('display','inline').fadeOut(1000);
+  //$(this).find("span").css('display','inline').fadeOut(1000);
+});
+</script>
+
+
+
+
+<a href="###">01</a>
+<a href="###">02</a>
+<a href="###">03</a>
+<a href="###">04</a>
+<a href="###">05</a>
+<a href="###">06</a>
+<a href="###">07</a>
+<a href="###">08</a>
+<a href="###">09</a>
+<a href="###">10</a>
+<button onclick="btn1();">btn1</button>
+
+<script>
+function btn1(){
+  $('body').append('<a href="###">11</a>');
+}
+$("body").delegate("a", "click", function(e) {
+  alert($(this).text());
+});
+</script>
+
+</body>
+</html>

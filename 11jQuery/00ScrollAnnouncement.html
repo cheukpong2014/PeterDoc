@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>滚动公告</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		body{
+			margin: 50px;
+		}
+		ul{
+			list-style-type: none;
+		}
+		li{
+			height: 30px;
+			line-height: 30px;
+		}
+	</style>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+	<ul>
+		<li>我是第1条公告。。。。。</li>
+		<li>我是第2条公告。。。。。</li>
+		<li>我是第3条公告。。。。。</li>
+		<li>我是第4条公告。。。。。</li>
+		<li>我是第5条公告。。。。。</li>
+		<li>我是第6条公告。。。。。</li>
+		<li>我是第7条公告。。。。。</li>
+		<li>我是第8条公告。。。。。</li>
+		<li>我是第9条公告。。。。。</li>
+		<li>我是第10条公告。。。。。</li>
+	</ul>
+	<script>
+	setInterval(function(){
+		var newLi = $('ul>:first').clone(true);
+		$('ul').append(newLi);
+		$('ul>:first').remove();
+	},2000);
+	
+	</script>
+</body>
+</html>

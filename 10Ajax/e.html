@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+<body>
+<h1>用FormData做AJAX，用少D CODE</h1>
+<script>
+	function send(){
+		var fm = document.getElementById('tform');
+		var fd = new FormData(fm);
+		var fd2 = new FormData();
+		var xhr = new XMLHttpRequest();
+		xhr.open('POST','e1.php',true);
+		xhr.onreadystatechange = function(){
+			alert('4');
+			if(this.readyState == 4){
+				
+				document.getElementById('debug').innerHTML = this.responseText;
+			}
+		}
+		//FormData不單可以從Form加data，還可以append data
+		//fd2.append('username','peter');
+		//fd2.append('age',23);
+		xhr.send(fd);
+		//xhr.send('v=v1&b=b2&c=c3')
+	}
+</script>
+	<form id="tform">
+		User: <input type="text" name="user"><br>
+		Age: <input type="text" name="age"><br>
+		Email: <input type="text" name="email"><br>
+		Sex: <input type="text" name="sex"><br>
+		<input type="button" value="send" onclick="send();">
+	</form>
+	<div id="debug"></div>
+</body>
+</html>

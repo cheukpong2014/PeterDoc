@@ -1,0 +1,112 @@
+***********************************************************************************
+^^^^Setting.ascx
+
+<asp:DropDownList ID="ShowCompletedTasksSelector" runat="server">
+    <asp:ListItem Value="True">Yes</asp:ListItem>
+    <asp:ListItem Value="False">No</asp:ListItem>
+</asp:DropDownList>
+
+
+
+
+
+***********************************************************************************
+^^^^Settings.ascx.cs
+
+public partial class Settings : MyFirstModuleModuleSettingsBase
+    {
+        #region Base Method Implementations
+        /// -----------------------------------------------------------------------------
+        /// <summary>
+        /// LoadSettings loads the settings from the Database and displays them
+        /// </summary>
+        /// -----------------------------------------------------------------------------
+        public override void LoadSettings()
+        {
+            try
+            {
+                if (Page.IsPostBack == false)
+                {
+                    //Check for existing settings and use those on this page
+                    /* uncomment to load saved settings in the text boxes*/
+                    if (Settings.Contains("ShowCompletedTasks"))
+                    {
+                        ShowCompletedTasksSelector.SelectedValue = Settings["ShowCompletedTasks"].ToString();
+                   }
+                }
+            }
+            catch (Exception exc) //Module failed to load
+            {
+                Exceptions.ProcessModuleLoadException(this, exc);
+            }
+        }
+        /// -----------------------------------------------------------------------------
+        /// <summary>
+        /// UpdateSettings saves the modified settings to the Database
+        /// </summary>
+        /// -----------------------------------------------------------------------------
+        public override void UpdateSettings()
+        {
+            try
+            {
+                var modules = new ModuleController();
+                modules.UpdateModuleSetting(ModuleId, "ShowCompletedTasks", ShowCompletedTasksSelector.SelectedValue);
+}
+            catch (Exception exc)
+            {
+                Exceptions.ProcessModuleLoadException(this, exc);
+            }
+        }
+        #endregion
+
+    }
+
+
+
+
+
+***********************************************************************************
+^^^^
+
+
+
+
+
+
+
+***********************************************************************************
+^^^^
+
+
+
+
+
+
+
+***********************************************************************************
+^^^^
+
+
+
+
+
+
+
+***********************************************************************************
+^^^^
+
+
+
+
+
+
+
+***********************************************************************************
+^^^^
+
+
+
+
+
+
+

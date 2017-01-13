@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DIV</title>
+	<style>
+		#container{
+			width: 1002px;
+			margin: 0px auto;
+			background: gray;
+		}
+		#header{
+			height: 120px;
+			background: orange;
+		}
+		#main{
+			height: 600px;
+			background: green;
+		}
+		#lmain{
+			width: 700px;
+			height: 600px;
+			background: pink;
+			float: left;
+		}
+		.four{
+			width: 310px;
+			height: 260px;
+			background: black;
+			float: left;
+			margin: 10px;
+			padding: 10px;
+			color: white;
+		}
+		#rmain{
+			width: 302px;
+			height: 600px;
+			background: purple;
+			float: right;
+		}
+		#footer{
+			height: 120px;
+			background: blue;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="header"></div>
+		<div id="main">
+			<div id="lmain">
+				<div class="four">1</div>
+				<div class="four">2</div>
+				<div class="four">3</div>
+				<div class="four">4</div>
+			</div>
+			<div id="rmain"></div>
+		</div>
+		<div id="footer"></div>
+	</div>
+</body>
+</html>

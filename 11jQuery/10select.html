@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Select</title>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	 <style>
+	 	#dSelect{
+			border: 1px solid #abcdef;
+			width:200px;
+			height:32px;
+			background: url('./images/select.jpg') right center no-repeat;
+		}
+		#dChoice{
+			border: 1px solid #abcdef;
+			width:200px;
+			height:144px;
+			display:none;
+			float:left;
+		}
+		.dP{
+			height: 32px;
+		}
+		.dOver{
+			background: #abcdef;
+		}
+</style>
+</head>
+<body>
+<div id="dSelect"></div>
+<div id="dChoice">
+	<p class="dP">213</p>
+	<p class="dP">abc</p>
+	<p class="dP">昨</p>
+</div>
+<script>
+$('#dSelect').click(function () {
+	if ($("#dChoice").is(":hidden")) {
+		$("#dChoice").slideDown("slow");
+	} else {
+		$("#dChoice").slideUp("slow");
+	}
+});
+$('.dP').mouseover(function(e){
+	$(e.target).addClass('dOver');
+}).mouseout(function(e){
+	$(e.target).removeClass('dOver');
+}).click(function(e){
+	var ttt = $(e.target).text();
+	$('#dSelect').text(ttt);
+	$('#dChoice').hide();
+});
+</script>
+</html>

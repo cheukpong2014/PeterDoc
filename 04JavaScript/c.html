@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>form and function</title>
+</head>
+<body>
+
+
+	<h1>validateForm</h1>
+	<script>
+		function validateForm() {
+		    var x = document.forms["myForm1"]["fname"].value;
+		    if (x == null || x == "") {
+		        alert("Name must be filled out");
+		        return false;
+		    }
+		}
+	</script>
+	<form name="myForm1" action="demo_form.asp"
+	onsubmit="return validateForm()" method="post">
+		Name: <input type="text" name="fname">
+		<input type="submit" value="Submit">
+	</form>
+
+
+	<h1>Validate Input</h1>
+	<p>Please input a number between 1 and 10:</p>
+	<input id="numb2">
+	<button type="button" onclick="myFunction()">Submit</button>
+	<p id="demo2"></p>
+	<script>
+		function myFunction() {
+		    var x, text;
+
+		    // Get the value of the input field with id="numb"
+		    x = document.getElementById("numb2").value;
+
+		    // If x is Not a Number or less than one or greater than 10
+		    if (isNaN(x) || x < 1 || x > 10) {
+		        text = "Input not valid";
+		    } else {
+		        text = "Input OK";
+		    }
+		    document.getElementById("demo2").innerHTML = text;
+		}
+	</script>
+<pre>
+Constraint Validation HTML Input Attributes:
+disabled
+max
+min
+pattern
+required
+type
+
+Constraint Validation CSS Pseudo Selectors:
+:disabled
+:invalid
+:optional
+:required
+:valid
+</pre>
+
+<h1>JavaScript Validation API</h1>
+<p>Enter a number and click OK:</p>
+
+<input id="id3" type="number" min="100" max="300">
+<button onclick="myFunction()">OK</button>
+<p>If the number is less than 100 or greater than 300, an error message will be displayed.</p>
+<p id="demo3"></p>
+<script>
+function myFunction() {
+    var inpObj = document.getElementById("id3");
+    if (inpObj.checkValidity() == false) {
+        document.getElementById("demo3").innerHTML = inpObj.validationMessage;
+    } else {
+        document.getElementById("demo3").innerHTML = "Input OK";
+    }
+}
+</script>
+
+
+<pre>
+Constraint Validation DOM Properties:
+validity
+validationMessage
+willValidate
+
+Validity Properties:
+(The validity property of an input element contains a number of properties related to the validity of data:)
+customError	    Set to true, if a custom validity message is set.
+patternMismatch	Set to true, if an element's value does not match its pattern attribute.
+rangeOverflow	Set to true, if an element's value is greater than its max attribute.
+rangeUnderflow	Set to true, if an element's value is less than its min attribute.
+stepMismatch	Set to true, if an element's value is invalid per its step attribute.
+tooLong     	Set to true, if an element's value exceeds its maxLength attribute.
+typeMismatch	Set to true, if an element's value is invalid per its type attribute.
+valueMissing	Set to true, if an element (with a required attribute) has no value.
+valid           Set to true, if an element's value is valid.
+</pre>
+
+
+<h1>The rangeOverflow Property</h1>
+<p>Enter a number and click OK:</p>
+
+<input id="id4" type="number" max="100">
+<button onclick="myFunction()">OK</button>
+
+<p>If the number is greater than 100 (the input's max attribute), an error message will be displayed.</p>
+
+<p id="demo4"></p>
+
+<script>
+function myFunction() {
+    var txt = "";
+    if (document.getElementById("id4").validity.rangeOverflow) {
+        txt = "Value too large";
+    } else {
+        txt = "Input OK";
+    }
+    document.getElementById("demo4").innerHTML = txt;
+}
+</script>
+
+
+<h1>The rangeUnderflow Property</h1>
+<p>Enter a number and click OK:</p>
+
+<input id="id5" type="number" min="100">
+<button onclick="myFunction()">OK</button>
+
+<p>If the number is less than 100 (the input's min attribute), an error message will be displayed.</p>
+
+<p id="demo5"></p>
+
+<script>
+function myFunction() {
+    var txt = "";
+    if (document.getElementById("id5").validity.rangeUnderflow) {
+        txt = "Value too small";
+    } else {
+        txt = "Input OK";
+    }
+    document.getElementById("demo5").innerHTML = txt;
+}
+</script>
+
+
+</body>
+</html>

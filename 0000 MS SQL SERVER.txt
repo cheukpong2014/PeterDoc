@@ -1,0 +1,160 @@
+string CS = "Server=.\\SQLEXPRESS; Database = gorden.loc; User Id = web; Password = 24979469";
+
+SqlConnection con = new SqlConnection(CS);
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "INSERT INTO [dbo].[BookingConference_BookingRoom]([OfficeRegionID],[roomName],[mapPath]) VALUES (2,'zcvs','sfd')";
+                cmd.Connection = con;
+                con.Open();
+                int rowAffected = cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+
+            }
+            finally
+            {
+                con.Close();
+            }
+
+
+MS SQL SERVER
+3. add foreign key
+alter table tblPerson add constraint tblPerson_GenderID_FK
+Foreign KEY (GenderId) references tblGender(ID)
+
+
+4. set and drop default
+ALTER TABLE tblPerson ADD CONSTRAINT DF_tblPerson_GenderId DEFAULT 3 FOR GenderId
+ALTER TABLE tblPerson DROP CONSTRAINT DF_tblPerson_GenderId
+
+
+5. Foreign KEY
+
+
+6.check constraint and delete
+Age > 0 AND Age < 150
+ALTER TABLE tblPerson DROP Constraint [constraint_name]
+ALTER TABLE tblPerson CK_tblPerson_Age CHECK (Age>0 AND Age<150)
+
+
+7.Identity
+
+8. get last id
+Select SCOPE_IDENTITY()
+Select @@IDENTITY
+Select IDENT_CURRENT('Test2')
+
+Create Triggle trForInsert on Test1 for Insert
+as
+Begin
+	Insert into Test2 Values("YYYY");
+End
+
+9.Unique key
+alter table tblPerson add constraint UQ_tblPerson_Email Unique(Email)
+
+10.select statement
+Select Distinct Name, City from tblPerson
+select * from tbl_Person where City != 'London'
+select * from tbl_Person where age in (20,23,29)
+select * from tbl_Person where age between 20 and 25
+select * from tbl_Person where age like 'L%'
+select * from tbl_Person where Email not like '%@%'
+A@A.com
+B@B.com
+select * from tbl_Person where Email not like '_@_.com'
+select * from tbl_Person where Name like '[MST]%'
+select * from tbl_Person where Name like '[^MST]%'
+select * from tbl_Person where (City = 'London' or City = 'Mumabi' and Age >25)
+select * from tbl_Person where Name order by Name desc, age asc
+select top 1 percent * from tbl_Person
+
+11. Group by
+select sum(Salary) from tblEmployee
+select max(Salary) from tblEmployee
+select min(Salary) from tblEmployee
+select city, sum(Salary) as TotalSalary from tbl Employee Group by City
+select city, gender, sum(salary) as totalsalary, count(ID) as [Total Employee] from tblEmployee group by gender, city
+select gender, city, sum(salary) as totalsalary from tblEmployee
+where gender = 'Male' = having gender = 'male'
+
+12. Joins in sql server
+select * from tblEmployee inner join tblDepartment on tblEmployee.DepartmentID = tblDepartment.ID
+select * from tblEmployee left join tblDepartment on tblEmployee.DepartmentID = tblDepartment.ID
+**select * from tblEmployee full join tblDepartment on tblEmployee.DepartmentID = tblDepartment.ID
+(no usage)select * from tblEmployee cross join tblDepartment
+
+13. Advanced join
+IS NULL
+
+14. Self join
+Select E.Name as Employee, M.Name as Manager from tblEmployee E left join tblEmployee M on E.EmployeeID = M.EmployeeID
+
+15. different ways to replace null insql server (NULL -> NO MANAGER)
+select ISNULL(NULL, 'No Manager') as Manager
+Select E.Name as Employee, ISNULL(M.Name, 'No Manager')as Manager from tblEmployee E left join tblEmployee M on E.EmployeeID = M.EmployeeID
+
+select coalesce(NULL, 'No Manager') as Manager
+
+CASE WHEN EXPression THEN '' ELSE '' END
+
+16.Coalesce function - return the first non null value
+select id, coalesce(firstname, middlename, lastname) as name from employee;
+
+17.Union and union all
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

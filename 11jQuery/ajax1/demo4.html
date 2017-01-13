@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>demo4</title>
+	<script src="jquery.js"></script>
+	<style>
+		div{color:red;}
+	</style>
+</head>
+<body>
+	<input type="text" name="username" id="username" />
+	<input type="button" value="检验" />
+	<div id="m1"></div>
+	<div id="m2"></div>
+	<script>
+		$('input[type=button]').click(function(){
+			var url = 'process.php';
+			var sendData = {'username':$('#username').val()};
+			//****************************************
+			$.get(url,sendData,function(data){
+				if(data=='true'){
+					$('#m1').html('用户名可以使用');
+				}else{
+					$('#m1').html('用户名不可以是admin');
+				}
+				$('#m2').html(data);
+			});
+			//****************************************
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js tutoral</title>
+	<script>
+	//array join slice splice pop push
+		window.hello = window.hello || window.world;
+		console.log(window.hello);
+
+		var obj = {name:'lisi',age:29,area:'ss'};
+		console.log(obj.name,obj['name']);
+		for(var k in obj){
+			console.log(k+'~'+obj[k]);
+		}
+		console.log(window.navigator.cookieEnabled);
+		console.log(window.location);
+		//window.location.href = "http://www.google.com";
+		console.log(window.history);
+		console.log(window.width);
+		console.log(window.height);
+		//alert(window.document);
+	</script>
+
+
+<!-- ***************************************************************-->
+		<h1>find abc</h1>
+		<div id="test1">
+			<p>1</p>
+			<p>2</p>
+			<p>3</p>
+		</div>
+		<div class="test2">222222</div>
+		<input type="text" name="username" value="poly">
+
+	<script>
+		console.log(document.getElementById('test1'));
+		document.getElementsByTagName('p')[2].parentNode.style.border = '1px solid green';
+//********************************************************************
+
+
+
+		//控制obj style和CSS
+		function getStyle(obj,attr){
+			return getComputedStyle(obj,null)[attr];  
+		}
+		function onClick(){
+			//get value from div;
+			div.style.width = parseInt(div.style.width)+5+'px';
+			div.style.width = parseInt(getElementByTagName('div').style.width)+5+'px';
+			//get value from css;
+			div.style.width = parseInt(getStyle(div,'width'))+5+'px';
+		}
+
+		//刪除對象
+		function deleteli(){
+			var lis = document.getElementByTagName('li');
+			var lastli = lis[lis.length-1];
+			lastli.parentNode.removeChild(lastli);
+		}
+		//創建對象
+		function addli(){
+			var li = document.createElement('li');
+			var txt = document.createTextNode("tteexxtt");
+			li.appendChild(txt);
+			document.getElementByTagName('ul')[0].appendChild('li');
+		}
+		function addli2a(){
+			var ul = document.getElementByTagName('li')[0];
+			ul.innerHTML = '<li>春</li><li>夏</li><li>秋</li>';
+		}
+		function addli2b(){
+			var ul = document.getElementByTagName('li')[0];
+			ul.innerHTML += '<li>冬</li>';
+		}
+
+		//聯動菜單
+		var area = [
+		[''] , 
+		['city a' , 'city b' , 'city c'] , 
+		['city d' , 'city e' , 'city f' , 'city g']
+		];
+		function Id(){
+			var sel = document.getElementById('prov');
+			var opt = '';
+			for (var i=0;i<area[sel.value].length;i++){
+				opt = opt+ '<option value"'+i+'">'+area[sel.value][i]+'</option>';
+			}
+			document.getElementById('city').innerHTML = opt;
+		}
+
+
+		//Time out
+		function bomb(){
+			document.getElementById('mm').src = 'warn.jpg';
+		}
+		setTimeout('bomb()',5000); //5秒鐘
+
+
+		//Time out 2
+		var clock = null;
+		function bomb2(){
+			var inp = document.getElementsByName('time')[0];
+			var time = parseInt(inp.value) -1;
+			inp.value = time;
+			if(time==0){
+				document.getElementById('gg').src = 'warn.jpg';
+				clearInterval(clock);
+			}
+		}
+		clock = setInterval('bomb2()',1000);
+		
+
+
+	</script>
+</head>
+<body>
+	<!-- 聯動菜單 -->
+	<select name="" id="prov" onchange="Id();">
+		<option value="0">select</option>
+		<option value="1">country a</option>
+		<option value="2">country b</option>
+	</select>
+	<select name="" id="city"></select><br>
+
+	<h1>定時器1</h1><br>
+	<img src="bom.jpg" alt="" id="mm" /><br>
+
+	<h1>定時器2</h1><br>
+	<input type="button" name="time" value="3" /><br>
+	<img src="bom.jpg" alt="" id="gg" /><br>
+	
+<p>Summary.
+<br />42 - Date()
+<br />42 - if (image.src.match("bulbon")) {image.src = "pic_bulboff.gif";}
+<br />42 - x.style.fontSize
+<br />42 - if (isNaN(x) || x < 1 || x > 10) {text = "Input not valid";}
+
+
+<br />43 - window.alert()
+<br />43 - document.write()
+<br />43 - innerHTML
+<br />43 - console.log()
+
+
+<br />56 - common HTML events
+<br />onchange
+<br />onclick
+<br />onmouseover
+<br />onmouseout
+<br />onkeydown
+<br />onload
+
+
+<br />57 - escape character \'\"\\\n\r\t\b\f
+
+
+<br />58 - StringMethods: 
+<br />txt.length
+<br />str.indexOf("locate")
+<br />str.lastIndexOf("locate")
+<br />str.search("locate"
+<br />slice(start, end)
+<br />substring(start, end)
+<br />substr(start, length)
+<br />str.replace("Microsoft","W3Schools")
+<br />text1.toUpperCase()
+<br />text1.toLowerCase()
+<br />text1.concat("	",text2)
+<br />"Hello".concat(" ","World!")
+<br />str.charAt(0)
+<br />str.charCodeAt(0)
+<br />txt.split(",") (add a string to an array)
+<br />
+<br />60 - 
+<br />toString()
+<br />isNaN(x)
+<br />x.toExponential(2)
+<br />x.toFixed(0)
+<br />x.toPrecision(2)
+<br />x.valueOf()
+<br />Number()
+<br />parseInt()
+<br />parseFloat()
+<br />60 - Number Properties:
+<br />MAX_VALUE
+<br />MIN_VALUE
+<br />NEGATIVE_INFINITY
+<br />NaN
+<br />POSITIVE_INFINITY
+<br />
+<br />61 - Math.random()
+<br />Math.min(0, 150, 30, 20, -8, -200)
+<br />Math.max(0, 150, 30, 20, -8, -200)
+<br />Math.round(4.7)
+<br />Math.ceil(4.4)
+<br />Math.floor(4.7)
+<br />Math.sqrt()
+<br />Math.pow(a,b)
+<br />Math.E          // returns Euler's number
+<br />Math.PI         // returns PI
+<br />Math.SQRT2      // returns the square root of 2
+<br />Math.SQRT1_2    // returns the square root of 1/2
+<br />Math.LN2        // returns the natural logarithm of 2
+<br />Math.LN10       // returns the natural logarithm of 10
+<br />Math.LOG2E      // returns base 2 logarithm of E
+<br />Math.LOG10E     // returns base 10 logarithm of E
+<br />
+<br />62 - Date()
+<br />new Date()
+<br />new Date(milliseconds)
+<br />new Date(dateString)
+<br />new Date(year, month, day, hours, minutes, seconds, milliseconds)
+<br />toUTCString()
+<br />toDateString()
+<br />
+<br />63 - DateFormats
+<br />ISO Dates(YYYY-MM-DD)
+<br />Long Dates (MMM DD YYYY) 
+<br />Short Dates(MM/DD/YYYY)(YYYY/MM/DD)
+<br />Full Format
+<br />
+<br />64 - DateMethods
+<br />getDate()
+<br />getDay()
+<br />getFullYear()
+<br />getHours()
+<br />getMilliseconds()
+<br />getMinutes()
+<br />getMonth()
+<br />getSeconds()
+<br />getTime()
+<br />setDate()	Set the day as a number (1-31)
+<br />setFullYear()	Set the year (optionally month and day)
+<br />setHours()	Set the hour (0-23)
+<br />setMilliseconds()	Set the milliseconds (0-999)
+<br />setMinutes()	Set the minutes (0-59)
+<br />setMonth()	Set the month (0-11)
+<br />setSeconds()	Set the seconds (0-59)
+<br />setTime()	Set the time (milliseconds since January 1, 1970)
+<br />
+<br />66 - ArrayMethods:
+<br />toString()
+<br />join()  返回一个由数组中的所有元素并返回新长度
+<br />pop()  删除数组中的最后一个元素并返回该值
+<br />push()  像数组中添加新的元素,返回数组的新长度
+<br />shift()  删除数组中的第一个元素并返回该值
+<br />unshift()  返回一个数组,在数组头部插入了指定的元素
+<br />delete 
+<br />splice()**  从数组中删除元素
+<br />sort(function(a, b){return b-a})  返回一个元素被排序了的array对象
+<br />reverse()  返回一个元素反序的array对象
+<br />concat()  返回一个由两个数组合并组成的新数组
+<br />slice()  返回数组的一个片段
+<br />valueOf()
+<br />
+<br />77 - Debug: console.log(c)
+<br />debugger
+<br />
+<br />78 - Hoisting: declarations are hosited but Initializations are Not
+<br />
+<br />
+
+</p>
+</body>
+
+</html>

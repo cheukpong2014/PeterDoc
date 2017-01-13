@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+<link rel="stylesheet" href="./css/reset.css">
+<link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <header>
+        <h1>Blog</h1>
+        <h4>天行健，君子以自強不息。地勢坤，君子以厚德載物</h4>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="./index.php">首頁</a></li>
+            <li><a href="./jQuery.php">jQuery</a></li>
+            <li><a href="./produce.php">產生認證碼</a></li>
+            <li><a href="./login.php">Admin</a></li>
+        </ul>
+    </nav>
+    <div id="main">
+        <div id="lside">
+        <?php foreach ($art as $a) { ?>
+            <article>
+                <h2><a href="./art.php?art_id=<?php echo $a['art_id']; ?>"><?php echo $a['title']; ?></a></h2>
+                <div class="entry_header">
+                    <time><?php echo date('Y/m/d',$a['lastup']); ?></time>
+                    by
+                    <a href="#"><?php echo $a['nick']; ?></a>
+                    <a class="catlink" href="#"><?php echo $a['cat_name']; ?></a>
+                    <?php echo "&nbsp;",'tag: ',$a['arttag'];?>
+                    <a class="comment" href="#"><?php echo $a['comm']; ?>条评论</a>
+                </div>
+                <div class="entry_content">
+                    <?php if($a['thumb']) {?>
+                        <img src="<?php echo $a['thumb'];?>" alt="">
+                    <?php }?>
+                    <?php echo $a['content']; ?>
+                </div>
+            </article>
+        <?php } ?>
+            
+            
+        </div>
+        <div id="rside">
+            <aside>
+                <form action="">
+                    <input type="text" name="search" placeholder="Search...">
+                </form>
+            </aside>
+            <aside>
+                <h4>文章類別</h4>
+                <ul>
+                <?php foreach($cat as $c){ ?>
+                    <li><a href="index.php?cat_id=<?php echo $c['cat_id']; ?>"><?php echo $c['cat_name']; ?></a>&nbsp;(<?php echo $c['num']; ?>)</li>
+                <?php } ?>
+                </ul>
+            </aside>
+            
+        </div>
+    </div>
+    <footer>
+        Copyright &copy; 2015 · GeneratePress · WordPress
+    </footer>
+</body>
+</html>

@@ -1,0 +1,141 @@
+HTTP Protocol
+1.
+webservice = http+xml
+Rest = http+json
+2.
+ftp, http, stmp, pop, tcp/ic, udp
+3.
+method: GET POST HEAD PUT TRACE OPTIONS
+4.
+請求行 (request line)
+頭信息 (header)
+//必要的空行
+(body)
+5.
+GET /0606/01.php HTTP/1.1
+Host: localhost
+If-Modified-Since:Thu, 01 Aug 2013 13:05:08 GMT
+If-None-Match:"19246-4e2e27dd06f35"
+6.
+POST /0606/01.php HTTP/1.1
+Host: localhost
+Content-type: application/x-www-form-urlencoded
+Content-length: 15
+
+age=66&gender=m
+7.
+響應行 (response line)
+頭信息 (header)
+//必要的空行
+(body)
+8.
+HTTP/1.1 200 OK
+key: value, key:value, key:value
+key:value, key:value,
+key:value
+//必要的空行
+(body)
+9.
+HTTP/1.1 200 OK
+Content-type: text/html
+Content-length: 5
+
+hello
+10.
+HEAD 和GET基本一樣，只是返回內容不同
+比如我們只是確應一下內容(eg.photo)還正常，不需要返回照片的內容，這時用HEAD
+OPTIONS係找出ALLOW既METHODS
+1XX 信息 接收到請求，繼續處理
+2XX 成功
+3XX redirect 304 not modified 307 redirect and protect post
+4XX client error
+5XX server error
+11.
+.htaccess 防止其他網站讀取圖片
+RewriteEngine On
+//Rewrite Base /0618
+RewriteCond %{REQUEST_FILENAME} .*\.(jpg|jpeg|gif|png) [NC]
+RewriteCond %{HTTP_REFERER} !localhost [NC]
+RewriteRule .* no.png
+12.
+03caitupian.php 偽做referer
+require('./http.class.php');
+$http = new Http('http://localhost/0618/apple.jpg');
+$http->setHeader('Referer: http://localhost');
+$res = $http->get();
+file_put_contents('./a.jpg',substr(strstr($res,"\r\n\r\n"),4));
+---------------------------------------------------------------------
+MYSQL
+1.
+mysqli_insert_id($conn)
+---------------------------------------------------------------------
+PHP
+1.
+nl2br( $a['content'] )
+---------------------------------------------------------------------
+HTML
+1.
+html() vs text() vs val()
+---------------------------------------------------------------------
+CSS
+1.
+text-decoration: none;
+cursor: pointer;
+display: none;
+list-style-type: none;
+text-align: center;
+border-radius: 5px;
+word-break: break-all;
+background-image: url("images/checkOff.jpg");
+background-repeat: no-repeat;
+---------------------------------------------------------------------
+javascript
+1.
+element.className
+element.clientHeight
+element.clientWidth
+element.getAttribute()
+element.id
+element.innerHTML
+element.nodeValue
+element.offsetHeight
+element.offsetWidth
+element.offsetLeft
+element.offsetParent
+element.offsetTop
+element.parentNode
+element.style
+2.
+how to get width height
+css top left
+get width height top left method and how to control them
+3.
+var h=document.getElementsByTagName("H1")[0];
+h.getAttributeNode("style").value="color:green";
+4.
+var wrapWidth = wrap.width();
+dd.width(progress/100*wrapWidth);
+5.
+get className in jQuery
+$('#myid').attr('class');
+
+get className in JavaScript
+document.write(document.getElementById('myid').className);
+6.
+push()
+---------------------------------------------------------------------
+jQuery
+1.
+$.easing.def = "easeOutBounce";
+---------------------------------------------------------------------
+others
+1.
+左: 複習秘籍-複製, 常用函數
+右: 06sqls.sql
+bootstrap
+牙齒 美白
+身分證副本
+專注咁做一樣野，好似玩PSP GAME咁，所以要多數時間都斷線
+profolio好危險
+第一，唔係自己整既
+自我介紹好重要，因為人地唔知你識幾多，亦好難問到你真係識幾多

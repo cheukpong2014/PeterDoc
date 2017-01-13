@@ -1,0 +1,129 @@
+***********************************************************************************
+^^^^
+
+CREATE PROCEDURE CBP_DeleteTask
+    @TaskId int
+AS
+DELETE FROM CBP_Tasks
+WHERE  TaskID = @TaskId
+GO
+
+
+
+
+
+***********************************************************************************
+^^^^TaskController.cs
+
+public void DeleteTask(int taskId)
+        {
+            DataProvider.Instance().ExecuteNonQuery("CBP_DeleteTask", taskId);
+        }
+
+
+
+
+
+***********************************************************************************
+^^^^WebServices
+
+public class TaskToDeleteDTO
+        {
+            public int TTD_TaskID { get; set; }
+        }
+
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public HttpResponseMessage DeleteTask(TaskToDeleteDTO DTO)
+        {
+            try
+            {
+                var task = new Task()
+                {
+                    TaskId = DTO.TTD_TaskID
+                };
+
+                TaskController tc = new TaskController();
+                tc.DeleteTask(task.TaskId);
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception exc)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, exc);
+            }
+        }
+
+
+
+
+
+***********************************************************************************
+^^^^ View.ascx
+
+ $('.TaskList').find('' + EditListItemDiv + '').append('<div class="Delete" id="' + EditClickedID +'">Delete</div>');
+
+
+
+
+
+***********************************************************************************
+^^^^View.ascx
+
+$('.Delete').click(function() {
+                 
+                     var DeleteClickedID = $(this).attr('id');
+
+                     $.dnnConfirm({
+                         text: 'You sure you want to delete',
+                         yesText: 'Yep,delete',
+                         noText: 'Cancel',
+                         title: 'Delete Confirmation',
+                         callbackTrue: function() {
+                             deleteTask(DeleteClickedID);
+                             }
+                     });
+
+                     function deleteTask(DeleteClickedID) {
+                         var taskId = DeleteClickedID;
+                         var taskToDelete = {
+                             TTD_TaskID: taskId,
+                         };
+
+                         var sf = $.ServicesFramework(<%:ModuleContext.ModuleId%>);
+
+                         $.ajax({
+                             url: '/DesktopModules/MyFirstModule/API/ModuleTask/DeleteTask',
+                             type: "POST",
+                             contentType: "application/json",
+                             beforeSend: sf.setModuleHeaders,
+                             data: JSON.stringify(taskToDelete),
+                             success: function(data) {
+                                 loadTasks();
+                             }
+                         });   
+                     }             
+                 });
+
+
+
+
+
+***********************************************************************************
+^^^^
+
+
+
+
+
+
+
+***********************************************************************************
+^^^^
+
+
+
+
+
+
+

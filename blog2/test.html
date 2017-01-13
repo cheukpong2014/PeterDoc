@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>08Zoom</title>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<style>
+		body{
+			margin: 50px;
+		}
+		.clear{
+			clear: both;
+		}
+		#fWrap{
+			width: 305px;
+			float: left;
+		}
+		#fmPhoto{
+			width: 300px;
+			height: 300px;
+		}
+		#fCon{
+			height: 54px;
+		}
+		#fmpdiv{
+			width: 302px;
+			position: relative;
+		}
+		#fbpDiv{
+			width: 400px;
+			height: 400px;
+			float: left;
+			display: none;
+			overflow: hidden;
+		}
+		#fbPhoto{
+			position: relative;
+			top: 0px;
+			left: 0px;
+		}
+		.fturn{
+			float: left;
+			height: 52px;
+			line-height: 52px;
+			width: 10px;
+			text-align: center;
+			border: 1px solid #ccc;
+			cursor: pointer;
+		}
+		#fsPhoto{
+			float: left;
+			width: 250px;
+			height: 54px;
+			margin: 0px 2px;
+			overflow: hidden;
+		}
+		#fspcon{
+			width: 1250px;
+			height: 52px;
+			position: relative;
+			top: 0px;
+			left: 0px;
+		}
+		#fmask{
+			width: 100px;
+			height: 100px;
+			background-color: #abcdef;
+			opacity: 0.5;
+			position: absolute;
+			left: 0;
+			top: 0;
+			
+		}
+	</style>
+	<script>
+	$(function(){
+		var $spcon = $('#fspcon');
+		var mouseY;
+		var mouseX;
+		var $mask = $('#fmask');
+		function addphoto(loc){
+			var photo = document.createElement('img');
+			$(photo).attr('src',loc);
+			$(photo).css('width','50px');
+			$(photo).css('height','50px');
+			$(photo).css('border','2px solid #ccc');
+			$(photo).css('margin-left','5px');
+			$spcon.append(photo);
+		}
+		$('#fleft').click(function(){
+			var left = parseInt($spcon.css('left'));
+			$spcon.animate({'left': left+60+'px'},'fast');
+		});
+		$('#fright').click(function(){
+			var left = parseInt($spcon.css('left'));
+			$spcon.animate({'left': left-60+'px'},'fast');
+		});
+
+		addphoto('08zoom/1.jpg');
+		addphoto('08zoom/2.jpg');
+		addphoto('08zoom/3.jpg');
+		addphoto('08zoom/4.jpg');
+		addphoto('08zoom/5.jpg');
+		addphoto('08zoom/6.jpg');
+		$('#fspcon>img').click(function(e){
+			var sloc = $(e.target).attr('src');
+			$('#fmPhoto').attr('src',sloc);
+			$('#fbPhoto').attr('src',sloc);
+		});
+
+		var minY = 0;
+		var maxY = $('#fmPhoto').innerHeight()-$mask.height();
+		var minX = 0;
+		var maxX = $('#fmPhoto').innerWidth()-$mask.width();
+
+		$('#fmpdiv').mousemove(function(e){
+			var maskY = e.pageY-$('#fmpdiv').offset().top-$mask.height()/2;
+			var maskX = e.pageX-$('#fmpdiv').offset().left-$mask.width()/2;
+			maskY = (maskY>maxY)?maxY:maskY;
+			maskX = (maskX>maxX)?maxX:maskX;
+			maskY = (maskY<minY)?minY:maskY;
+			maskX = (maskX<minX)?minX:maskX;
+			$('#fp0').text(maskY+','+maskX);
+			$mask.css('top',maskY);
+			$mask.css('left',maskX);
+			var bPhotoY = -1*($('#fbPhoto').height()-$('#fbpDiv').height())*maskY/200;
+			var bPhotoX = -1*($('#fbPhoto').width()-$('#fbpDiv').width())*maskX/200;
+			$('#fbPhoto').css('top',bPhotoY);
+			$('#fbPhoto').css('left',bPhotoX);
+			//$('#p1').html( "bPhot top: " + bPhotoY + ", bPhoto left: " + bPhotoX );
+		});
+		$('#fmpdiv').mouseenter(function(){
+			$mask.show();
+			$('#fbpDiv').show();
+		}).mouseleave(function(){
+			$mask.hide();
+			$('#fbpDiv').hide();
+		});
+	});
+		
+	</script>
+</head>
+<body>
+	<div id="fWrap">
+		<div id="fmpdiv">
+			<img id="fmPhoto" src="08zoom/1.jpg" alt="">
+			<div id="fmask"></div>
+		</div>
+		<div class="clear"></div>
+		<div id="fCon">
+			<div id="fleft" class="fturn"><</div>
+			<div id="fsPhoto">
+				<div id="fspcon"></div>
+			</div>
+			<div id="fright" class="fturn">></div>
+		</div>
+	</div>
+	<div id="fbpDiv"><img id="fbPhoto" src="08zoom/1.jpg" alt=""></div>
+	<div class="clear"></div>
+	<span id="fp0">&nbsp</span>
+</body>
+</html>

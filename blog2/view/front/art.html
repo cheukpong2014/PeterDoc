@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+<link rel="stylesheet" href="./css/reset.css">
+<link rel="stylesheet" href="./css/index.css">
+<link rel="stylesheet" href="./css/art.css">
+</head>
+<body>
+    <header>
+        <h1>心情Blog</h1>
+        <h4>天行健，君子以自强不息。地势坤，君子以厚德载物</h4>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="./index.php">首頁</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="./produce.php">產生認證碼</a></li>
+            <li><a href="./login.php">Admin</a></li>
+        </ul>
+    </nav>
+    <div id="main">
+        <div id="lside">
+            <article>
+                <h2><a href="#"><?php echo $a['title']; ?></a></h2>
+                <div class="entry_header">
+                    <time><?php echo date('Y/m/d',$a['lastup']); ?></time>
+                    by
+                    <a href="#"><?php echo $a['nick']; ?></a>
+                    <a class="catlink" href="#"><?php echo $a['cat_name']; ?></a>
+                    <?php echo "&nbsp;",'tag: ',$a['arttag'];?>
+                    <a class="comment" href="#"><?php echo $a['comm']; ?>条评论</a>
+                </div>
+                <div class="entry_content">
+                    <?php if(!empty($a['pic'])){ ?>
+                        <img src="<?php echo $a['pic']; ?>" alt="">
+                    <?php } ?>
+                </div>
+                <div class="entry_content">
+                    <?php echo $a['content']; ?>
+                </div>
+            </article>
+            <div id="comments">
+                <?php foreach ($com as $c) { ?>
+                <ol>
+                    <li>
+                        <!--<img src="https://secure.gravatar.com/avatar/582b66ad5ae1b69c7601a990cb9a661a?s=50&d=identicon&r=pg" alt="">-->
+                        <cite><a href="#"><?php echo $c['nick']; ?></a></cite> <br>
+                        <time><?php echo date('Y年m月d日 H時i分',$c['pubtime']); ?></time>
+                    </li>
+                    <li>
+                        <?php echo $c['content']; ?>
+                    </li>
+                </ol>
+                <?php } ?>
+            </div>
+            <div id="respond" class="comment-respond">
+                <h3>Leave a Comment</h3>
+                <form action="#" method="post">
+                    <p>
+                    <input placeholder="your name" name="name" type="text" value="" size="30">
+                    </p>
+                    <p>
+                    <input placeholder="Email" name="email" type="text" value="" size="30">
+                    </p>
+                    <p>
+                    <textarea name="comment" cols="45" rows="8" aria-required="true"></textarea>
+                    <p>
+                    <input type="submit" value="Post Comment">
+                </p>
+                </form>
+            </div>
+        </div>
+        <div id="rside">
+            <aside>
+                <form action="">
+                    <input type="text" name="search" placeholder="Search...">
+                </form>
+            </aside>
+            <aside>
+                <h4>文章類別</h4>
+                <ul>
+                    <?php foreach($cat as $c){ ?>
+                    <li><a href=""><?php echo $c['cat_name']; ?></a>&nbsp;(<?php echo $c['num']; ?>)</li>
+                    <?php } ?>
+                </ul>
+            </aside>
+            
+        </div>
+    </div>
+    <footer>
+        Copyright &copy; 2015 · GeneratePress · WordPress
+    </footer>
+</body>
+</html>

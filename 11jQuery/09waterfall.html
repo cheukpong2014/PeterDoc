@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>09waterfall</title>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<style>
+		#gWrap>div{
+			margin: 10px;
+			border: 2px solid green;
+			width: 250px;
+			float: left;
+		}
+	</style>
+	<script>
+	$(function(){
+		var arr = new Array();;
+		function addgImage(loc,intro){
+			var remainer = arr.length%3;
+			if(remainer==0){
+				var $con = $('#gleft');
+			}else if(remainer==1){
+				var $con = $('#gcenter');
+			}else if(remainer==2){
+				var $con = $('#gright');
+			}
+			var str = 'p'+arr.length;
+			arr.push(str);
+
+			var www = document.createElement('div');
+			$(www).css('margin-bottom','15px');
+			$(www).css('background-color','gray');
+
+			var photo = document.createElement('img');
+			$(photo).attr('src',loc);
+			$(photo).css('width','250px');
+
+			var text = document.createElement('span');
+			$(text).text(intro)
+
+			$(www).append(photo);
+			$(www).append(text);
+			$con.append(www);
+		}
+		addgImage('./09waterfall/1.jpg','1111');
+		addgImage('./09waterfall/2.jpg','2222');
+		addgImage('./09waterfall/3.jpg','1111');
+		addgImage('./09waterfall/4.jpg','2222'); 
+		addgImage('./09waterfall/5.jpg','1111');
+		addgImage('./09waterfall/6.jpg','2222'); 
+		addgImage('./09waterfall/7.jpg','1111');
+		addgImage('./09waterfall/8.jpg','2222'); 
+		addgImage('./09waterfall/9.jpg','1111');
+	});
+	</script>
+</head>
+<body>
+	<div id="gWrap">
+		<div id="gleft"></div>
+		<div id="gcenter"></div>
+		<div id="gright"></div>
+	</div>
+</body>
+</html>

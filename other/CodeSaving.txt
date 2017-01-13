@@ -1,0 +1,47 @@
+Code Save
+JS:
+<!--replace
+var myEscapedjsregionsOutput = jsregionsOutput
+.replace(/\\n/g, "\\n").replace(/\\'/g, "\\'")
+.replace(/\\"/g, '\\"').replace(/\\&/g, "\\&")
+.replace(/\\r/g, "\\r").replace(/\\t/g, "\\t")
+.replace(/\\b/g, "\\b").replace(/\\f/g, "\\f");
+
+
+
+
+CSS:
+<!--beautiful font
+font-family: Helvetica,Arial,sans-serif;
+<!--not allow highlight
+-moz-user-select: -moz-none;
+-khtml-user-select: none;
+-webkit-user-select: none;
+-ms-user-select: none;
+user-select: none;
+/*Introduced in IE 10.
+ See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/ */
+-ms-user-select: none;
+user-select: none;
+<!--hide link when print
+@media print { .noprint {display:none !important;} a:link:after, a:visited:after { display: none; content: ""; } }
+
+
+
+
+WAIT TO LEARN:
+<!--github source
+data-pjax
+data-hotkey
+data-ga-click
+
+
+
+
+NOT WORKING:
+cannot include bootstrap in newdnn2
+nth-of-type
+$("#ysg" + (i + 1) + " input:radio").each(function (index) {
+var temp = parseInt(index) + 1;
+var tempid = "#ysg" + i + " :nth-of-type(" + temp + ")";
+var targetID = $(tempid);

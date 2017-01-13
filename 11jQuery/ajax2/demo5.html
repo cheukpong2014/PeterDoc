@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>demo5</title>
+	<script src="jquery.js"></script>
+</head>
+<body>
+	<input type="button" value="获取新闻列表" />
+	<div id="info">
+		<img src="loading.gif" alt="" id="loading" style="display:none" />
+		<ul></ul>
+	</div>
+	<script>
+		$('input').click(function(){
+			var ul = $('#info>ul');
+			$.ajax({
+				url:'demo5.php?'+Math.random(),
+				type:'get',
+				success:function(data){
+					var result = eval(data);
+					for(var i=0;i<result.length;i++){
+						//result[i].title;
+						ul.append('<li>'+result[i].title+'<em>'+result[i].publicTime+'</em></li>');
+					}
+				}
+			});
+		});
+		$(document).ajaxStart(function(){
+			$('#loading').show();
+		}).ajaxStop(function(){
+			$('#loading').hide();
+		});
+	</script>
+</body>
+</html>

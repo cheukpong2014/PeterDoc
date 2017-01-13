@@ -1,0 +1,2 @@
+$("#<%=gvTable.ClientID%>")
+Response.Redirect(EditUrl("appId", "CreateNew", "Appraisal"));

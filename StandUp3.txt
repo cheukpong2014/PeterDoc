@@ -1,0 +1,22 @@
+<script type="text/javascript">
+var moduleId = <%= ModuleId %>;
+    $.getJSON(
+        "/DesktopModules/MyFirstModule/API/ModuleTask/GetTasks?moduleId=" + moduleId,
+       function (result) {
+           var parsedTaskJSONObject = jQuery.parseJSON(result);
+            $.each(parsedTaskJSONObject, function () {
+                if (this.isComplete == true) {
+                    $('.ListItems').append(
+                        '<div class="checkbox"><input class="cbxListIsComplete" type="checkbox" checked/></div>' +
+                            '<div class="ListTaskName">' + this.TaskName + '</div>' +
+                            '<div class="ListTaskDescription">' + this.TaskDescription + '</div>');
+                }
+                else {
+                    $('.ListItems').append(
+                        '<div class="checkbox"><input class="cbxListIsComplete" type="checkbox"/></div>' +
+                        '<div class="ListTaskName">' + this.TaskName + '</div>' +
+                        '<div class="ListTaskDescription">' + this.TaskDescription + '</div>');
+                }
+            });
+        });
+</script>

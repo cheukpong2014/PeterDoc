@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>demo8</title>
+	<script src="jquery.js"></script>
+</head>
+<body>
+	<input type="button" value="获取新闻列表" />
+	<div id="info">
+		<ul></ul>
+	</div>
+	<script>
+		$('input').click(function(){
+			var ul = $('#info>ul');
+			$.ajax({
+				url:'demo8.php?'+Math.random(),
+				type:'get',
+				dataType:'xml',
+				success:function(xml){
+					$(xml).find('title').each(function(){
+						//操作xml文件时，html()方法不可用
+						//alert($(this).text())
+						ul.append('<li>'+$(this).text()+'</li>');
+					});
+				}
+			});
+		});
+	</script>
+</body>
+</html>

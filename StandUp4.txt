@@ -1,0 +1,136 @@
+CREATE PROCEDURE [dbo].[CBP_AddTask]
+    @TaskName nvarchar(max),
+    @TaskDescription nvarchar(max),
+    @IsComplete bit,
+    @ModuleID int,
+    @UserID int
+AS
+    INSERT INTO dbo.CBP_Tasks(
+        TaskName,
+        TaskDescription,
+        IsComplete,
+        ModuleID,
+        UserID
+    )
+    VALUES (
+        @TaskName,
+        @TaskDescription,
+        @IsComplete,
+        @ModuleID,
+        @UserID
+    )
+SELECT @@IDENTITY
+GO
+
+**********************************************************************************************
+^^^^TaskController
+public void AddTask(Task task)
+        {
+            task.TaskID = DataProvider.Instance().ExecuteScalar<int>("CBP_AddTask",
+                                                      task.TaskName,
+                                                      task.TaskDescription,
+                                                      task.isComplete,
+                                                      task.ModuleId,
+                                                       task.UserId
+                                                        );
+        }
+
+**********************************************************************************************
+^^^^WebServices.cs
+public class TaskToCreateDTO
+        {
+            public string TTC_TaskName { get; set; }
+            public string TTC_TaskDescription { get; set; }
+            public bool TTC_isComplete { get; set; }
+            public int TTC_ModuleID { get; set; }
+            public int TTC_UserId { get; set; }
+}
+        [DnnModuleAuthorize(AccessLevel = SecurityAccessLevel.View)]
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public HttpResponseMessage AddTask(TaskToCreateDTO DTO)
+        {
+            try{
+                    var task = new Task()
+                {
+                    TaskName = DTO.TTC_TaskName,
+                    TaskDescription = DTO.TTC_TaskDescription,
+                    isComplete = DTO.TTC_isComplete,
+                    ModuleId = DTO.TTC_ModuleID,
+                    UserId = DTO.TTC_UserId
+                };
+            TaskController tc = new TaskController();
+            tc.AddTask(task);
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
+catch(Exception exc)
+  {
+  return Request.CreateErrorReponse(HttpStatusCode.InternalServerError, exc);
+  }
+}
+
+**********************************************************************************************
+^^^^View.ascx
+
+<script type="text/javascript">
+
+    var moduleId = <%= ModuleId %>;
+    var userID = <%= UserId %>;
+
+    function loadTasks() {
+            $.getJSON(
+            "/DesktopModules/StandUp/API/ModuleTask/GetTasks?moduleId=" + moduleId,
+             function (result) {
+                 $('.ListItems').html("");
+               var parsedTaskJSONObject = jQuery.parseJSON(result);
+                $.each(parsedTaskJSONObject, function () {
+                    if (this.isComplete == true) {
+                        $('.ListItems').append(
+                            '<div class="checkbox"><input class="cbxListIsComplete" type="checkbox" checked/></div>' +
+                            '<div class="ListTaskName">' + this.TaskName + '</div>' +
+                            '<div class="ListTaskDescription">' + this.TaskDescription + '</div>');
+                    }
+                    else {
+                        $('.ListItems').append(
+                            '<div class="checkbox"><input class="cbxListIsComplete" type="checkbox"/></div>' +
+                            '<div class="ListTaskName">' + this.TaskName + '</div>' +
+                            '<div class="ListTaskDescription">' + this.TaskDescription + '</div>');
+                    }
+            });
+        });  
+}
+
+loadTasks();
+
+    $('#btnAddTask').click(function() {
+        var taskName = $('#TaskName').val();
+        var taskDescription = $('#TaskDescription').val();
+        var isComplete = $('#cbxIsComplete').prop('checked');
+
+        var taskToCreate = {
+            TTC_TaskName: taskName,
+            TTC_TaskDescription: taskDescription,
+            TTC_isComplete: isComplete,
+            TTC_ModuleID: moduleId,
+            TTC_UserID: userID
+        };
+
+        var sf = $.ServicesFramework(<%:ModuleContext.ModuleId%>);
+
+        $.ajax({
+            url: '/DesktopModules/StandUp/API/ModuleTask/AddTask',
+            type: "POST",
+            contentType: "application/json",
+            beforeSend: sf.setModuleHeaders,
+            data: JSON.stringify(taskToCreate),
+            success: function(data) {
+                loadTasks();
+            }
+        });
+    });
+</script>
+
+
+
+**********************************************************************************************
+^^^^
