@@ -1,0 +1,16 @@
+using DotNetNuke.Web.Api;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace Christoc.Modules.standup2.Components
+{
+    public class RouteMapper : IServiceRouteMapper
+    {
+        public void RegisterRoutes(IMapRoute mapRouteManager)
+        {
+            mapRouteManager.MapHttpRoute("standup2", "default", "{controller}/{action}", new[] { "Christoc.Modules.standup2.Components" });
+        }
+    }
+}

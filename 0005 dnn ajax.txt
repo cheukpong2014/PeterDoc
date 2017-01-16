@@ -1,10 +1,11 @@
+var sf = $.ServicesFramework(moduleId);
 $.ajax({
-            url: '/DesktopModules/StandUp/API/ModuleTask/AddTask',
-            type: "POST",
-            contentType: "application/json",
-            beforeSend: sf.setModuleHeaders,
-            data: JSON.stringify(taskToCreate),
-            success: function(data) {
-                loadTasks();
-            }
-        });
+	url: '/DesktopModules/StandUp/API/ModuleTask/AddTask',
+	type: "POST",
+	contentType: "application/json",
+	beforeSend: sf.setModuleHeaders,
+	data: JSON.stringify(taskToCreate),
+	success: function(data) {
+		loadTasks();
+	}
+});

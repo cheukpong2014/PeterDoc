@@ -1,0 +1,7 @@
+var taskToCreate = {
+            TTC_TaskName: taskName,
+            TTC_TaskDescription: taskDescription,
+            TTC_isComplete: isComplete,
+            TTC_ModuleID: moduleId,
+            TTC_UserID: userID
+        };
