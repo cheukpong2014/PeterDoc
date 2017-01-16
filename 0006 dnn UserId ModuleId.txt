@@ -1,0 +1,2 @@
+var userID = <%= UserId %>;
+var moduleId = <%:ModuleContext.ModuleId%>;

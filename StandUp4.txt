@@ -97,7 +97,7 @@ catch(Exception exc)
                             '<div class="ListTaskDescription">' + this.TaskDescription + '</div>');
                     }
             });
-        });  
+        });
 }
 
 loadTasks();
