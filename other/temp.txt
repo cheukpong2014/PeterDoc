@@ -11,6 +11,10 @@ learn: C#mvc, dnn, hr system
 5. Security & hacking & regular expression
 99. wordpress & github blog & java(think in java) & ThinkPHP & regular expression
 Task:
+0. travel approvel form chinese version (miss email and alert message)
+0. do appraisal form
+0. apply bank card for part time
+0. dnn upgrade information
 1. all milton module
 1. java tutorial
 1. 
