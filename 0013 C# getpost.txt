@@ -1,0 +1,2 @@
+get  - hidden field
+post - asp:LinkButton

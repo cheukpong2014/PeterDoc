@@ -1,0 +1,12 @@
+using System.Linq;
+
+foreach(Components.Calendar calendar in allcalendars)
+{
+	int temp = calendar.Type - 1;
+	
+	eventarray.title = alltypes.ToList()[temp].Name;
+	//eventarray.title = alltypes[temp];
+	eventarray.start = calendar.StartDate;
+	eventarray.end = calendar.EndDate;
+	eventarray.remark = calendar.Remark;
+}

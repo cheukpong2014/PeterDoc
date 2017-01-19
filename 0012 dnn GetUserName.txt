@@ -1,1 +1,3 @@
-UserController.GetUserById(portalId, e.UserId).DisplayNam
+using DotNetNuke.Entities.Users;
+
+UserController.GetUserById(portalId, e.UserId).DisplayName
