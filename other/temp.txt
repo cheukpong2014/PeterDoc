@@ -9,6 +9,7 @@ learn: C#mvc, dnn, hr system
 3. SERVER (php?)
 4. LINUX
 5. Security & hacking & regular expression
+6. RDBMS/NoSQL/Caching/HTTP/Queue/Non-Blocking/Event-Driven/Functional/OO/Prototypal/Scalability/MobileWeb
 99. wordpress & github blog & java(think in java) & ThinkPHP & regular expression
 Task:
 0. travel approvel form chinese version (miss email and alert message)
