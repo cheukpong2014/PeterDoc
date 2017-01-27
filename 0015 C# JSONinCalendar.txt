@@ -1,0 +1,13 @@
+View.ascx.cs
+List<Event> EventList = new List<Event>();
+foreach (Components.Calendar calendar in allcalendars)
+{
+	int temp = calendar.Type - 1;
+	EventList.Add(new Event { title = alltypes.ToList()[temp].Name + " - "+UserController.GetUserById(PortalId, calendar.UserId).DisplayName, start = calendar.StartDate, end = calendar.EndDate, remark = calendar.Remark });
+}
+JavaScriptSerializer Serializer = new JavaScriptSerializer();
+HFevents.Value = Serializer.Serialize(EventList);
+
+View.ascx
+var events = $("#<%=HFevents.ClientID%>").val();
+events = JSON.parse(events);

@@ -12,13 +12,17 @@ learn: C#mvc, dnn, hr system
 6. RDBMS/NoSQL/Caching/HTTP/Queue/Non-Blocking/Event-Driven/Functional/OO/Prototypal/Scalability/MobileWeb
 99. wordpress & github blog & java(think in java) & ThinkPHP & regular expression
 Task:
-0. travel approvel form chinese version (miss email and alert message)
+0. NAV System User Guide
+0. travel approvel system chinese version (miss email and alert message)
+   - use dummy to test the flow of travel approvel system
+   - use dummy to show all the string in the project
 0. do appraisal form
-0. apply bank card for part time
 0. dnn upgrade information
+0. Intranet Access Record - Nov 2016
+0. google analysis
 1. all milton module
 1. java tutorial
-1. 
+1. 學習share point
 
 1 staff
 submit
