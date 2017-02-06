@@ -1,0 +1,5 @@
+$(function(){
+
+vs
+
+$(document).ready(function() {

@@ -1,3 +1,4 @@
 using DotNetNuke.Entities.Users;
 
 UserController.GetUserById(portalId, e.UserId).DisplayName
+UserController.GetUsers(true,false,Null.NullInteger);

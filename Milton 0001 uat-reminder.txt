@@ -1,0 +1,2 @@
+1. Team Collaboration is using [dbo].[TeamCollaboration] database.
+2. eTravel Approval is using [dbo].[peterTravel] database.

@@ -1,0 +1,5 @@
+<%@ Register TagPrefix="dnn" Namespace="DotNetNuke.Web.Client.ClientResourceManagement" Assembly="DotNetNuke.Web.Client" %>
+
+<dnn:DnnJsInclude runat="server" FilePath="~/Plug-in/DataTables/media/js/jquery.dataTables.min.js" />
+
+<dnn:DnnCssInclude runat="server" FilePath="~/Plug-in/DataTables/extensions/TableTools/css/dataTables.tableTools.css" />

@@ -1,0 +1,2 @@
+GridView1.HeaderRow.TableSection = TableRowSection.TableHeader;
+GridView1.FooterRow.TableSection = TableRowSection.TableFooter;
