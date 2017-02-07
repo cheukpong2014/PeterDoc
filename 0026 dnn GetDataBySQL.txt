@@ -1,0 +1,10 @@
+public IEnumerable<Calendar> GetItemsByRange(string TeamId,string start, string end)
+        {
+            IEnumerable<Calendar> t;
+            using (IDataContext ctx = DataContext.Instance())
+            {
+                var rep = ctx.GetRepository<Calendar>();
+                t = rep.Find(" where TeamId=@0 and (StartDate between @1 and @2 or EndDate between @1 and @2) ", TeamId, start, end);
+            }
+            return t;
+        }

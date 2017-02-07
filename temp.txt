@@ -15,8 +15,8 @@ Task:
    - use dummy to test the flow of travel approvel system
    - use dummy to show all the string in the project
 0. add a column 'hidden' in TeamCollaboration module
+0. team collaboration insert one team, display all other team (add, edit, drag, width)
 0. NAV System User Guide
-1. all milton module(SOS,CRM)(RoomBooking,TeamCollaboration,eAppraisal,eTravel)
 1. java tutorial
 1. 學習share point & dnn upgrade information
 2. Intranet Access Record - Feb 2017
