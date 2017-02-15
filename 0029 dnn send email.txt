@@ -1,0 +1,21 @@
+public void SendMail(string strTo, string strCC, string strBCC, string strSubject, string strBody)
+{
+	string strFrom = "noreply@milton-corp.com";
+	/*** Get the host settings information***/
+	System.Collections.Generic.Dictionary<string, string> hostSettings = DotNetNuke.Entities.Controllers.HostController.Instance.GetSettingsDictionary();
+
+	/*** Set the SMTP server details ***/
+	string strSMTP = hostSettings["SMTPServer"];
+
+	/*** This is the actual built in function from DNN Framework. ***/
+	Mail.SendMail(strFrom, strTo, strCC, strBCC, DotNetNuke.Services.Mail.MailPriority.Normal, strSubject, DotNetNuke.Services.Mail.MailFormat.Html, System.Text.Encoding.UTF8, strBody, "",
+	strSMTP, "1", "NoReply.mc@milton.local", "no689689mc", false);
+}
+
+protected void Button1_Click(object sender, EventArgs e)
+{
+	string EmailAddress = "petertang@milton-cn.com";
+	string emailSubject = "system test";
+	string emailBody = "system test body";
+	SendMail(EmailAddress, "", "", emailSubject, emailBody);
+}

@@ -1,0 +1,42 @@
+-- Step: 1 
+CREATE TABLE [dbo].[TableB](
+	[RowID] [int] IDENTITY(1,1) NOT NULL,
+	[NameB] [varchar](200) NULL
+) 
+
+Go
+
+CREATE TABLE [dbo].[TableA](
+	[RowID] [int] IDENTITY(1,1) NOT NULL,
+	[NameA] [varchar](200) NULL
+)
+
+
+-- Step: 2 
+Go 
+CREATE TRIGGER trg_TableA
+   ON  TableA
+   AFTER INSERT
+AS 
+BEGIN
+	SET NOCOUNT ON;
+
+	Insert	Into TableB (NameB)
+	Select	NameA
+	From	Inserted
+END
+GO
+
+-- Step: 3 (Execute only once)
+DBCC CHECKIDENT ('TableA', RESEED, 10)
+GO
+
+-- Step: 4 (Run this in separate window to see difference between @@Identity, Scope_Identity()
+-- @@IDENTITY will give you the identity value of TableB (Global Scope)
+-- Scope_Identity() will give you the identity value of TableA (Local Scope)
+Begin
+	Insert Into TableA (NameA)
+	Select 'Farhan'
+	
+	Select @@IDENTITY, SCOPE_IDENTITY()
+End

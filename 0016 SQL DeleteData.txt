@@ -1,2 +1,2 @@
 delete from [dbo].[eAppraisal_AppraisalForm]
-DBCC CHECKIDENT ('[eAppraisal_AppraisalForm]', RESEED, 0);
+DBCC CHECKIDENT ('[eAppraisal_AppraisalForm]', RESEED, 1);

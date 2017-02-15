@@ -1,0 +1,15 @@
+CSS:
+<!--beautiful font
+font-family: Helvetica,Arial,sans-serif;
+<!--not allow highlight
+-moz-user-select: -moz-none;
+-khtml-user-select: none;
+-webkit-user-select: none;
+-ms-user-select: none;
+user-select: none;
+/*Introduced in IE 10.
+ See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/ */
+-ms-user-select: none;
+user-select: none;
+<!--hide link when print
+@media print { .noprint {display:none !important;} a:link:after, a:visited:after { display: none; content: ""; } }
