@@ -1,0 +1,3 @@
+1. delete user in dnn
+2. DBCC CHECKIDENT ('[eAppraisal_AppraisalForm]', RESEED, 1);
+3. login
