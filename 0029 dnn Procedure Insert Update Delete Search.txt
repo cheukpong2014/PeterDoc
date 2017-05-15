@@ -1,0 +1,27 @@
+public IList<Task> GetTasks(int ModuleId)
+        {
+            return CBO.FillCollection<Task>(DataProvider.Instance().ExecuteReader("standup2_GetTasks", ModuleId));
+        }
+        public void AddTask(Task task)
+        {
+            task.TaskId = DataProvider.Instance().ExecuteScalar<int>("standup2_AddTask",
+                                                        task.TaskName,
+                                                        task.TaskDescription,
+                                                        task.isComplete,
+                                                        task.ModuleId,
+                                                        task.UserId
+                                                        );
+        }
+        public void UpdateTask(Task task)
+        {
+            task.TaskId = DataProvider.Instance().ExecuteScalar<int>("CBP_UpdateTask",
+                                                                    task.TaskId,
+                                                                    task.TaskName,
+                                                                    task.TaskDescription,
+                                                                    task.isComplete
+                                                                );
+        }
+        public void DeleteTask(int taskId)
+        {
+            DataProvider.Instance().ExecuteNonQuery("CBP_DeleteTask", taskId);
+        }

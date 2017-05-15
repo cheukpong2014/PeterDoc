@@ -1,0 +1,3 @@
+$("textarea").each(function(index,dom){
+		$(dom).height(dom.scrollHeight);
+	});

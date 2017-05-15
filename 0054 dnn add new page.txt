@@ -1,0 +1,5 @@
+1. host extension
+2. new apcx needs to inherit base
+3. using DotNetNuke.Common;
+Response.Redirect(DotNetNuke.Common.Globals.NavigateURL("ClaimForm", "mid=" + ModuleId));
+4. need ModuleId

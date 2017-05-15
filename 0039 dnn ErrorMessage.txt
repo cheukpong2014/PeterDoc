@@ -1,10 +1,10 @@
 /* Message Box */
-                //var skin = Skin.GetSkin((PageBase)this.Page);
-                //Skin.AddPageMessage(this, "Header", "Message", ModuleMessageType.GreenSuccess);
-                Skin.AddModuleMessage(this, "RedError by milton<br />this is next line", ModuleMessage.ModuleMessageType.RedError);
-                Skin.AddModuleMessage(this, "YellowWarning by milton", ModuleMessage.ModuleMessageType.YellowWarning);
-                Skin.AddModuleMessage(this, "GreenSuccess by milton", ModuleMessage.ModuleMessageType.GreenSuccess);
-                Skin.AddModuleMessage(this, "BlueInfo by milton", ModuleMessage.ModuleMessageType.BlueInfo);
-                string errMsg = "<p>qweert</p><p>543321</p>";
-                //DotNetNuke.Web.UI.Utilities.RegisterAlertOnPageLoad(this, new MessageWindowParameters(errMsg) { Title = "Err.Title" });
-                /* Message Box */
+//var skin = Skin.GetSkin((PageBase)this.Page);
+//Skin.AddPageMessage(this, "Header", "Message", ModuleMessageType.GreenSuccess);
+Skin.AddModuleMessage(this, "RedError by milton<br />this is next line", ModuleMessage.ModuleMessageType.RedError);
+Skin.AddModuleMessage(this, "YellowWarning by milton", ModuleMessage.ModuleMessageType.YellowWarning);
+Skin.AddModuleMessage(this, "GreenSuccess by milton", ModuleMessage.ModuleMessageType.GreenSuccess);
+Skin.AddModuleMessage(this, "BlueInfo by milton", ModuleMessage.ModuleMessageType.BlueInfo);
+string errMsg = "<p>qweert</p><p>543321</p>";
+//DotNetNuke.Web.UI.Utilities.RegisterAlertOnPageLoad(this, new MessageWindowParameters(errMsg) { Title = "Err.Title" });
+/* Message Box */

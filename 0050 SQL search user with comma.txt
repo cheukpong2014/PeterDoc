@@ -1,0 +1,1 @@
+select * from TravelApprovalForm_Form inner join Users on People = Users.UserID where CHARINDEX(',',People)=0 order by TripDateFrom desc

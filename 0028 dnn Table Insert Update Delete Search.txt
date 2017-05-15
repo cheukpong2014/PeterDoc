@@ -1,0 +1,59 @@
+
+public class CompanyController
+{
+//create
+public void CreateCompany(Company t)
+{
+	using (IDataContext ctx = DataContext.Instance())
+	{
+		var rep = ctx.GetRepository<Company>();
+		rep.Insert(t);
+	}
+}
+//update
+public void UpdateCompany(Company t)
+{
+	using (IDataContext ctx = DataContext.Instance())
+	{
+		var rep = ctx.GetRepository<Company>();
+		rep.Update(t);
+	}
+}
+//delete
+public void DeleteCompany(int ID)
+{
+	var t = GetCompany(ID);
+	DeleteCompany(t.First());
+}
+public void DeleteCompany(Company t)
+{
+	using (IDataContext ctx = DataContext.Instance())
+	{
+		var rep = ctx.GetRepository<Company>();
+		//rep.Delete("where RefId = @0", refId);
+		rep.Delete(t);
+	}
+}
+//get
+public IEnumerable<Company> GetCompanys()
+{
+	IEnumerable<Company> t;
+	using (IDataContext ctx = DataContext.Instance())
+	{
+		var rep = ctx.GetRepository<Company>();
+		t = rep.Get();
+	}
+	return t;
+}
+//get by sql
+public IEnumerable<Company> GetCompanyBySql(int ID)
+{
+	IEnumerable<Company> t;
+	using (IDataContext context = DataContext.Instance())
+	{
+		var rep = context.GetRepository<Company>();
+		t = rep.Find("where  = @0", ID);
+	}
+	return t;
+}
+}

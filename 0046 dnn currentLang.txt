@@ -1,0 +1,9 @@
+public string currentLang
+{
+	get
+	{
+		string result = "en-us";
+		result = Thread.CurrentThread.CurrentCulture.Name.ToLower();
+		return result;
+	}
+}
