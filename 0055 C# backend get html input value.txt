@@ -1,0 +1,12 @@
+//front end
+<input id="test1" name="testname" />
+<asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
+<br>
+<asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+
+//back end
+protected void Button1_Click(object sender, EventArgs e)
+{
+	string sEmpName = Request.Form["testname"];
+	Label1.Text = sEmpName;
+}

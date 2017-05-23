@@ -1,53 +1,46 @@
-general expense in excel
-acc code 
+database StaffRole
+id userID role
+1     575    1
+2     575    4
+
+var SR = new StaffRole().getStaffRoleByID();
+foreach(var sr in SR){
+	if(sr.role == 1)
+		code1
+	if(sr.role == 2)
+		code2
+}
+
+0. super user, team leader, proj sales, designer
+0. team
+1. super user multi team, multi role
+1. 加job column 改view 改database name(job->user position, UpdateProject->PreProject)
+2. 分team
+2. designer list 變 team list
+3. 一次過管幾條team
+3. 改booking repeat
+4. Project View code column align left
+5. Project View column width should reduce
+6. Also at designer page
+7. project add file upload?
+L. Localization
+
 
 1. need merchant
 2. do i need put loc from to to description?
 3. acc code 6222101 never use
-
-//delete button
-//save
-//Less Cash Advance
-//gst code
-//solve error msg
-HK form details
-//export to excel
-
-5. validation
-//date range
-//sub date
-//0. e put ref inc into details
-//1. padding
-//2. extend the length of input
-//3. e add row need to clear table
-//e delete need to run function formula
-//e delete need to calTotal
-//e change form type need to auto cal
-//e total need to width 80px
-//delete autoCal
-//need to custom the row
-//when load form, the form has some number become NaN
-//atTaxType need to clear data
-//super User cannot see the record
-
 
 
 1. task schedule
 2. jquery core
 3. bulid a new department site at my local
 
-Move all email template into database (Web part)
-"1. Divid into two action
-- Acutal Amount > Approxmate Amount -> Change record status, add label next to acutal amount fields
-- Acutal Amount <= Approxmate Amount -> Change record status (No programmatically changes )
-
-2. Remain form details page after save"
 
 1. easy path and stable(wordpress or php or asp.net)
 2. trend (what field is making money)
 3. cannot be replaaced. i should have skill that others don't have
 
-What i have learnt in this company: C#mvc, dnn, hr system
+What i have learnt in this company: C#mvc, dnn, hr system, composer
 0. css3 & SASS & html5
 2. server coding(.net, nodeJS, php, wordpress, dynamic nav, sharepoint)
 2. network & http & ftp & 鳥哥 & socket & mail server(SMTP) & ad server
@@ -59,159 +52,6 @@ What i have learnt in this company: C#mvc, dnn, hr system
 6. Functional/OO/Prototypal/Scalability/MobileWeb
 99. github blog & java(think in java) & ThinkPHP & dynamic nav & sharepoint
 
-database change:
-1. add column hidden in table TeamMember
-2. add column IdGroup in table eTravel
-3. vw_TeamCollaboration_GetNextCalendarId
-4. vw_TeamCollaboration_HiddenCalendar
-5. vw_TeamCollaboration_TeamMembers
-generate script of the above table (done)
-
-Update dnn:
--2.	delete all uat tables and view and copy from www2
--1.	change database data (SeniorApprovement,
-	departmentHandler, DepartmentBoss should change aprover 
-	to dummy08)(in uat only)
-0.	install old module and do testing
-1.  add hidden column in TeamMember
-	assign 'N' to all hidden column
-	not alow null
-1.  add IdGroup column in Calendar table
-	in Calendar table, alter IdGroup = Id
-USE [DNN]
-GO
-UPDATE [dbo].[TeamCollaboration_Calendar]
-   SET [IdGroup] = [Id]
-GO
-	should allow null
-1.  run script in order to create view
-	vw_TeamCollaboration_GetNextCalendarId
-	vw_TeamCollaboration_HiddenCalendar
-	vw_TeamCollaboration_TeamMembers
-3.	change database data (SeniorApprovement,
-	departmentHandler, DepartmentBoss should change aprover 
-	to dummy08)(in uat only)
-4.  update Calendar module
-5.	update eTravel module because eTravel should add 
-	IdGroup column
-6.  eTravel has DepartmentBoss, DepartmentHandler, 
-	SeniorApprovement
-	should double check these data
-7.  testing
-   
-Task:
-0. NAV System User Guide + MOS graph drawing
-1. java tutorial
-1. 學習.net
-1. 學習share point & dnn upgrade information
-2. Intranet Access Record - Feb 2017
-
-1 staff
-submit
-M1
-2 direct supervisor
-agree		disagree
-staff		staff
-3 staff
-agree		disagree
-M2			M1
-ccM1
-4 team head
-agree		disagree
-staff		M1
-ccM1		ccstaff
-5 staff
-agree		disagree
-M3			M1
-ccM2M1
-6 department head
-agree		disagree
-staff		M2
-ccM2M1		ccM1 staff
-7 staff
-agree		disagree
-staffM1M2M3	M1
-8 complete
-
-Finished:
---Introduction 係中期績效評估既INTRO
-//uttons need more details to introduce
---placeholder disappeared
-//未到BOSS填，BOSS果PART要HIDE左佢
---disableTextbox() is not working after the form is saved
---submit btn change color
---change hide details function
-//when dummy03 disagree, it will change dummy02 goal's comment
---part B dummy03 and dummy 04 agree disagree conflict( ysM2Agree )
-//change color of the error message
---cap photo
-//black color the intro
---2decimal 
---check status to change to submit text
---fix changeSubmitText Function
---submit button change when all agree/disagree radio checked
---禁CLEAR, DELETE GOAL 果時要再計多次AVG MARKS
---disable textarea should hide placeholder
---disable text box black color font
---cal Ass Mark
---submit button
---fix part4 disable textarea radio button
---click h2 and then slide
---13 radio button marks
---click hide details and then slide
---clear button
---alert when client click the remove button
---fix remove button
---change goal title textarea size
---Delete返YEAR START GOAL既'自我評分(1-4分)'同埋'直屬上司評分 (1-4分)'
---placeholder
---TextBox的長度
---.tg 的css
---改textarea既width, border
---加返LOADING BAR
-
-
-/////////////////////////////////////////////////////////////////////////
-
-1. 預左失業，預左冇得升職，預左唔夠人勁，預左唔夠冷門
-
-所以，第一，我唔夠人勁，學歷唔夠人好，所以要做1D安全性高D既工作，唔好咁易有人爭
-但問題係我份工好快玩完，咁我到時就PK了
-
-
-
-業
-畫師
-魚
-
-1. 學得太慢
-2. 承諾冇哂
-3. 好冇效率
-4. 成日唔做野
-5. 太多廢時間(係床到哂哂)
-6. 想25小時工作，但又會FAIL，諗D野好唔現實，又想做多D，但結果仲衰
-
-SOLUTION
-1. 合理既工作，唔好超現實
-2. 多!!!!
-
-優質，特式
-教育，藥物，醫療，色情，美容
-
-
-互相說服.txt
-目的: 避免車輪戰
-目的2: 把人既政治立場完美分開
-過程: 可以1打100個
-
-
-
-install:
-greenshot
-notepad++
-sublime text 3
-Simple resxEditor
-WinMerge
 
 
 
