@@ -1,3 +1,11 @@
+using System;
+using System.Web.Caching;
+using DotNetNuke.Common.Utilities;
+using DotNetNuke.ComponentModel.DataAnnotations;
+using DotNetNuke.Entities.Content;
+using System.Collections.Generic;
+using DotNetNuke.Data;
+using System.Linq;
 
 public class CompanyController
 {
@@ -20,9 +28,9 @@ public void UpdateCompany(Company t)
 	}
 }
 //delete
-public void DeleteCompany(int ID)
+public void DeleteCompanyByPrimKey(string ID)
 {
-	var t = GetCompany(ID);
+	var t = GetCompanysByPrimKey(ID);
 	DeleteCompany(t.First());
 }
 public void DeleteCompany(Company t)
@@ -46,7 +54,7 @@ public IEnumerable<Company> GetCompanys()
 	return t;
 }
 //get by sql
-public IEnumerable<Company> GetCompanyBySql(int ID)
+public IEnumerable<Company> GetCompanysByPrimKey(string ID)
 {
 	IEnumerable<Company> t;
 	using (IDataContext context = DataContext.Instance())

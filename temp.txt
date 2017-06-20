@@ -1,3 +1,23 @@
+1. 重寫SOS backend
+2. SOS 分region，分team
+3. 學jquery.ganttView-master
+4. 加ganttView落view page
+5. 呢個DESIGN 唔可以一人做多個角色
+6. project要分類，俾super user第時做report用
+7. view page 用calendar (week+month)
+8. 加一個新page 俾project leader分配工作，因為project leader本身都要用view page計時
+9. (diff region)sales get proj, assign to (diff)team leader, team lead assign (diff)designer
+10. region, late, position, history(for generate report), date range
+
+
+//0. region exception
+//1. pdf line
+2. doc
+//3. remark auto width
+//4. pdf footer add Grand Total
+5. is that really need so many information? or can we just auto generate the desc for the user?
+//6. database hk cost type
+
 database StaffRole
 id userID role
 1     575    1
@@ -11,9 +31,14 @@ foreach(var sr in SR){
 		code2
 }
 
+5. should have a table to save which designer belong to which project
+4. project belong to team leader and project sales
+3. project code
+2. timer
+1. report for project details
 0. super user, team leader, proj sales, designer
 0. team
-1. super user multi team, multi role
+1. super user, multi project, multi team, multi role
 1. 加job column 改view 改database name(job->user position, UpdateProject->PreProject)
 2. 分team
 2. designer list 變 team list
@@ -52,7 +77,9 @@ What i have learnt in this company: C#mvc, dnn, hr system, composer
 6. Functional/OO/Prototypal/Scalability/MobileWeb
 99. github blog & java(think in java) & ThinkPHP & dynamic nav & sharepoint
 
-
+熱誠
+質素保證
+少講野
 
 
 信長之野望

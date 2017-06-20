@@ -1,0 +1,1 @@
+DBCC CHECKIDENT ( eClaim_CostType, RESEED, 0 )
