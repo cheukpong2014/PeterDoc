@@ -1,0 +1,37 @@
+20th Jun, 2017
+29
+#Allow virtual host in httpd.conf
+<IfModule dir_module>
+	DirectoryIndex index.html
+</IfModule>
+#配置虛擬目錄
+<IfModule dir_module>
+	DirectoryIndex news.html index.html index.htm index.php
+	#你的站點別名
+	Alias /myblog "D:/myblog"
+	<Directory d:/myblog>
+	#設置訪問權限
+	Order allow, deny
+	Allow from allow
+	</Directory>
+</IfModule>
+...the ablove can access http://localhost/myblog
+
+#配置虛擬主機
+<VirtualHost 127.0.0.1:80>
+	DocumentRoot "d:/myblog"
+	DirectoryIndex (news.html) index.html index.htm index.php
+	<Directory />
+	Options FollowSymLinks
+	#不許可別人修尹我們的頁面
+	AllowOverride None
+	#設置訪問權限
+	Order allow, deny
+	Allow from allow
+	</Directory>
+</VirtualHost>
+#add 127.0.0.1 to etc/hosts
+
+30
+exercise
+搞明 虛擬主機 同 虛擬目錄 同 etc/hosts 既關係

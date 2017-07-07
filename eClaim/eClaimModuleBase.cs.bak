@@ -1,0 +1,66 @@
+﻿/*
+' Copyright (c) 2017  milton-cn.com
+'  All rights reserved.
+' 
+' THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+' TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+' THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+' CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+' DEALINGS IN THE SOFTWARE.
+' 
+*/
+
+using System;
+using DotNetNuke.Entities.Modules;
+using Milton.Modules.eClaim.Components;
+using System.Threading;
+using DotNetNuke.Entities.Users;
+using System.Linq;
+using System.Collections.Generic;
+using DotNetNuke.UI.Skins;
+using DotNetNuke.Services.Localization;
+using DotNetNuke.UI.Skins.Controls;
+using System.Web.UI.WebControls;
+using System.IO;
+using System.Security.Cryptography;
+using System.Text;
+using DotNetNuke.Services.Mail;
+using System.Web;
+using System.Globalization;
+
+namespace Milton.Modules.eClaim
+{
+    public class eClaimModuleBase : PortalModuleBase
+    {
+        public int ItemId
+        {
+            get
+            {
+                var qs = Request.QueryString["tid"];
+                if (qs != null)
+                    return Convert.ToInt32(qs);
+                return -1;
+            }
+
+        }
+
+        public bool isSuperUser(int userID) {
+
+            bool result = false;
+
+            SuperUsersController _SuperUsersCtl = new SuperUsersController();
+            IEnumerable<SuperUsers> _SuperUsers = _SuperUsersCtl.GetSuperUsersByStaffID(userID);
+
+            foreach (SuperUsers _s in _SuperUsers)
+            {
+                if (UserId.Equals(_s.StaffID))
+                {
+                    result = true;
+                    break;
+                }
+            }
+
+            return result;
+        }
+    }
+}

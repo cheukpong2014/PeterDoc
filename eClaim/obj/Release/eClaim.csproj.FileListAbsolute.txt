@@ -1,0 +1,14 @@
+C:\Users\zacti.man.cn\Desktop\bin\eClaim.dll
+C:\Users\zacti.man.cn\Desktop\bin\eClaim.pdb
+C:\Users\zacti.man.cn\Desktop\from peter\eClaim\obj\Release\eClaim.csprojResolveAssemblyReference.cache
+C:\Users\zacti.man.cn\Desktop\from peter\eClaim\obj\Release\eClaim.dll
+C:\Users\zacti.man.cn\Desktop\from peter\eClaim\obj\Release\eClaim.pdb
+C:\Users\zacti.man.cn\Desktop\from peter\bin\eClaim.dll
+C:\Users\zacti.man.cn\Desktop\from peter\bin\eClaim.pdb
+C:\Users\zacti.man.cn\Desktop\from peter\2\eClaim\obj\Release\eClaim.dll
+C:\Users\zacti.man.cn\Desktop\from peter\2\eClaim\obj\Release\eClaim.pdb
+C:\www\newdnn.loc\bin\eClaim.dll
+C:\www\newdnn.loc\bin\eClaim.pdb
+C:\www\newdnn.loc\DesktopModules\eClaim\obj\Release\eClaim.dll
+C:\www\newdnn.loc\DesktopModules\eClaim\obj\Release\eClaim.pdb
+C:\www\newdnn.loc\DesktopModules\eClaim\obj\Release\eClaim.csprojResolveAssemblyReference.cache

@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7D61A32C-0F21-453F-A981-BD8E5A3A5304}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Milton.Modules.eClaim</RootNamespace>
+    <AssemblyName>eClaim</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DotNetNuke">
+      <HintPath>\\10.0.1.35\dnn\bin\DotNetNuke.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetNuke.Web, Version=7.4.0.353, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Bin\DotNetNuke.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetNuke.WebUtility">
+      <HintPath>\\10.0.1.35\dnn\bin\DotNetNuke.WebUtility.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>\\10.0.1.35\dnn\bin\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Users\peter.tang.cn\Desktop\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Bin\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ClaimForm.ascx.cs">
+      <DependentUpon>ClaimForm.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClaimForm.ascx.designer.cs">
+      <DependentUpon>ClaimForm.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Attachment.cs" />
+    <Compile Include="Components\BusinessUnit.cs" />
+    <Compile Include="Components\ClaimForm.cs" />
+    <Compile Include="Components\ClaimFormDetails.cs" />
+    <Compile Include="Components\ClaimFormStatus.cs" />
+    <Compile Include="Components\ClaimFormType.cs" />
+    <Compile Include="Components\CostType.cs" />
+    <Compile Include="Components\Currency.cs" />
+    <Compile Include="Components\FeatureController.cs" />
+    <Compile Include="Components\GSTCode.cs" />
+    <Compile Include="Components\ItemController.cs" />
+    <Compile Include="Components\Item.cs" />
+    <Compile Include="Components\RouteMapper.cs" />
+    <Compile Include="Components\Position.cs" />
+    <Compile Include="Components\TeamHandler.cs" />
+    <Compile Include="Components\TeamMember.cs" />
+    <Compile Include="Components\TransportationType.cs" />
+    <Compile Include="Components\vw_DistinctCurrency.cs" />
+    <Compile Include="Components\Webservices.cs" />
+    <Compile Include="eClaimModuleBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="eClaimModuleSettingsBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Edit.ascx.cs">
+      <DependentUpon>Edit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Edit.ascx.designer.cs">
+      <DependentUpon>Edit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="exportByReceiptDate.ascx.cs">
+      <DependentUpon>exportByReceiptDate.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="exportByReceiptDate.ascx.designer.cs">
+      <DependentUpon>exportByReceiptDate.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="exportExcel.ascx.cs">
+      <DependentUpon>exportExcel.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="exportExcel.ascx.designer.cs">
+      <DependentUpon>exportExcel.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings.ascx.cs">
+      <DependentUpon>Settings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Settings.ascx.designer.cs">
+      <DependentUpon>Settings.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="View.ascx.cs">
+      <DependentUpon>View.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View.ascx.designer.cs">
+      <DependentUpon>View.ascx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ClaimForm.ascx" />
+    <Content Include="Documentation\Documentation.css" />
+    <Content Include="Documentation\Documentation.html" />
+    <Content Include="Edit.ascx" />
+    <Content Include="exportByReceiptDate.ascx" />
+    <Content Include="exportExcel.ascx" />
+    <Content Include="License.txt" />
+    <Content Include="module.css" />
+    <Content Include="ReleaseNotes.txt" />
+    <Content Include="Settings.ascx" />
+    <Content Include="View.ascx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="eClaim.dnn" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BuildScripts\ModulePackage.targets" />
+    <Content Include="BuildScripts\MSBuild.Community.Tasks.Targets" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\View.ascx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\Edit.ascx.resx" />
+    <Content Include="App_LocalResources\Settings.ascx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Providers\DataProviders\SqlDataProvider\00.00.01.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\Uninstall.SqlDataProvider" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\View.ascx.zh-hk.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\View.ascx.zh-cn.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\ClaimForm.ascx.resx">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>
+          </DevelopmentServerVPath>
+          <IISUrl>http://localhost:60391/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://newdnn4.loc</IISAppRootUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <Extension>zip</Extension>
+    <DNNFileName>eClaim</DNNFileName>
+    <PackageName>eClaim</PackageName>
+    <MSBuildCommunityTasksPath>$(SolutionDir)\BuildScripts</MSBuildCommunityTasksPath>
+  </PropertyGroup>
+  <Import Project="BuildScripts\ModulePackage.Targets" />
+  <Target Name="AfterBuild" DependsOnTargets="PackageModule">
+  </Target>
+</Project>

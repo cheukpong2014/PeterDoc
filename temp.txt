@@ -1,69 +1,16 @@
-1. 重寫SOS backend
-2. SOS 分region，分team
-3. 學jquery.ganttView-master
-4. 加ganttView落view page
-5. 呢個DESIGN 唔可以一人做多個角色
-6. project要分類，俾super user第時做report用
-7. view page 用calendar (week+month)
-8. 加一個新page 俾project leader分配工作，因為project leader本身都要用view page計時
-9. (diff region)sales get proj, assign to (diff)team leader, team lead assign (diff)designer
-10. region, late, position, history(for generate report), date range
 
+1. pdf does not have submission date (wait for reply)
+2. report by receipt day
+3. exchange rate (wait for reply)
+4. position (finished)
+5. NAV excel changes
+pdf before submit use empty date
 
-//0. region exception
-//1. pdf line
-2. doc
-//3. remark auto width
-//4. pdf footer add Grand Total
-5. is that really need so many information? or can we just auto generate the desc for the user?
-//6. database hk cost type
-
-database StaffRole
-id userID role
-1     575    1
-2     575    4
-
-var SR = new StaffRole().getStaffRoleByID();
-foreach(var sr in SR){
-	if(sr.role == 1)
-		code1
-	if(sr.role == 2)
-		code2
-}
-
-5. should have a table to save which designer belong to which project
-4. project belong to team leader and project sales
-3. project code
-2. timer
-1. report for project details
-0. super user, team leader, proj sales, designer
-0. team
-1. super user, multi project, multi team, multi role
-1. 加job column 改view 改database name(job->user position, UpdateProject->PreProject)
-2. 分team
-2. designer list 變 team list
-3. 一次過管幾條team
-3. 改booking repeat
-4. Project View code column align left
-5. Project View column width should reduce
-6. Also at designer page
-7. project add file upload?
-L. Localization
-
-
-1. need merchant
-2. do i need put loc from to to description?
-3. acc code 6222101 never use
-
-
-1. task schedule
-2. jquery core
-3. bulid a new department site at my local
-
+eddie has to create hk claim form
 
 1. easy path and stable(wordpress or php or asp.net)
 2. trend (what field is making money)
-3. cannot be replaaced. i should have skill that others don't have
+3. cannot be replaaced. i should have skill that others don't have (zacti dnn)
 
 What i have learnt in this company: C#mvc, dnn, hr system, composer
 0. css3 & SASS & html5
@@ -76,6 +23,19 @@ What i have learnt in this company: C#mvc, dnn, hr system, composer
 6. RDBMS/NoSQL/Caching/HTTP/Queue/Non-Blocking/Event-Driven/
 6. Functional/OO/Prototypal/Scalability/MobileWeb
 99. github blog & java(think in java) & ThinkPHP & dynamic nav & sharepoint
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 熱誠
 質素保證
