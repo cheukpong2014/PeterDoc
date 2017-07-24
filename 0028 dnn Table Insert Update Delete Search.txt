@@ -10,22 +10,24 @@ using System.Linq;
 public class CompanyController
 {
 //create
-public void CreateCompany(Company t)
+public Company CreateCompany(Company t)
 {
 	using (IDataContext ctx = DataContext.Instance())
 	{
 		var rep = ctx.GetRepository<Company>();
 		rep.Insert(t);
 	}
+	return t;
 }
 //update
-public void UpdateCompany(Company t)
+public Company UpdateCompany(Company t)
 {
 	using (IDataContext ctx = DataContext.Instance())
 	{
 		var rep = ctx.GetRepository<Company>();
 		rep.Update(t);
 	}
+	return t;
 }
 //delete
 public void DeleteCompanyByPrimKey(string ID)
@@ -33,13 +35,13 @@ public void DeleteCompanyByPrimKey(string ID)
 	var t = GetCompanysByPrimKey(ID);
 	DeleteCompany(t.First());
 }
-public void DeleteCompany(Company t)
+public void DeleteCompany(string id)
 {
 	using (IDataContext ctx = DataContext.Instance())
 	{
 		var rep = ctx.GetRepository<Company>();
-		//rep.Delete("where RefId = @0", refId);
-		rep.Delete(t);
+		rep.Delete("where  = @0", id);
+		//rep.Delete(t);
 	}
 }
 //get

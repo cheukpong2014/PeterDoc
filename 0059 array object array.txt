@@ -1,0 +1,10 @@
+//objarr[] arr = new objarr[0];
+List<objarr> arr = new List<objarr>();
+for (int i=0; i<getERate.Count(); i++)
+{
+	var getERateDetails = new ERateDetailsController().GetERateDetailssByPrimKey(getERate.ElementAt(i).ID.ToString());
+	objarr tempobj = new objarr ();
+	tempobj.erate = getERate.ElementAt(i);
+	tempobj.eratedetails = getERateDetails;
+	arr.Add(tempobj);
+}

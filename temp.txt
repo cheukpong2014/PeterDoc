@@ -1,13 +1,4 @@
 
-1. pdf does not have submission date (wait for reply)
-2. report by receipt day
-3. exchange rate (wait for reply)
-4. position (finished)
-5. NAV excel changes
-pdf before submit use empty date
-
-eddie has to create hk claim form
-
 1. easy path and stable(wordpress or php or asp.net)
 2. trend (what field is making money)
 3. cannot be replaaced. i should have skill that others don't have (zacti dnn)
@@ -23,6 +14,7 @@ What i have learnt in this company: C#mvc, dnn, hr system, composer
 6. RDBMS/NoSQL/Caching/HTTP/Queue/Non-Blocking/Event-Driven/
 6. Functional/OO/Prototypal/Scalability/MobileWeb
 99. github blog & java(think in java) & ThinkPHP & dynamic nav & sharepoint
+
 
 
 
