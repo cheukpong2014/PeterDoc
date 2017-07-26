@@ -1,0 +1,220 @@
+C#
+DateTime dt = DateTime.Now;
+String strDate="";
+strDate = dt.ToString("MM/dd/yyyy");   // 07/21/2007 
+strDate = dt.ToString("dddd, dd MMMM yyyy");   //Saturday, 21 July 2007
+strDate = dt.ToString("dddd, dd MMMM yyyy HH:mm"); // Saturday, 21 July 2007 14:58
+strDate = dt.ToString("dddd, dd MMMM yyyy hh:mm tt"); // Saturday, 21 July 2007 03:00 PM
+strDate = dt.ToString("dddd, dd MMMM yyyy H:mm"); // Saturday, 21 July 2007 5:01 
+strDate = dt.ToString("dddd, dd MMMM yyyy h:mm tt"); // Saturday, 21 July 2007 3:03 PM
+strDate = dt.ToString("dddd, dd MMMM yyyy HH:mm:ss"); // Saturday, 21 July 2007 15:04:10
+strDate = dt.ToString("MM/dd/yyyy HH:mm"); // 07/21/2007 15:05
+strDate = dt.ToString("MM/dd/yyyy hh:mm tt"); // 07/21/2007 03:06 PM
+strDate = dt.ToString("MM/dd/yyyy H:mm"); // 07/21/2007 15:07
+strDate = dt.ToString("MM/dd/yyyy h:mm tt"); // 07/21/2007 3:07 PM
+strDate = dt.ToString("MM/dd/yyyy HH:mm:ss"); // 07/21/2007 15:09:29
+strDate = dt.ToString("MMMM dd"); // July 21
+strDate = dt.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK"); // 2007-07-21T15:11:19.1250000+05:30    
+strDate = dt.ToString("ddd, dd MMM yyyy HH':'mm':'ss 'GMT'"); // Sat, 21 Jul 2007 15:12:16 GMT
+strDate = dt.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss"); // 2007-07-21T15:12:57
+strDate = dt.ToString("HH:mm"); // 15:14
+strDate = dt.ToString("hh:mm tt"); // 03:14 PM
+strDate = dt.ToString("H:mm"); // 5:15
+strDate = dt.ToString("h:mm tt"); // 3:16 PM
+strDate = dt.ToString("HH:mm:ss"); // 15:16:29
+strDate = dt.ToString("yyyy'-'MM'-'dd HH':'mm':'ss'Z'"); // 2007-07-21 15:17:20Z
+strDate = dt.ToString("dddd, dd MMMM yyyy HH:mm:ss"); // Saturday, 21 July 2007 15:17:58
+strDate = dt.ToString("yyyy MMMM"); // 2007 July
+
+//other
+C#日期函數使用大全
+//今天
+DateTime.Now.Date.ToShortDateString();
+//昨天，就是今天的日期减一
+DateTime.Now.AddDays(-1).ToShortDateString();
+//明天，同理，加一
+DateTime.Now.AddDays(1).ToShortDateString();
+//本周(要知道本周的第一天就得先知道今天是星期几，从而得知本周的第一天就是几天前的那一天，
+要注意的是这里的每一周是从周日始至周六止
+DateTime.Now.AddDays(Convert.ToDouble((0 - Convert.ToInt16(DateTime.Now.DayOfWeek)))).ToShortDateString();
+DateTime.Now.AddDays(Convert.ToDouble((6 - Convert.ToInt16(DateTime.Now.DayOfWeek)))).ToShortDateString();
+//如果你还不明白，再看一下中文显示星期几的方法就应该懂了
+//由于DayOfWeek返回的是数字的星期几，我们要把它转换成汉字方便我们阅读，有些人可能会用switch来一个一个地
+对照，其实不用那么麻烦的
+string[] Day = new string[] { "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六" };
+Day[Convert.ToInt16(DateTime.Now.DayOfWeek)];
+//上周，同理，一个周是7天，上周就是本周再减去7天，下周也是一样
+DateTime.Now.AddDays(Convert.ToDouble((0 - Convert.ToInt16(DateTime.Now.DayOfWeek))) - 7).ToShortDateString();
+DateTime.Now.AddDays(Convert.ToDouble((6 - Convert.ToInt16(DateTime.Now.DayOfWeek))) - 7).ToShortDateString();
+//下周
+DateTime.Now.AddDays(Convert.ToDouble((0 - Convert.ToInt16(DateTime.Now.DayOfWeek))) + 7).ToShortDateString();
+DateTime.Now.AddDays(Convert.ToDouble((6 - Convert.ToInt16(DateTime.Now.DayOfWeek))) + 7).ToShortDateString();
+//本月,很多人都会说本月的第一天嘛肯定是1号，最后一天就是下个月一号再减一天。当然这是对的
+//一般的写法
+DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString() + "1"; //第一天
+DateTime.Parse(DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString() + "1").AddMonths(1).AddDays(-1).ToShortDateString();//最后一天
+//巧用C#里ToString的字符格式化更简便
+DateTime.Now.ToString("yyyy-MM-01");
+DateTime.Parse(DateTime.Now.ToString("yyyy-MM-01")).AddMonths(1).AddDays(-1).ToShortDateString();
+//上个月，减去一个月份
+DateTime.Parse(DateTime.Now.ToString("yyyy-MM-01")).AddMonths(-1).ToShortDateString();
+DateTime.Parse(DateTime.Now.ToString("yyyy-MM-01")).AddDays(-1).ToShortDateString();
+//下个月，加去一个月份
+DateTime.Parse(DateTime.Now.ToString("yyyy-MM-01")).AddMonths(1).ToShortDateString();
+DateTime.Parse(DateTime.Now.ToString("yyyy-MM-01")).AddMonths(2).AddDays(-1).ToShortDateString();
+//7天后
+DateTime.Now.Date.ToShortDateString();
+DateTime.Now.AddDays(7).ToShortDateString();
+//7天前
+DateTime.Now.AddDays(-7).ToShortDateString();
+DateTime.Now.Date.ToShortDateString();
+//本年度，用ToString的字符格式化我们也很容易地算出本年度的第一天和最后一天
+DateTime.Parse(DateTime.Now.ToString("yyyy-01-01")).ToShortDateString();
+DateTime.Parse(DateTime.Now.ToString("yyyy-01-01")).AddYears(1).AddDays(-1).ToShortDateString();
+//上年度，不用再解释了吧
+DateTime.Parse(DateTime.Now.ToString("yyyy-01-01")).AddYears(-1).ToShortDateString();
+DateTime.Parse(DateTime.Now.ToString("yyyy-01-01")).AddDays(-1).ToShortDateString();
+//下年度
+DateTime.Parse(DateTime.Now.ToString("yyyy-01-01")).AddYears(1).ToShortDateString();
+DateTime.Parse(DateTime.Now.ToString("yyyy-01-01")).AddYears(2).AddDays(-1).ToShortDateString();
+//本季度，很多人都会觉得这里难点，需要写个长长的过程来判断。其实不用的，我们都知道一年四个季度，一个季度三个月
+//首先我们先把日期推到本季度第一个月，然后这个月的第一天就是本季度的第一天了
+DateTime.Now.AddMonths(0 - ((DateTime.Now.Month - 1) % 3)).ToString("yyyy-MM-01");
+//同理，本季度的最后一天就是下季度的第一天减一
+DateTime.Parse(DateTime.Now.AddMonths(3 - ((DateTime.Now.Month - 1) % 3)).ToString("yyyy-MM-01")).AddDays(-1).ToShortDateString();
+//下季度
+DateTime.Now.AddMonths(3 - ((DateTime.Now.Month - 1) % 3)).ToString("yyyy-MM-01");
+DateTime.Parse(DateTime.Now.AddMonths(6 - ((DateTime.Now.Month - 1) % 3)).ToString("yyyy-MM-01")).AddDays(-1).ToShortDateString();
+//上季度
+DateTime.Now.AddMonths(-3 - ((DateTime.Now.Month - 1) % 3)).ToString("yyyy-MM-01");
+DateTime.Parse(DateTime.Now.AddMonths(0 - ((DateTime.Now.Month - 1) % 3)).ToString("yyyy-MM-01")).AddDays(-1).ToShortDateString();
+//如何获得当月有多少天
+int m=System.DateTime.DaysInMonth(System.DateTime.Now.Year,System.DateTime.Now.Month);
+//获取某月的实际工作日(即不包括周六日)
+//调用
+//int days =getDays(System.DateTime.Now));
+private int getDays(System.DateTime date1)
+{
+int m=System.DateTime.DaysInMonth(date1.Year,date1.Month);
+int mm=0;
+for(int i=1;i<=m;i++)
+{
+System.DateTime date=Convert.ToDateTime(date1.Year+"-"+date1.Month+"-"+i);
+switch (date.DayOfWeek)
+{
+case System.DayOfWeek.Monday:
+case System.DayOfWeek.Thursday:
+case System.DayOfWeek.Tuesday:
+case System.DayOfWeek.Wednesday:
+case System.DayOfWeek.Friday:
+mm=mm+1;
+break;
+}
+}
+return mm;
+}
+获得任意两日期之间的有效工作日(不包括周六日) 获得任意两日期之间的有效工作日(不包括周六日)#region 获得任意两日期之间的有效工作日(不包括周六日)
+//调用
+//DateTime date1=Convert.ToDateTime("2005-10-20");
+//DateTime date2=Convert.ToDateTime("2005-11-01");
+//int days =getDays(date1,date2);
+private int getDays(System.DateTime date1,System.DateTime date2)
+{
+string m=DateDiff(EnumDateCompare.day,date1,date2).ToString("f0");
+int mm=0;
+for(int i=0;i<=Convert.ToInt32(m);i++)
+{
+System.DateTime date=Convert.ToDateTime(date1.AddDays(i));
+switch (date.DayOfWeek)
+{
+case System.DayOfWeek.Monday:
+case System.DayOfWeek.Thursday:
+case System.DayOfWeek.Tuesday:
+case System.DayOfWeek.Wednesday:
+case System.DayOfWeek.Friday:
+mm=mm+1;
+break;
+}
+}
+return mm;
+}
+#endregion
+格式输出
+格式输出#region 格式输出
+private void Page_Load(object sender, System.EventArgs e)
+{
+System.Globalization.DateTimeFormatInfo myDTFI = new System.Globalization.CultureInfo( "en-US", false ).DateTimeFormat;
+//中国用zh-cn
+DateTime myDT =System.DateTime.Now;
+Response.Write(myDT.ToString("f",myDTFI));
+/**//**//**//*
+This code produces the following output.
+FORMAT en-US EXAMPLE
+CHAR VALUE OF ASSOCIATED PROPERTY, IF ANY
+d 1/3/2002 M/d/yyyy (ShortDatePattern)
+D Thursday, January 03, 2002 dddd, MMMM dd, yyyy (LongDatePattern)
+f Thursday, January 03, 2002 12:00 AM
+F Thursday, January 03, 2002 12:00:00 AM dddd, MMMM dd, yyyy h:mm:ss tt (FullDateTimePattern)
+g 1/3/2002 12:00 AM
+G 1/3/2002 12:00:00 AM
+m January 03 MMMM dd (MonthDayPattern)
+M January 03 MMMM dd (MonthDayPattern)
+r Thu, 03 Jan 2002 00:00:00 GMT ddd, dd MMM yyyy HH':'mm':'ss 'GMT' (RFC1123Pattern)
+R Thu, 03 Jan 2002 00:00:00 GMT ddd, dd MMM yyyy HH':'mm':'ss 'GMT' (RFC1123Pattern)
+s 2002-01-03T00:00:00 yyyy'-'MM'-'dd'T'HH':'mm':'ss (SortableDateTimePattern)
+t 12:00 AM h:mm tt (ShortTimePattern)
+T 12:00:00 AM h:mm:ss tt (LongTimePattern)
+u 2002-01-03 00:00:00Z yyyy'-'MM'-'dd HH':'mm':'ss'Z' (UniversalSortableDateTimePattern)
+U Thursday, January 03, 2002 8:00:00 AM
+y January, 2002 MMMM, yyyy (YearMonthPattern)
+Y January, 2002 MMMM, yyyy (YearMonthPattern)
+*/
+}
+#endregion
+获得本周的周六和周日
+ConvertDateToWeek#region ConvertDateToWeek
+public static void ConvertDateToWeek(DateTime date,out DateTime firstdate,out DateTime lastdate)
+{
+DateTime first=System.DateTime.Now;
+DateTime last=System.DateTime.Now;
+switch (date.DayOfWeek)
+{ case System.DayOfWeek.Monday:
+first=date.AddDays(-1);
+last=date.AddDays(5);
+break;
+case System.DayOfWeek.Tuesday:
+first=date.AddDays(-2);
+last=date.AddDays(4);
+break;
+case System.DayOfWeek.Wednesday:
+first=date.AddDays(-3);
+last=date.AddDays(3);
+break;
+case System.DayOfWeek.Thursday:
+first=date.AddDays(-4);
+last=date.AddDays(2);
+break;
+case System.DayOfWeek.Friday:
+first=date.AddDays(-5);
+last=date.AddDays(1);
+break;
+case System.DayOfWeek.Saturday:
+first=date.AddDays(-6);
+last=date;
+break;
+case System.DayOfWeek.Sunday:
+first=date;
+last=date.AddDays(6);
+break;
+}
+firstdate=first;
+lastdate=last;
+}
+#endregion
+//调用
+DateTime firstdate=System.DateTime.Now;
+DateTime lastdate=System.DateTime.Now;
+ConvertDateToWeek(date,out firstdate,out lastdate);
+獲得當前日期是該年度的第幾周
+DateTime dt = Convert.ToDateTime("2006-05-01");
+int weeks = dt.DayOfYear / 7 + 1;

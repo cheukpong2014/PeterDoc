@@ -1,0 +1,11 @@
+
+public void AddTask(Task task)
+        {
+            task.TaskID = DataProvider.Instance().ExecuteScalar<int>("CBP_AddTask",
+                                                      task.TaskName,
+                                                      task.TaskDescription,
+                                                      task.isComplete,
+                                                      task.ModuleId,
+                                                       task.UserId
+                                                        );
+        }
