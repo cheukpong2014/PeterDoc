@@ -1,0 +1,6 @@
+
+    function popup() {
+        <%--onClientClick="if(popup()){return false;}"--%>
+        <%--window.location.href = "javascript:dnnModal.show('<%=DotNetNuke.Common.Globals.NavigateURL("SosReport","mid=" + ModuleId) + "?popUp=true"%>&start=1&teamId=2',false,620,800,true,'javascript: console.log(123);')";--%>
+        return true;
+    }

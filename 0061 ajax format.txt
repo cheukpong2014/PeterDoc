@@ -1,0 +1,26 @@
+$.ajax({
+	type: "POST",
+	contentType: "application/json; charset=utf-8",
+	url: "/DesktopModules/eClaim/API/Webservices/GetClaimFormDetailsBySP",
+	data: JSON.stringify({ startdate: startdate, enddate: enddate, regions: regions, bus: bus, ftypes: ftypes, etypes: etypes, personid: personid }),
+	async: false,
+	success: function (result) {}
+});
+
+
+[DnnAuthorize]
+[HttpGet]
+public HttpResponseMessage getProjByDateRange(string start, string end)
+{
+	try
+	{
+		if (true)
+			return Request.CreateResponse(HttpStatusCode.OK, "success");
+		else
+			return Request.CreateResponse(HttpStatusCode.BadRequest,"fail delete");
+	}
+	catch (Exception exc)
+	{
+		return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, exc);
+	}
+}
