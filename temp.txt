@@ -1,3 +1,36 @@
+((StartDate between @1 and @2 or EndDate between @1 and @2) or (StartDate <= @1 and EndDate >= @2))
+1. show period
+2. customer name
+3. month can be all month
+
+PO
+1. vender (purchase order)
+
+
+bug:
+project -> package only does not have currency
+
+91ac47aa-16d9-40ef-a05f-3f689fd4d245
+
+
+$cfg['Servers'][$i]['verbose'] = 'Local Databases';
+$cfg['Servers'][$i]['host'] = '10.0.1.38';
+$cfg['Servers'][$i]['extension'] = 'mysqli';
+$cfg['Servers'][$i]['auth_type'] = 'cookie';
+$cfg['Servers'][$i]['user'] = 'root';
+$cfg['Servers'][$i]['password'] = 'me-sql@milton!';
+
+mos: 3ThgSeoT
+mosuat: SRgSLCRg
+
+b30076d7-5dde-4bb4-bc81-518917d5dc62
+92bde0c5-8cb1-41d0-8a33-dfb188379d01
+
+91ac47aa-16d9-40ef-a05f-3f689fd4d245
+91ac47aa-16d9-40ef-a05f-3f689fd4d245
+
+1503fa93-b196-4ecf-9751-6937c446d5c0
+de797f66-f0fb-4d1d-925e-2051ec830754
 
 1. easy path and stable(wordpress or php or asp.net)
 2. trend (what field is making money)
@@ -15,7 +48,7 @@ What i have learnt in this company: C#mvc, dnn, hr system, composer
 6. Functional/OO/Prototypal/Scalability/MobileWeb
 99. github blog & java(think in java) & ThinkPHP & dynamic nav & sharepoint
 
-
+e558e283-79b6-454d-b34d-38f8c23a397c
 
 
 
