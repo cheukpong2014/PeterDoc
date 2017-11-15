@@ -1,0 +1,4 @@
+    Require all granted
+    AllowOverride All
+    Order allow,deny
+    Allow from all

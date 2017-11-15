@@ -1,7 +1,94 @@
-((StartDate between @1 and @2 or EndDate between @1 and @2) or (StartDate <= @1 and EndDate >= @2))
-1. show period
-2. customer name
-3. month can be all month
+SELECT distinct m3.name_eng as 'currency',m2.PREFIX as 'BU' FROM `mos_ord_order` m1 left join mos_bus_businessunit m2 on m1.`BUSINESS_UNIT_ID` = m2.`BUSINESS_UNIT_ID` left join `mos_fxc_foreignexcurrency` m3 on m3.currency_id = m1.CURRENCY_ID WHERE YEAR(m1.`ORDER_DATE`) = '2017' and MONTH(m1.`ORDER_DATE`) = '11' order by m2.PREFIX order by m3.name_eng
+
+YEAR(m1.`ORDER_DATE`) = '2017' and MONTH(m1.`ORDER_DATE`) = '11' and m1.version = 0 and 
+
+mos - 星期二 10點 同henry開會
+mos - customer report
+mos - report needs mobile layout
+mos - need index page
+mos - need to go on internet
+mos - need to learn framework
+1. INVOICE 有D有2個INVOICE (MGD177347,MHC177440,MIF177409 still have problem)
+3. 改善速度
+4. ajax change bu option
+
+1. excel亂碼
+3. add bu selection
+4. group by project id
+5. 用PHP array同php excel重寫個report
+
+寫comment俾henry
+
+problem
+0. 唔知個PROJECT係唔係CANCEL左，因為DEL左SQL
+0. 唔知有冇重覆，因為冇咩INFO睇到
+0. no proj amount
+0. 最重要，我分唔到個order係pending 定invoiced
+1. 因為Invoice Status=P果時係出唔到PDF，所以Invoice Status=P or C都放係pending到
+2. 加多個on cancel
+3. on procesing唔分date range, on confirmed跟invoice date,on cancelled 跟order status = C#
+4. 重寫report
+5. 
+
+要教USER正確既MOS入DATA 流程
+要封住某D位唔俾USER 亂咁入DATA
+
+CH Aggie Lee
+MS Yunming Li
+MS Lillian Shi
+MS Essie Shan
+MS Yue Yang
+MS Eason Qian
+MS Clara Wang
+MS Nemo Sun
+MS Lillian Shi
+MS Tina Gu
+MS Crystal Wang
+MS Nemo Sun
+MS Johnny Li
+MS Adam Zhou
+MS Jenny Fu
+MS Benny Chen
+MS Tina Gu
+MS Summer Song
+MH Shirley Yau
+MH Andrew Cheung
+MH Man Cheung
+MH Fiona Chan
+MH Aggie Lee
+CO Frances Sou
+MN Suki Wong
+MN Man Cheung
+MN Aggie Lee
+MN Rosetta Chan	
+MN Kelly Chan
+MO Frances Sou
+MI Suki Wong
+MI Rosetta Chan	
+OH  (  Milton) Andrew Cheung
+OI  (International) Rosetta Chan
+OI  (International) Suki Wong
+MG  ( Concept) Aggie Lee
+MG  (Shanghai) Max Liu
+MG  (Shanghai) Phoenix Huang
+MB  (Shanghai) Susie Song
+MGL (  Milton) Macy Wong
+MGL (  Milton) Leo Chau
+MLA (   Mills) Carson Sham	
+OPT ( OptSafe) Jeffrey Cheng
+MLH (   Mills) Cyril Yeung
+MLH (   Mills) Carson Sham
+
+Invoice Report
+
+
+Quotation Report
+
+
+1. eddie excel report
+2. syn flex account
+3. chart module
+
 
 PO
 1. vender (purchase order)
