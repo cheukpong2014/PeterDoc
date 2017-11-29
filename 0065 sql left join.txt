@@ -1,0 +1,13 @@
+1. left + middle (1912 )
+SELECT m1.*,m2.* FROM mos_prj_project m1
+LEFT JOIN mos_ord_order m2 ON m1.PROJECT_ID = m2.PROJECT_ID
+2. right (242 )
+SELECT m1.*,m2.* FROM mos_ord_order m2
+LEFT JOIN mos_prj_project m1 ON m1.PROJECT_ID = m2.PROJECT_ID
+Where m2.PROJECT_ID = ''
+3. all (2155 )
+SELECT m1.*,m2.* FROM mos_prj_project m1
+LEFT JOIN mos_ord_order m2 ON m1.PROJECT_ID = m2.PROJECT_ID
+UNION
+SELECT m1.*,m2.* FROM mos_prj_project m1
+RIGHT JOIN mos_ord_order m2 ON m1.PROJECT_ID = m2.PROJECT_ID

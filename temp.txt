@@ -1,57 +1,36 @@
-select m4.STATUS as 'Proj_Status',m1.STATUS as 'Order_Status',m5.STATUS as 'Invoice_Status',m4.PROJECT_CODE, m4.TYPE as 'Proj_Type', m4.LOCATION, m4.SHOW_START_DATE,m4.SHOW_END_DATE,m5.AMOUNT as 'INVOICE_AMOUNT',m4.NAME_ENG as 'PName_eng',m4.NAME_CHI as 'PName_chi', m5.INVOICE_NO, m3.name_eng as 'Currency',m2.PREFIX as 'BU',m1.* from mos_ord_order m1 left join `mos_bus_businessunit` m2 on m1.`BUSINESS_UNIT_ID` = m2.`BUSINESS_UNIT_ID` left join `mos_fxc_foreignexcurrency` m3 on m3.currency_id = m1.CURRENCY_ID left join mos_prj_project m4 on m1.PROJECT_ID = m4.PROJECT_ID left join mos_inh_invoicehdr m5 on m5.ORDER_ID = m1.ORDER_ID WHERE m1.version = 0 and (m1.ORDER_DATE between '2017-10-01' and '2017-10-31') and m1.`BUSINESS_UNIT_ID` like '%8844bc79-c89b-47a4-acf7-9879f897143b%' order by m1.ORDER_DATE, m2.PREFIX, m3.name_eng desc
+BYOD
+唔見左電話點RESTORE Data
+點樣jail break，點樣自己升級/降級手機
+有冇apps 推介
+點樣用VPN去bilibili
 
-1. left + middle (1912 )
-SELECT m1.*,m2.* FROM mos_prj_project m1
-LEFT JOIN mos_ord_order m2 ON m1.PROJECT_ID = m2.PROJECT_ID
-2. right (242 )
-SELECT m1.*,m2.* FROM mos_ord_order m2
-LEFT JOIN mos_prj_project m1 ON m1.PROJECT_ID = m2.PROJECT_ID
-Where m2.PROJECT_ID = ''
-3. all (2155 )
-SELECT m1.*,m2.* FROM mos_prj_project m1
-LEFT JOIN mos_ord_order m2 ON m1.PROJECT_ID = m2.PROJECT_ID
-UNION
-SELECT m1.*,m2.* FROM mos_prj_project m1
-RIGHT JOIN mos_ord_order m2 ON m1.PROJECT_ID = m2.PROJECT_ID
+1. change sql(), group by currency
+2. skip BU, Currency
+3. add column (Quotation Amount, Project Amount, Quotation Currency, Project Currency)
+4. delete order date
+5. add sorting field (All status, F&P, F,P,C), re-define On Cancelled
+6. add one more layer to the array 
+7. update database
 
-GROUP_CONCAT(DISTINCT CurrencyTable.name_eng SEPARATOR ', '), 
-//GROUP_CONCAT(DISTINCT CurrencyTable.name_eng SEPARATOR ', '),
-
-Business Unit        - BU       table - PREFIX(change BU id to BU name)
-Status               - IF/ELSE        - ExcelStatus
-Currency             - Currency table - name_eng
-Customer             - order    table - concat(DISTINCT CUSTOMER_NAME)
-Event Name           - project  table - NAME_ENG
-Chinese Event Name   - project  table - NAME_CHI
-Quotation Amount     - IF/ELSE        - ExcelAmount
-Project Amount       - 
-Start Date           - project  table - SHOW_START_DATE
-End Date             - project  table - SHOW_END_DATE
-Location             - project  table - LOCATION
-Project Type         - project  table - TYPE
-Project Code         - project  table - PROJECT_CODE
-Project Status       -                - ExcelStatus
-Order Code           - order    table - concat(DISTINCT )
-Invoice Code         - invoice  table - concat(DISTINCT )
 
 SELECT 
-GROUP_CONCAT(DISTINCT BUTable.PREFIX SEPARATOR ', '), 
+GROUP_CONCAT(DISTINCT BUTable.PREFIX SEPARATOR ', ') as ExcelBU, 
 MAX(IF(InvoiceTable.AMOUNT IS NOT NULL, 1,0)) AS ExcelStatus, 
 GROUP_CONCAT(DISTINCT IF(InvoiceTable.AMOUNT IS NOT NULL, InvoiceCurrencyTable.name_eng, OrderCurrencyTable.name_eng) SEPARATOR ', ') AS ExcelCurrency, 
-GROUP_CONCAT(DISTINCT OrderTable.CUSTOMER_NAME SEPARATOR ', '), 
-GROUP_CONCAT(DISTINCT ProjectTable.NAME_ENG SEPARATOR ', '),
-GROUP_CONCAT(DISTINCT ProjectTable.NAME_CHI SEPARATOR ', '), 
+GROUP_CONCAT(DISTINCT OrderTable.CUSTOMER_NAME SEPARATOR ', ') as ExcelCustomer, 
+GROUP_CONCAT(DISTINCT ProjectTable.NAME_ENG SEPARATOR ', ') as ExcelEventName,
+GROUP_CONCAT(DISTINCT ProjectTable.NAME_CHI SEPARATOR ', ') as ExcelChiEventName, 
 SUM(IF(InvoiceTable.AMOUNT IS NOT NULL, InvoiceTable.AMOUNT, OrderTable.TOTAL_AMOUNT)) AS ExcelAmount, 
-GROUP_CONCAT(DISTINCT ProjectTable.SHOW_START_DATE SEPARATOR ', '), 
-GROUP_CONCAT(DISTINCT ProjectTable.SHOW_END_DATE SEPARATOR ', '), 
-GROUP_CONCAT(DISTINCT ProjectTable.LOCATION SEPARATOR ', '), 
-GROUP_CONCAT(DISTINCT ProjectTable.TYPE SEPARATOR ', '), 
-ProjectTable.PROJECT_CODE,
-GROUP_CONCAT(DISTINCT OrderTable.ORDER_NO SEPARATOR ', '),
-GROUP_CONCAT(DISTINCT InvoiceTable.INVOICE_NO SEPARATOR ', ') 
+GROUP_CONCAT(DISTINCT ProjectTable.SHOW_START_DATE SEPARATOR ', ') as ExcelStartDate, 
+GROUP_CONCAT(DISTINCT ProjectTable.SHOW_END_DATE SEPARATOR ', ') as ExcelEndDate, 
+GROUP_CONCAT(DISTINCT ProjectTable.LOCATION SEPARATOR ', ') as ExcelLocation, 
+GROUP_CONCAT(DISTINCT ProjectTable.TYPE SEPARATOR ', ') as ExcelProjectType, 
+ProjectTable.PROJECT_CODE as ExcelProjectCode,
+GROUP_CONCAT(DISTINCT OrderTable.ORDER_NO SEPARATOR ', ') as ExcelOrderNo,
+GROUP_CONCAT(DISTINCT InvoiceTable.INVOICE_NO SEPARATOR ', ') as ExcelInvoiceNo
 FROM mos_prj_project ProjectTable
 LEFT JOIN mos_ord_order OrderTable ON ProjectTable.PROJECT_ID = OrderTable.PROJECT_ID 
-LEFT JOIN mos_inh_invoicehdr InvoiceTable ON ProjectTable.PROJECT_ID = InvoiceTable.PROJECT_ID 
+LEFT JOIN mos_inh_invoicehdr InvoiceTable ON OrderTable.ORDER_ID = InvoiceTable.ORDER_ID 
 LEFT JOIN mos_bus_businessunit BUTable on BUTable.BUSINESS_UNIT_ID = ProjectTable.BUSINESS_UNIT_ID
 LEFT JOIN mos_fxc_foreignexcurrency OrderCurrencyTable on OrderCurrencyTable.currency_id = OrderTable.CURRENCY_ID
 LEFT JOIN mos_fxc_foreignexcurrency InvoiceCurrencyTable on InvoiceCurrencyTable.currency_id = InvoiceTable.CURRENCY_ID
@@ -60,21 +39,17 @@ and OrderTable.TOTAL_AMOUNT is not null
 and (InvoiceTable.INVOICE_DATE between '2015-11-01' and '2015-11-30' 
 or (InvoiceTable.INVOICE_DATE is null and OrderTable.ORDER_DATE between '2015-11-01' and '2015-11-30')) 
 and OrderTable.Status != 'C' 
-and InvoiceTable.Status != 'C'
+and (InvoiceTable.Status is null or InvoiceTable.Status != 'C')
 group by ProjectTable.PROJECT_CODE
 
-//add OrderTable.Version = 0
-//add OrderTable.Status != 'c'
-//add InvoiceTable.Status != 'c'
-//add ExcelCurrency
-
-
-give where and order clause 
-order invocie project amount既關係
 
 點知有冇cancel
 SAMPLE, 有冇重複，
-
+give where and order clause 
+order invocie project amount既關係
+冇project amount
+3. report1 暫時未有Order
+4. report1 暫時未有Export
 Crteria:
 (
 (1. select from project table 2. left join invoice table (where invoice date between a and b or (invoice date is null and order date between a and b)))
