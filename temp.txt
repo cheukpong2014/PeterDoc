@@ -1,47 +1,85 @@
+66863722
+
+[Customer Report]
+(requirements from Eva)
+Export data from MOS selecting different fields/ options:
+a. By Customer Industry Type
+b. By Country
+c. By a selected Period
+d. By different contract status (Quote or Processing on MOS system/ Confirmed/ Cancelled)
+e. By different team/ company
+
+(requirements from Allan Chu)
+Search by:
+- Show open date
+- Show end date
+- Project code
+- Stand code (i.e. 001/555/777/888)
+- Status (Pending , Sent, Cancelled)
+- BU
+
+[Vendor Report]
+(requirements from Allan Chu)
+Search by:
+- Show open date
+- Show end date
+- Project code
+- Stand code (i.e. 001/555/777/888)
+- Status (Pending , Confirmed, Cancelled)
+- BU
+
+
+
+SELECT OrderTable.Status,OrderTable.`TOTAL_AMOUNT`,InvoiceTable.Status , InvoiceTable.AMOUNT FROM `mos_ord_order` OrderTable left join `mos_inh_invoicehdr` InvoiceTable on OrderTable.`ORDER_ID` = InvoiceTable.`ORDER_ID` where `ORDER_NO` = 'CHB173604'
+
+SELECT OrderTable.Status,OrderTable.`TOTAL_AMOUNT`,InvoiceTable.Status , InvoiceTable.AMOUNT FROM `mos_ord_order` OrderTable left join `mos_inh_invoicehdr` InvoiceTable on OrderTable.`ORDER_ID` = InvoiceTable.`ORDER_ID` LEFT JOIN mos_prj_project ProjectTable ON ProjectTable.PROJECT_ID = OrderTable.PROJECT_ID where `ORDER_NO` = 'CHB173604'
+
+Reporting Period: october
+1. order - october, invoice - october
+3. order - september, invoice - october
+invoice date in october
+2. order - october, invoice - null 
+4. order - october, invoice - november
+order date in october and invoice no == null
+					
+
+$sql0 = "SELECT 
+BUTable.PREFIX as ExcelBU, 
+OrderTable.CUSTOMER_NAME as ExcelOrderCustomer, 
+OrderTable.ORDER_NO as ExcelOrderNo, 
+OrderCurrencyTable.name_eng as ExcelOrderCurrency, 
+OrderTable.TOTAL_AMOUNT AS ExcelOrderAmount, 
+OrderTable.Status AS ExcelOrderStatus,  
+ProjectTable.PROJECT_CODE as ExcelProjectCode, 
+ProjectTable.NAME_ENG as ExcelEventName, 
+ProjectTable.NAME_CHI as ExcelChiEventName, 
+ProjectTable.SHOW_START_DATE as ExcelStartDate, 
+ProjectTable.SHOW_END_DATE as ExcelEndDate, 
+ProjectTable.LOCATION as ExcelLocation, 
+ProjectTable.TYPE as ExcelProjectType, 
+InvoiceTable.INVOICE_NO as ExcelInvoiceNo, 
+InvoiceCurrencyTable.name_eng as ExcelCurrency, 
+InvoiceTable.AMOUNT AS ExcelAmount, 
+InvoiceTable.Status AS ExcelInvoiceStatus 
+FROM mos_ord_order OrderTable 
+LEFT JOIN mos_prj_project ProjectTable ON ProjectTable.PROJECT_ID = OrderTable.PROJECT_ID 
+LEFT JOIN mos_inh_invoicehdr InvoiceTable ON InvoiceTable.ORDER_ID =  OrderTable.ORDER_ID 
+LEFT JOIN mos_bus_businessunit BUTable on BUTable.BUSINESS_UNIT_ID = OrderTable.BUSINESS_UNIT_ID 
+LEFT JOIN mos_fxc_foreignexcurrency OrderCurrencyTable on OrderCurrencyTable.currency_id = OrderTable.CURRENCY_ID 
+LEFT JOIN mos_fxc_foreignexcurrency InvoiceCurrencyTable on InvoiceCurrencyTable.currency_id = InvoiceTable.CURRENCY_ID 
+where OrderTable.Version = 0 
+and ".$BusinessUnitSQL.";
+
+and (".$InvoiceDateRangeSQL." or (InvoiceTable.INVOICE_DATE is null and ".$OrderDateRangeSQL.")) 
+and OrderTable.Status != 'C' 
+and (InvoiceTable.Status is null or InvoiceTable.Status != 'C') 
+order by ExcelAmount desc";
+
 BYOD
 唔見左電話點RESTORE Data
 點樣jail break，點樣自己升級/降級手機
 有冇apps 推介
 點樣用VPN去bilibili
-
-1. change sql(), group by currency
-2. skip BU, Currency
-3. add column (Quotation Amount, Project Amount, Quotation Currency, Project Currency)
-4. delete order date
-5. add sorting field (All status, F&P, F,P,C), re-define On Cancelled
-6. add one more layer to the array 
-7. update database
-
-
-SELECT 
-GROUP_CONCAT(DISTINCT BUTable.PREFIX SEPARATOR ', ') as ExcelBU, 
-MAX(IF(InvoiceTable.AMOUNT IS NOT NULL, 1,0)) AS ExcelStatus, 
-GROUP_CONCAT(DISTINCT IF(InvoiceTable.AMOUNT IS NOT NULL, InvoiceCurrencyTable.name_eng, OrderCurrencyTable.name_eng) SEPARATOR ', ') AS ExcelCurrency, 
-GROUP_CONCAT(DISTINCT OrderTable.CUSTOMER_NAME SEPARATOR ', ') as ExcelCustomer, 
-GROUP_CONCAT(DISTINCT ProjectTable.NAME_ENG SEPARATOR ', ') as ExcelEventName,
-GROUP_CONCAT(DISTINCT ProjectTable.NAME_CHI SEPARATOR ', ') as ExcelChiEventName, 
-SUM(IF(InvoiceTable.AMOUNT IS NOT NULL, InvoiceTable.AMOUNT, OrderTable.TOTAL_AMOUNT)) AS ExcelAmount, 
-GROUP_CONCAT(DISTINCT ProjectTable.SHOW_START_DATE SEPARATOR ', ') as ExcelStartDate, 
-GROUP_CONCAT(DISTINCT ProjectTable.SHOW_END_DATE SEPARATOR ', ') as ExcelEndDate, 
-GROUP_CONCAT(DISTINCT ProjectTable.LOCATION SEPARATOR ', ') as ExcelLocation, 
-GROUP_CONCAT(DISTINCT ProjectTable.TYPE SEPARATOR ', ') as ExcelProjectType, 
-ProjectTable.PROJECT_CODE as ExcelProjectCode,
-GROUP_CONCAT(DISTINCT OrderTable.ORDER_NO SEPARATOR ', ') as ExcelOrderNo,
-GROUP_CONCAT(DISTINCT InvoiceTable.INVOICE_NO SEPARATOR ', ') as ExcelInvoiceNo
-FROM mos_prj_project ProjectTable
-LEFT JOIN mos_ord_order OrderTable ON ProjectTable.PROJECT_ID = OrderTable.PROJECT_ID 
-LEFT JOIN mos_inh_invoicehdr InvoiceTable ON OrderTable.ORDER_ID = InvoiceTable.ORDER_ID 
-LEFT JOIN mos_bus_businessunit BUTable on BUTable.BUSINESS_UNIT_ID = ProjectTable.BUSINESS_UNIT_ID
-LEFT JOIN mos_fxc_foreignexcurrency OrderCurrencyTable on OrderCurrencyTable.currency_id = OrderTable.CURRENCY_ID
-LEFT JOIN mos_fxc_foreignexcurrency InvoiceCurrencyTable on InvoiceCurrencyTable.currency_id = InvoiceTable.CURRENCY_ID
-where OrderTable.Version = 0
-and OrderTable.TOTAL_AMOUNT is not null 
-and (InvoiceTable.INVOICE_DATE between '2015-11-01' and '2015-11-30' 
-or (InvoiceTable.INVOICE_DATE is null and OrderTable.ORDER_DATE between '2015-11-01' and '2015-11-30')) 
-and OrderTable.Status != 'C' 
-and (InvoiceTable.Status is null or InvoiceTable.Status != 'C')
-group by ProjectTable.PROJECT_CODE
-
 
 點知有冇cancel
 SAMPLE, 有冇重複，
@@ -187,45 +225,7 @@ OPT ( OptSafe) Jeffrey Cheng
 MLH (   Mills) Cyril Yeung
 MLH (   Mills) Carson Sham
 
-Invoice Report
 
-
-Quotation Report
-
-
-1. eddie excel report
-2. syn flex account
-3. chart module
-
-
-PO
-1. vender (purchase order)
-
-
-bug:
-project -> package only does not have currency
-
-91ac47aa-16d9-40ef-a05f-3f689fd4d245
-
-
-$cfg['Servers'][$i]['verbose'] = 'Local Databases';
-$cfg['Servers'][$i]['host'] = '10.0.1.38';
-$cfg['Servers'][$i]['extension'] = 'mysqli';
-$cfg['Servers'][$i]['auth_type'] = 'cookie';
-$cfg['Servers'][$i]['user'] = 'root';
-$cfg['Servers'][$i]['password'] = 'me-sql@milton!';
-
-mos: 3ThgSeoT
-mosuat: SRgSLCRg
-
-b30076d7-5dde-4bb4-bc81-518917d5dc62
-92bde0c5-8cb1-41d0-8a33-dfb188379d01
-
-91ac47aa-16d9-40ef-a05f-3f689fd4d245
-91ac47aa-16d9-40ef-a05f-3f689fd4d245
-
-1503fa93-b196-4ecf-9751-6937c446d5c0
-de797f66-f0fb-4d1d-925e-2051ec830754
 
 1. easy path and stable(wordpress or php or asp.net)
 2. trend (what field is making money)
@@ -242,9 +242,6 @@ What i have learnt in this company: C#mvc, dnn, hr system, composer
 6. RDBMS/NoSQL/Caching/HTTP/Queue/Non-Blocking/Event-Driven/
 6. Functional/OO/Prototypal/Scalability/MobileWeb
 99. github blog & java(think in java) & ThinkPHP & dynamic nav & sharepoint
-
-e558e283-79b6-454d-b34d-38f8c23a397c
-
 
 
 

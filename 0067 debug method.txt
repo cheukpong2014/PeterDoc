@@ -1,0 +1,12 @@
+1. magic constant
+   - __FUNCTION__
+   - __LINE__
+   
+2. error_log()
+3. print_r("",true); 
+4. syntax test - check how to fix the error
+   a. check the error
+   b. find out how the error occur
+   c. check the codding
+   d. perform test
+5. print the result before the code and after the code, and then target the area

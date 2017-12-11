@@ -1,0 +1,15 @@
+	try {
+		exportExcel($Report1DataArray);
+    } catch (Exception $e) {
+		
+		// Explain why the following line cannot be called
+//		print_r(Exception::getTrace);
+        echo "CALCULATION ENGINE ERROR: ".$e->getMessage()."<br />\n";
+		echo "<pre>";
+		print_r($e->getTrace());
+		echo "</pre><br />";
+
+        echo '<h3>Evaluation Log:</h3><pre>';
+        print_r(PHPExcel_Calculation::getInstance()->debugLog);
+        echo '</pre>';
+    }
