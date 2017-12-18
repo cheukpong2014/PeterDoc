@@ -1,4 +1,38 @@
+mosuat admin password
+a499e922c55544550011660033445544
+
+1. vendor report
+1. Project Cost(pre-show, post-show)
+2. general expense (where general_expense = 'Y')
+
 66863722
+pre show 係跟supplier 定 customer
+1. Pre-show create at project page directly
+2. if po general expense is 'Y', Project ID will be 'general expense'
+3. if the supplier code is 22031200, then the row of it will be enter personal expense
+
+L. customer report needs event chi name and sorting of event chi name
+L. customer report needs show end adate
+!!must meet requirement
+
+Finsihed
+
+Porject BU
+tab1
+tab2 is what
+ask what is the output
+dont make decision
+what is equivalent amount
+what is analysis code 5
+what is Voucher number
+voucher date how it come from
+we dont have voucher no, if we give you other no, can you match the data
+what is debit, what is credit
+ask output the status of the po
+
+1. project invoice (Customer_ID is null. If order customer is null, customer_name in InvoiceTable will be Customer)(Customer_ID can be "" if the order customer is created by user templatorly)
+2. genernal invoice (has Customer_ID)
+3. order without invoice
 
 [Customer Report]
 (requirements from Eva)
