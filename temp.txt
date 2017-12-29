@@ -1,21 +1,49 @@
-mosuat admin password
-a499e922c55544550011660033445544
+mosuat administrator password
+m0s.itcsupport!
+float left 30px
+有limit
+SQL好慢
 
-1. vendor report
-1. Project Cost(pre-show, post-show)
-2. general expense (where general_expense = 'Y')
+hot fix: appraisal email 
+customer report, user can search contact name, tel, fax, email
+
+Auto email send out alert 
+10月10日
+ross
+
+2. customer add contact 
+5. check time //php time microtime float
+4. program can more fast
+
+1. 3個BU 放埋一齊
+2. 加PROJECT CUSTOMER NAME 同PROJECT INDUSTRY TYPE
+3. seach 要search 哂project bu, order bu 同 invoice bu?
+4. customer name 要search 哂
+5. 洗唔洗加customer contact，同埋洗唔洗加search
+6. 佢個customer name, customer contact 點黎，係唔係中英加埋， (係中英加埋)
+7. cusomter name 轉quotation and invoice customer name
+8. 有project customer contact同order customer contact
+9. customer contact 有自己打，亦都有跟order
+10. eva needs current project customer contact and can find project history by the customer
+11. customer report 加埋customer contact，俾埋個search 佢
+
+
+export an excel with henry column
+delete limit 500 in vendor report
+Project Expense 1. COST_TYPE - SEQ
+General Expense 2. GE_TYPE   - CODE(general expense)
 
 66863722
-pre show 係跟supplier 定 customer
-1. Pre-show create at project page directly
-2. if po general expense is 'Y', Project ID will be 'general expense'
-3. if the supplier code is 22031200, then the row of it will be enter personal expense
+
+
+SELECT ProjectBUTable.PREFIX as 'ProjectBU', ProjectTable.TYPE as 'ProjectType', ProjectTable.PROJECT_CODE as 'ProjectCode', ProjectTable.STAND_CODE as 'StandCode', ProjectTable.SHOW_START_DATE as 'ShowStartDate', ProjectTable.NAME_ENG as 'ShowName', SupplierTable.NAME_ENG as 'Eng Supplier Name', SupplierTable.NAME_CHI as 'Chi Supplier Name' ,CodeListTable.VALUE_ENG as 'Eng Industry Type' ,CodeListTable.VALUE_CHI as 'Chi Industry Type' , CurrencyTable.name_eng as 'Currency' ,ProjectOrderTable.* FROM `mos_poh_purchaseorderhdr` ProjectOrderTable left join mos_prj_project ProjectTable on ProjectOrderTable.`PROJECT_ID` = ProjectTable.`PROJECT_ID` left join mos_bus_businessunit ProjectBUTable on ProjectBUTable.BUSINESS_UNIT_ID = ProjectTable.BUSINESS_UNIT_ID left join mos_cod_codelist CodeListTable on CodeListTable.BUSINESS_UNIT_ID = ProjectTable.BUSINESS_UNIT_ID and CodeListTable.CATEGORY = 'COST_TYPE' left join mos_sup_supplier SupplierTable ON
+ SupplierTable.SUPPLIER_ID = ProjectOrderTable.SUPPLIER_ID left join mos_fxc_foreignexcurrency CurrencyTable ON
+ ProjectOrderTable.`PO_CURRENCY_ID` = CurrencyTable.currency_id  where VERSION = 0 and ProjectOrderTable.`CREATE_DATE` > '2017-09-15' order by `CREATE_DATE` desc
 
 L. customer report needs event chi name and sorting of event chi name
 L. customer report needs show end adate
 !!must meet requirement
 
-Finsihed
 
 Porject BU
 tab1

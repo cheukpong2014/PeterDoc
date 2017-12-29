@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>tab1</title>
+	<script src="./jquery.js"></script>
+	<style>
+		.tabTitle ul{
+			overflow: hidden;
+			_height:1px;
+			-webkit-padding-start: 0px;
+		}
+		.tabTitle ul li{
+			list-style-type: none;
+			float: left;
+			border: 1px solid #abcdef;
+			border-bottom: none;
+			height: 30px;
+			line-height: 30px;
+			padding: 0 15px;
+			margin-right: 3px;
+			cursor:pointer;
+		}
+
+		.current{
+			background: #abcdef;
+			color:#fff;
+		}
+
+		tabContent div{
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+
+	<!-- 这里是标签标题 -->
+	<div class="tabTitle">
+		<ul>
+			<li class="current">Customer with Invoice</li>
+			<li>Customer with Quotation only</li>
+		</ul>
+	</div>
+
+
+	<div class="tabContent">
+		<div>xhtml的内容</div>
+		<div style="display:none;">css的内容</div>
+	</div>
+	<script>
+		$(function(){
+			$('.tabTitle ul li').click(function(){
+				$(this).addClass('current').siblings().removeClass('current');
+				$('.tabContent div').eq($(this).index()).show().siblings().hide();
+			});
+		});
+	</script>
+</body>
+</html>
