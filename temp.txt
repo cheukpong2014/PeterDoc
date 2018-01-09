@@ -1,141 +1,40 @@
-mosuat administrator password
-m0s.itcsupport!
-float left 30px
-有limit
-SQL好慢
+mosuat administrator password: m0s.itcsupport!
 
-hot fix: appraisal email 
-customer report, user can search contact name, tel, fax, email
+//debug: 1. customer report column not match
+//debug: 2. customer report row not match
+//debug: 3. customer report has error 
+add: add search criteria to cusomter report
+add: add venue, location, sales person column to cusomter report
+//debug: report1 needs debug
+revise: add more information to abnormal data report(DON'T MAKE user Think)
 
-Auto email send out alert 
-10月10日
-ross
+a.同一個客唔會用兩個currency
+b. check if invoice amt (sent)(total) > order amt
+c. check if show start date >2018 or < 2010
+d. ask how to syn mos to flex account
 
-2. customer add contact 
-5. check time //php time microtime float
-4. program can more fast
+report
+!! 差exhibitor ( BOOTH_NUMBER )
+!! search exhibitor
+3. add comment, ??? to the program.
+4. customer add contact 
+// add search criteria to excel
+!! order by
+
+
+
 
 1. 3個BU 放埋一齊
 2. 加PROJECT CUSTOMER NAME 同PROJECT INDUSTRY TYPE
 3. seach 要search 哂project bu, order bu 同 invoice bu?
 4. customer name 要search 哂
-5. 洗唔洗加customer contact，同埋洗唔洗加search
-6. 佢個customer name, customer contact 點黎，係唔係中英加埋， (係中英加埋)
 7. cusomter name 轉quotation and invoice customer name
 8. 有project customer contact同order customer contact
 9. customer contact 有自己打，亦都有跟order
-10. eva needs current project customer contact and can find project history by the customer
-11. customer report 加埋customer contact，俾埋個search 佢
 
-
-export an excel with henry column
-delete limit 500 in vendor report
-Project Expense 1. COST_TYPE - SEQ
-General Expense 2. GE_TYPE   - CODE(general expense)
 
 66863722
 
-
-SELECT ProjectBUTable.PREFIX as 'ProjectBU', ProjectTable.TYPE as 'ProjectType', ProjectTable.PROJECT_CODE as 'ProjectCode', ProjectTable.STAND_CODE as 'StandCode', ProjectTable.SHOW_START_DATE as 'ShowStartDate', ProjectTable.NAME_ENG as 'ShowName', SupplierTable.NAME_ENG as 'Eng Supplier Name', SupplierTable.NAME_CHI as 'Chi Supplier Name' ,CodeListTable.VALUE_ENG as 'Eng Industry Type' ,CodeListTable.VALUE_CHI as 'Chi Industry Type' , CurrencyTable.name_eng as 'Currency' ,ProjectOrderTable.* FROM `mos_poh_purchaseorderhdr` ProjectOrderTable left join mos_prj_project ProjectTable on ProjectOrderTable.`PROJECT_ID` = ProjectTable.`PROJECT_ID` left join mos_bus_businessunit ProjectBUTable on ProjectBUTable.BUSINESS_UNIT_ID = ProjectTable.BUSINESS_UNIT_ID left join mos_cod_codelist CodeListTable on CodeListTable.BUSINESS_UNIT_ID = ProjectTable.BUSINESS_UNIT_ID and CodeListTable.CATEGORY = 'COST_TYPE' left join mos_sup_supplier SupplierTable ON
- SupplierTable.SUPPLIER_ID = ProjectOrderTable.SUPPLIER_ID left join mos_fxc_foreignexcurrency CurrencyTable ON
- ProjectOrderTable.`PO_CURRENCY_ID` = CurrencyTable.currency_id  where VERSION = 0 and ProjectOrderTable.`CREATE_DATE` > '2017-09-15' order by `CREATE_DATE` desc
-
-L. customer report needs event chi name and sorting of event chi name
-L. customer report needs show end adate
-!!must meet requirement
-
-
-Porject BU
-tab1
-tab2 is what
-ask what is the output
-dont make decision
-what is equivalent amount
-what is analysis code 5
-what is Voucher number
-voucher date how it come from
-we dont have voucher no, if we give you other no, can you match the data
-what is debit, what is credit
-ask output the status of the po
-
-1. project invoice (Customer_ID is null. If order customer is null, customer_name in InvoiceTable will be Customer)(Customer_ID can be "" if the order customer is created by user templatorly)
-2. genernal invoice (has Customer_ID)
-3. order without invoice
-
-[Customer Report]
-(requirements from Eva)
-Export data from MOS selecting different fields/ options:
-a. By Customer Industry Type
-b. By Country
-c. By a selected Period
-d. By different contract status (Quote or Processing on MOS system/ Confirmed/ Cancelled)
-e. By different team/ company
-
-(requirements from Allan Chu)
-Search by:
-- Show open date
-- Show end date
-- Project code
-- Stand code (i.e. 001/555/777/888)
-- Status (Pending , Sent, Cancelled)
-- BU
-
-[Vendor Report]
-(requirements from Allan Chu)
-Search by:
-- Show open date
-- Show end date
-- Project code
-- Stand code (i.e. 001/555/777/888)
-- Status (Pending , Confirmed, Cancelled)
-- BU
-
-
-
-SELECT OrderTable.Status,OrderTable.`TOTAL_AMOUNT`,InvoiceTable.Status , InvoiceTable.AMOUNT FROM `mos_ord_order` OrderTable left join `mos_inh_invoicehdr` InvoiceTable on OrderTable.`ORDER_ID` = InvoiceTable.`ORDER_ID` where `ORDER_NO` = 'CHB173604'
-
-SELECT OrderTable.Status,OrderTable.`TOTAL_AMOUNT`,InvoiceTable.Status , InvoiceTable.AMOUNT FROM `mos_ord_order` OrderTable left join `mos_inh_invoicehdr` InvoiceTable on OrderTable.`ORDER_ID` = InvoiceTable.`ORDER_ID` LEFT JOIN mos_prj_project ProjectTable ON ProjectTable.PROJECT_ID = OrderTable.PROJECT_ID where `ORDER_NO` = 'CHB173604'
-
-Reporting Period: october
-1. order - october, invoice - october
-3. order - september, invoice - october
-invoice date in october
-2. order - october, invoice - null 
-4. order - october, invoice - november
-order date in october and invoice no == null
-					
-
-$sql0 = "SELECT 
-BUTable.PREFIX as ExcelBU, 
-OrderTable.CUSTOMER_NAME as ExcelOrderCustomer, 
-OrderTable.ORDER_NO as ExcelOrderNo, 
-OrderCurrencyTable.name_eng as ExcelOrderCurrency, 
-OrderTable.TOTAL_AMOUNT AS ExcelOrderAmount, 
-OrderTable.Status AS ExcelOrderStatus,  
-ProjectTable.PROJECT_CODE as ExcelProjectCode, 
-ProjectTable.NAME_ENG as ExcelEventName, 
-ProjectTable.NAME_CHI as ExcelChiEventName, 
-ProjectTable.SHOW_START_DATE as ExcelStartDate, 
-ProjectTable.SHOW_END_DATE as ExcelEndDate, 
-ProjectTable.LOCATION as ExcelLocation, 
-ProjectTable.TYPE as ExcelProjectType, 
-InvoiceTable.INVOICE_NO as ExcelInvoiceNo, 
-InvoiceCurrencyTable.name_eng as ExcelCurrency, 
-InvoiceTable.AMOUNT AS ExcelAmount, 
-InvoiceTable.Status AS ExcelInvoiceStatus 
-FROM mos_ord_order OrderTable 
-LEFT JOIN mos_prj_project ProjectTable ON ProjectTable.PROJECT_ID = OrderTable.PROJECT_ID 
-LEFT JOIN mos_inh_invoicehdr InvoiceTable ON InvoiceTable.ORDER_ID =  OrderTable.ORDER_ID 
-LEFT JOIN mos_bus_businessunit BUTable on BUTable.BUSINESS_UNIT_ID = OrderTable.BUSINESS_UNIT_ID 
-LEFT JOIN mos_fxc_foreignexcurrency OrderCurrencyTable on OrderCurrencyTable.currency_id = OrderTable.CURRENCY_ID 
-LEFT JOIN mos_fxc_foreignexcurrency InvoiceCurrencyTable on InvoiceCurrencyTable.currency_id = InvoiceTable.CURRENCY_ID 
-where OrderTable.Version = 0 
-and ".$BusinessUnitSQL.";
-
-and (".$InvoiceDateRangeSQL." or (InvoiceTable.INVOICE_DATE is null and ".$OrderDateRangeSQL.")) 
-and OrderTable.Status != 'C' 
-and (InvoiceTable.Status is null or InvoiceTable.Status != 'C') 
-order by ExcelAmount desc";
 
 BYOD
 唔見左電話點RESTORE Data

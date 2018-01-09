@@ -1,3 +1,4 @@
+# TUTORIAL 1 - Getting Started
 #0 sample
 def initialize(context):
     # Reference to AAPL
@@ -66,7 +67,7 @@ def handle_data(context, data):
     print hist.mean()
 #lesson7
 #the US Equities Calendar and the US Futures Calendar.
-#schedule_function(), rebalance()
+#9 schedule_function(), rebalance()
 schedule_function(func=rebalance,
                   date_rules=date_rules.every_day(),
                   time_rules=time_rules.market_open(hours=1))
@@ -87,6 +88,57 @@ def close_positions(context, data):
     order_target_percent(context.spy, 0)
 
 #lesson8
+#10 positions
+for security in context.portfolio.positions:
+  order_target_percent(security, 0)
+#11 record()
+def initialize(context):
+    context.aapl = sid(24)
+    context.spy = sid(8554)
+    schedule_function(rebalance, date_rules.every_day(), time_rules.market_open())
+    schedule_function(record_vars, date_rules.every_day(), time_rules.market_close())
+def rebalance(context, data):
+    order_target_percent(context.aapl, 0.50)
+    order_target_percent(context.spy, -0.50)
+def record_vars(context, data):
+    long_count = 0
+    short_count = 0
+    for position in context.portfolio.positions.itervalues():
+        if position.amount > 0:
+            long_count += 1
+        if position.amount < 0:
+            short_count += 1
+    # Plot the counts
+    record(num_long=long_count, num_short=short_count)
+#lesson9
+#12 set_slippage)()
+set_slippage(slippage.VolumeShareSlippage(volume_limit=0.025, price_impact=0.1))
+#13 set_commission()
+set_commission(commission.PerShare(cost=0.001, min_trade_cost=1))
+#lesson10
+#14 get_open_orders() 
+def initialize(context):
+    # Relatively illiquid stock.
+    context.xtl = sid(40768)
+def handle_data(context, data):
+    # Get all open orders.
+    open_orders = get_open_orders()
+    if context.xtl not in open_orders and data.can_trade(context.xtl):
+        order_target_percent(context.xtl, 1.0)
+#lesson11 Putting It All Together
+
+# TUTORIAL 2 - Pipline
+#lesson1 
+
+
+
+
+
+
+
+
+
+
 
 
 
