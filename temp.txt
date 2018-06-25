@@ -1,4 +1,382 @@
+install new model
+add industry type data
+add country zip code data
+set sales Teammates
+
+
+1//. sos user guide
+//2. let Krystal to test sos
+//3. sos fix bug?
+//4. https?
+
+1. flow chart
+2. report/document needed
+3. permission chart
+4. screen capture of each page
+5. sub-process chart
+
+YearCode	YearDesc	EffectiveStart	EffectiveEnd
+2018	2018/19	2018-04-01	2019-03-31
+
+set eddie as appraisal super user
+
+jeff ho
+step 6
+
+
+how to avoid duplicate record
+
+train demo
+0. parent company
+1. 加左D field(Alias Name, Fax, Account Code, Card Image)
+2. fax constrains
+3. phone constrains
+4. Email constrains
+5. industry type轉左做many2many，同加左sub level
+6. sales person overwrite左，轉左做many2many，同轉左做tag，同埋只會search 到 sales  teammate ， sales teammate 個group 係自己create, edit user 果到可以簡做teammate唔一定係group 到加
+
+
+
+
+list index out of range
+
+1. 係model開一個新reference field指住res.partner.name同alias name
+2. invisible 左個name field佢
+3. onchange 如果有一樣名就唔俾入..
+
+1. 改country code會改zip code
+2. auto delete character
+3. fax need number
+
+1. / -> >
+2. +852 change to according zip code
+
+    @api.onchange('mos_ChineseName')
+    def onchange_mos_ChineseName(self):
+        if self.mos_ChineseName:
+            raise ValidationError(dir(self))
+
+domain = re.search("@[\w.]+", partner.email).group()
+
+
+        #raise ValidationError(vals.get('company_id'))
+        #    company = self.env['res.company'].browse(vals['company_id'])
+        #for partner in self:
+        #    partner.mobile = re.sub('[^0-9]', '', str(partner.mobile))
+
+
+
+
+                #else:
+                    #allemails = set(user.company_id for user in partner.user_ids)
+                    #domain = re.search("@[\w.]+", s)
+
+
+
+OK 1. change sos report English wordings
+2. check project sales create project. does he need approval?
+OK 3. delete designer button
+4. re create form
+
+1. import all users with different team
+2. set up team structure and permission(sales, project, team head, admin)
+3. industry type
+4. customer contact
+5. 
+
+
+1. sup level
+2. sales only can search sales group
+
+project - tony
+gc 會做mh
+outsmart hk 都係mh d 人去做
+分sales
+
+
+0. 分gender
+1. customer and supplier field 夠唔夠
+2. regular expression
+3. user master list
+4. BU/group
+5. Eva
+
+Computed fields
+More model inheritance mechanisms
+Understanding the ORM decorators
+Working with recordsets
+Reports based on custom SQL
+Chapter 13: Debugging and Automated Tests
+
+3.有冇得獨立拎個country出黎   OK
+6.寫validation              OK
+1.中文名有冇得translate      OK
+2.睇context
+4.睇MOS BU 點寫
+5.如果冇user requirement，點handle BU
+
+
+//加唔到industry type
+//parent customer (required) (default self)
+回覆yuki 有關wix 問題
+增值稅
+
+input validation
+export report?
+customer fields:
+//fax
+industry type //need data
+//ccount code
+//country
+//city
+//chinese name
+parent customer
+
+如果要計果間公司一年做左幾多生意時用
+industry type問connie
+customer list 洗唔洗set 權限，用BU分，定係team，定係人?
+parent customer 用處係乜，而家有冇用到?
+industry type 點解唔同BU有少少唔同，industry type用黎分咩?
+
+1. customer 洗唔洗分BU?
+2. 有冇需要分country/city
+3. 有冇需要分industry type
+
+customer contact fields:
+BU
+Industry Type
+Name Card Image
+
+1. 跟work progress
+
+
+1. 卡片image
+2. regular expression
+3. add field
+4. 自己試下加data
+5. 要data entry果個人用email check 公司
+跟返本書既解釋
+
+p.198 context
+send email to henry that eva wants to involve the meeting
+
+todo.stage_fold = todo.stage_id.fold
+search='_search_stage_fold',
+ inverse='_write_stage_fold')
+ 
+Emily says marketing staff need to insert customer phone number to thomas's outlook so that thomas phone will have customer phone number
+
+odoo cannot send out email
+
+angula cheung prop
+Ms 
 mosuat administrator password: m0s.itcsupport!
+
+IT13579cn
+
+700
+6030
+2669
+1789
+2689
+1233
+570
+839      
+牛證
+939/1398 5%
+2388     5%
+857      5%
+
+打code 唔可以懶
+OK 2. front end (please specify)
+PASS graduation
+PASS 4. confirm alert box when submit
+OK suki cannot download the attachment0
+OK 6. change email from/email cc address
+OK 7. change email subject
+OK 7. need email content
+OK 8. Emily email (Probation)
+OK 9. change people site
+
+OK 0. bootstrap?
+OK 1. 放哂D input入去
+OK 2. insert function (with CV OK)
+OK 3. Email Confirmation(
+		•	CC the application to mgtp.hk@milton-cn.com when they submit the application
+		•	For auto email confirmation, please check sender email, if it can’t be changed, then I don’t need this function)
+OK 4. validate (Field of Study (major):)
+OK Style
+OK 6. 快D上production場做testing (change button redirect link) (Extension add user control)
+a
+
+eOffer security, 如果唔係super user 入左去eOffer page, 要redirect out.
+you have already sent your apply. please try again after 15 minutes
+
+eAppraisal:
+要改eAppraisal
+叫sg同sh 俾多次D 資料
+1 call sh,sg,bj,gz staff to update a full list of team collaboration, eAppraisal, eProbation
+2 add sg hr to eAppraisal
+3 改new staff form
+
+Odoo:
+問下洗唔洗買source code
+試下multi-company
+記低有咩做唔到/有咩做到
+加plug in 入odoo
+加圖入pdf
+加field 入pdf
+keep 0.00
+set type
+set tax
+set unit of measures
+compare the odoo and mos
+try to copy the flow
+customize the pdf
+add the drawing plug in
+
+
+StaffID	CCID	EmailTemplateCode
+51	51	0007
+126	51	0007
+166	51	0007
+254	51	0007
+426	51	0007
+443	51	0007
+444	51	0007
+445	51	0007
+448	51	0007
+458	51	0007
+609	51	0007
+
+eClaim function:
+function rangeDatePicker(from, to) {}
+function formatDate(date) {}
+function setFirstDay(date) {}
+function addRowFromAddtable(FormType) {
+	addRow(FormType);
+	checkCostType();
+	checkERateType();
+}
+function setAddTable(FormType) {}
+function addRow(FormType) {}
+function loadFormBasicData() {}
+function code1() {}
+function loadFormData() {}
+function code2() {
+	addRow(getFormType());
+	checkCostType();
+	checkERateType();
+}
+function disableReceiptList() {}
+function loadFormDetailsData() {
+	code2();
+	disableReceiptList();
+}
+function checkCostType(element) {}
+function checkatCostType(element) {}
+function clearAddTable() {
+	checkatERateType();
+	reflashTotal();
+	formula();
+}
+function clearTable() {}
+function getFormType() {}
+function setFormType() {
+	clearTable();
+}
+function unix_to_readable(timestamp) {}
+function eventListener() {
+	delegate
+	formula();
+}
+function showHideTableColumn(temp) {}
+function reflashTotal() {
+	showHideTableColumn(this);
+}
+function formula() {}
+function calRowTotal(row) {}
+function getatERateType() {}
+$('#addtable .atERateType').click(function () {
+	checkatERateType();
+	reflashTotal();
+	formula();
+}
+function checkatERateType() {
+	checkatERateCustom();
+	checkatERateAuto();
+	checkatERateDefault();
+}
+function checkatERateCustom() {}
+function checkatERateAuto() {
+	setAutoAtCurrList();
+	setAutoAtOrigCurrList();
+	checkatERateSelect();
+}
+function setAutoAtCurrList() {}
+function setAutoAtOrigCurrList() {}
+function checkatERateDefault() {
+	checkatERateSelect();
+}
+function getatERateSelect() {}
+function checkatERateSelect() {}
+$("body").delegate(".atERateSelect", "change", function () {
+	checkatERateDefault();
+	reflashTotal();
+	formula();
+}
+$("body").delegate(".atOrgCurr", "change", function () {
+	checkatERateSelect();
+	reflashTotal();
+	formula();
+}
+
+
+1. resigned staff
+2. Bill Chan eTravel approval line
+2. Bill Chan eAppraisal approval line
+
+
+I found that Dolibarr and Odoo are the most popular framework from Henry's suggestion. So I compare these two framework.
+
+1. Odoo has more Contributors in github
+https://github.com/odoo/odoo
+https://github.com/Dolibarr/dolibarr
+2. Odoo has more functionality
+http://erp.softwareinsider.com/compare/246-486/Odoo-vs-Dolibarr-ERP-And-CRM
+3. Odoo is popular in china community but dolibarr is not.
+4. Odoo supports iphone/android app and mobile web
+5. both support multi language
+6. can support little change in each module
+7. support google drive/cloud
+
+
+5. prepare all the job last year/do appraisal form
+
+
+process to test appraisal
+1. delete and insert data
+2. kick off
+3. change peter approver to vincent
+4. add dummy acc
+
+
+2. mos user guide take note
+3. check difference between mos system and mos user guide
+bold the primary key
+
+approval line check region again for new user before row 200
+
+1個人有多個department，多功能多工作
+入職離職
+過期DATA
+分REGION，分DEPARTMENT
+權限制
+1個USER要做兩個APPRAISAL FORM
+ADMIN幫人地開FORM
+need some procedure to handle delete/update data.
+
+flex system
 
 //debug: 1. customer report column not match
 //debug: 2. customer report row not match
@@ -7,14 +385,16 @@ add: add search criteria to cusomter report
 add: add venue, location, sales person column to cusomter report
 //debug: report1 needs debug
 revise: add more information to abnormal data report(DON'T MAKE user Think)
+debug: report 1 -  issued invoice amount error
+debug: export all the raw data and then calculate to generate the report 1 manually
 
-a.同一個客唔會用兩個currency
-b. check if invoice amt (sent)(total) > order amt
-c. check if show start date >2018 or < 2010
-d. ask how to syn mos to flex account
+
+
+
+
 
 report
-!! 差exhibitor ( BOOTH_NUMBER )
+!! exhibitor ( BOOTH_NUMBER )
 !! search exhibitor
 3. add comment, ??? to the program.
 4. customer add contact 
@@ -206,7 +586,8 @@ What i have learnt in this company: C#mvc, dnn, hr system, composer
 
 
 
-
+港股反彈，預期A股會反彈
+要睇港交所既A股會唔會升定先，如果有，A股放假後會升
 
 
 
@@ -312,6 +693,4 @@ $#
 暴擊率         +5%    +16%       +8%    +15%    +12%     +6%    +10%      +20%
 吸收傷害      +30%    +15%      +25%    +20%    +20%    +40%    +10%      +20%
 技能                                      有      有
-
-
 
