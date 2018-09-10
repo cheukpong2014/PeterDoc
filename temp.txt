@@ -1,213 +1,167 @@
-install new model
-add industry type data
-add country zip code data
-set sales Teammates
+開show
+開project - GC/SD
+開job card
+
+submit左之後發覺有錯，想改
+有得申請delete/cancel travel form
+
+OK. Quotation 要可以同時做
+OK. step1.3 delete it
+OK. delete estimate
+OK. job card summary 錯左
+OK. 要加GM assign approver step
+OK. need reason 要畫圖
+OK. Quotation 要同一時間create，呢到個flow係要重新set 過
+  ok一齊CREATE，但之後要LINK埋一齊先可以PRINT出黎? (其實好難阻止，因為可以PRINT個網頁出黎)
+  ok一係就唔俾改個amount，咁就要一定要有SHOW NAME, DURATION, CLIENT NAME
+OK. 幾個backward flow 都冇考慮到
+  ok. approver not approve job card, 就會返轉頭改job card
+  ok. Quot. not sign 都要返轉頭改job card，出多次Quot.
+  ok. 有機會淨係改Quot.
+
+**. Post sohw Job Card要詳細好多，講埋點改 同 改job card column (跟job card同埋有support document) 同 要加最頂果個menu bar
+**Income VAT(6%) at step1.1 can it input by user?
+//. ask Kelly about the loss type
+//. Account confirm要整多個module 出黎
+//. 決定Show, Project, JobCard有咩field (有兩個Proj Type
+corresponding
+//拎job card template，同問下D template 有咩分別，FOR 咩PROJECT 
+//need job completion form module?
+//need claim module?
+
+appraisal Goal: 3-4
+
+1. sub-workflow (revise sales order, revise PO)
+revise sales order & invoice
+add 1: add SO & invoice
+reduce 1: 加一個負數SO
+reduce 2: reduce SO amount and reduce second invoice amount
+reduce 3: delete Quotation,SO,invoice and re-create one
+
+revise PO
+add 1: add PO
+reduce 1: 加一個負數PO
+reduce 2: delete PO and re-create one
 
 
-1//. sos user guide
-//2. let Krystal to test sos
-//3. sos fix bug?
-//4. https?
+appraisal approval line add team name
 
+
+down payment, outstanding
+
+need : rect -> producture/action
+no need: only decision/condition
+
+1. add supplier, account flow
+2. what document is needed in the flow
+3.
+
+1. 每一個step 都要入account, 如果想改，要account approve
+2. 最尾係用debit note credit note 就OK ，定係要quotation amemment
+3. How to define Job card no., project no., 
+Job card no. -> Project No+card seq
+ES: Project No   -> show code + stand code
+洗唔洗所有team 都用同一個project no.
+4. Per非ly人 (會用GC flow) , JV 點處理
+5. when create PO? before send quotation or after send quotation?
+6. who create sales order?
+7. revise job card, PO, quotation and invoice, need approval
+8. Job card 要有designer
+9. 唔知洗唔洗check invoice amount must < sales order amount
+10. booth plan 好重要，想3D
+
+幾時找錢，決定找錢
+收到client 錢先再找錢
+
+
+
+
+down payment
+balance
+outstanding invoice
+
+按金
+refundable deposit
+
+實報實收
+
+
+1. multi
+2. region (need to remind developer)
+3. 
+4. Output need what data. where the data come from
+
+
+sudo vi header.php
+sudo vi footer.php
+
+<link rel="shortcut icon" href="https://i-leadgen.com/wp-content/uploads/2013/01/favicon.ico" />
+
+<h1 class="logo"><a href="https://i-leadgen.com"><img src="https://i-leadgen.com/wp-content/uploads/2013/01/ilead_ios7.png" alt="" title=""></a></h1>
+
+<?php $footer_left = '<p><img src="https://i-leadgen.com/wp-content/uploads/2013/07/Milton-Exhibits-Logo_R.gif" align="left" title="">© 2013 All Rights Reserved. Milton Exhibits Group 版權所有 不得轉載</p>'; ?>
+
+
+//update wp_options set option_value = replace(option_value, 'http://i-leadgen.com/wp-content/uploads', 'https://i-leadgen.com/wp-content/uploads') where option_id = 511;
+update wp_options set option_value = 'https://i-leadgen.com' where option_id in (1,36);
+update wp_posts set post_content = replace(post_content, 'http://', 'https://');
+update wp_postmeta set meta_value = replace(meta_value, 'http://', 'https://');
+
+
+//update wp_users   set user_login   = replace(user_login,   'optssafe',             'optsafe');
+//update wp_options set option_value = replace(option_value, 'http://i-leadgen.com/wp-content/uploads', 'https://i-leadgen.com/wp-content/uploads');
+
+畫GC flow
+
+1. 1PO多Project: 影相，唔想每個booth 都開一個PO
+2. >50萬，要CEO/GM sign, >50萬 senior account manager sign
+3. 想要WIP, Personal Claim
+4. GP太低要approve
+5. Pre show cost 要有多vendor
+6. Everyone can see supplier，但要分region
+7. 洗唔洗分agent, organizer, exhibitor
+8. customer master page
+9. customer always duplicate
+     唔同team 唔同industry type
+	         唔同step
+			 唔同job card
+10. 非常需要copy po/quotation
+11. Team Head 睇到自己team customer list
+12. customer list會綁at least兩個sales
+13. pre-show果時個job card會係咁改?
+        同一個show不同booth
+		同一個card不同vendor
+14. 如果兩個sales 一齊resign，要send email 俾GM去assign新sales
+15. 好多時完左show先會出PO，先知個cost係幾多
+16. 用email domain黎分公司
+17. 1個人多BU多TEAM多POSITION
+18. 其實分BU有冇用，點解要分BU?
+19. 可以睇到所有公司，但公司contact就唔俾睇
+20. 不同地區會有不同子公司
+21. ACC CODE最多10個位，要invisible同search到
+22. industry type想show到中文
+23. pricelist 要invisible
+24. exhibitor 要入customer file，但exhibitor要入咩data (要有咩data先追到數)名，電話，email，地址
+25. customer file要有tax rate
+26. 要有account code先可以出invoice
+27. check到相似名，就問係唔係同一間公司
+			 
 1. flow chart
 2. report/document needed
 3. permission chart
 4. screen capture of each page
 5. sub-process chart
-
-YearCode	YearDesc	EffectiveStart	EffectiveEnd
-2018	2018/19	2018-04-01	2019-03-31
-
-set eddie as appraisal super user
-
-jeff ho
-step 6
-
-
-how to avoid duplicate record
-
-train demo
-0. parent company
-1. 加左D field(Alias Name, Fax, Account Code, Card Image)
-2. fax constrains
-3. phone constrains
-4. Email constrains
-5. industry type轉左做many2many，同加左sub level
-6. sales person overwrite左，轉左做many2many，同轉左做tag，同埋只會search 到 sales  teammate ， sales teammate 個group 係自己create, edit user 果到可以簡做teammate唔一定係group 到加
-
-
-
-
-list index out of range
-
-1. 係model開一個新reference field指住res.partner.name同alias name
-2. invisible 左個name field佢
-3. onchange 如果有一樣名就唔俾入..
-
-1. 改country code會改zip code
-2. auto delete character
-3. fax need number
-
-1. / -> >
-2. +852 change to according zip code
-
-    @api.onchange('mos_ChineseName')
-    def onchange_mos_ChineseName(self):
-        if self.mos_ChineseName:
-            raise ValidationError(dir(self))
-
-domain = re.search("@[\w.]+", partner.email).group()
-
-
-        #raise ValidationError(vals.get('company_id'))
-        #    company = self.env['res.company'].browse(vals['company_id'])
-        #for partner in self:
-        #    partner.mobile = re.sub('[^0-9]', '', str(partner.mobile))
-
-
-
-
-                #else:
-                    #allemails = set(user.company_id for user in partner.user_ids)
-                    #domain = re.search("@[\w.]+", s)
-
-
-
-OK 1. change sos report English wordings
-2. check project sales create project. does he need approval?
-OK 3. delete designer button
-4. re create form
-
-1. import all users with different team
-2. set up team structure and permission(sales, project, team head, admin)
-3. industry type
-4. customer contact
-5. 
-
-
-1. sup level
-2. sales only can search sales group
+6. report oriented, ask admin what report they want and how this report come out
+7. who can view/edit/delete that process and who approve this process
 
 project - tony
 gc 會做mh
 outsmart hk 都係mh d 人去做
 分sales
-
-
-0. 分gender
-1. customer and supplier field 夠唔夠
-2. regular expression
-3. user master list
-4. BU/group
-5. Eva
-
-Computed fields
-More model inheritance mechanisms
-Understanding the ORM decorators
-Working with recordsets
-Reports based on custom SQL
-Chapter 13: Debugging and Automated Tests
-
-3.有冇得獨立拎個country出黎   OK
-6.寫validation              OK
-1.中文名有冇得translate      OK
-2.睇context
-4.睇MOS BU 點寫
-5.如果冇user requirement，點handle BU
-
-
-//加唔到industry type
-//parent customer (required) (default self)
-回覆yuki 有關wix 問題
 增值稅
 
-input validation
-export report?
-customer fields:
-//fax
-industry type //need data
-//ccount code
-//country
-//city
-//chinese name
-parent customer
-
-如果要計果間公司一年做左幾多生意時用
-industry type問connie
-customer list 洗唔洗set 權限，用BU分，定係team，定係人?
-parent customer 用處係乜，而家有冇用到?
-industry type 點解唔同BU有少少唔同，industry type用黎分咩?
-
-1. customer 洗唔洗分BU?
-2. 有冇需要分country/city
-3. 有冇需要分industry type
-
-customer contact fields:
-BU
-Industry Type
-Name Card Image
-
-1. 跟work progress
 
 
-1. 卡片image
-2. regular expression
-3. add field
-4. 自己試下加data
-5. 要data entry果個人用email check 公司
-跟返本書既解釋
-
-p.198 context
-send email to henry that eva wants to involve the meeting
-
-todo.stage_fold = todo.stage_id.fold
-search='_search_stage_fold',
- inverse='_write_stage_fold')
- 
-Emily says marketing staff need to insert customer phone number to thomas's outlook so that thomas phone will have customer phone number
-
-odoo cannot send out email
-
-angula cheung prop
-Ms 
-mosuat administrator password: m0s.itcsupport!
-
-IT13579cn
-
-700
-6030
-2669
-1789
-2689
-1233
-570
-839      
-牛證
-939/1398 5%
-2388     5%
-857      5%
-
-打code 唔可以懶
-OK 2. front end (please specify)
-PASS graduation
-PASS 4. confirm alert box when submit
-OK suki cannot download the attachment0
-OK 6. change email from/email cc address
-OK 7. change email subject
-OK 7. need email content
-OK 8. Emily email (Probation)
-OK 9. change people site
-
-OK 0. bootstrap?
-OK 1. 放哂D input入去
-OK 2. insert function (with CV OK)
-OK 3. Email Confirmation(
-		•	CC the application to mgtp.hk@milton-cn.com when they submit the application
-		•	For auto email confirmation, please check sender email, if it can’t be changed, then I don’t need this function)
-OK 4. validate (Field of Study (major):)
-OK Style
-OK 6. 快D上production場做testing (change button redirect link) (Extension add user control)
-a
 
 eOffer security, 如果唔係super user 入左去eOffer page, 要redirect out.
 you have already sent your apply. please try again after 15 minutes
@@ -219,35 +173,6 @@ eAppraisal:
 2 add sg hr to eAppraisal
 3 改new staff form
 
-Odoo:
-問下洗唔洗買source code
-試下multi-company
-記低有咩做唔到/有咩做到
-加plug in 入odoo
-加圖入pdf
-加field 入pdf
-keep 0.00
-set type
-set tax
-set unit of measures
-compare the odoo and mos
-try to copy the flow
-customize the pdf
-add the drawing plug in
-
-
-StaffID	CCID	EmailTemplateCode
-51	51	0007
-126	51	0007
-166	51	0007
-254	51	0007
-426	51	0007
-443	51	0007
-444	51	0007
-445	51	0007
-448	51	0007
-458	51	0007
-609	51	0007
 
 eClaim function:
 function rangeDatePicker(from, to) {}
@@ -520,53 +445,6 @@ problem
 要教USER正確既MOS入DATA 流程
 要封住某D位唔俾USER 亂咁入DATA
 
-CH Aggie Lee
-MS Yunming Li
-MS Lillian Shi
-MS Essie Shan
-MS Yue Yang
-MS Eason Qian
-MS Clara Wang
-MS Nemo Sun
-MS Lillian Shi
-MS Tina Gu
-MS Crystal Wang
-MS Nemo Sun
-MS Johnny Li
-MS Adam Zhou
-MS Jenny Fu
-MS Benny Chen
-MS Tina Gu
-MS Summer Song
-MH Shirley Yau
-MH Andrew Cheung
-MH Man Cheung
-MH Fiona Chan
-MH Aggie Lee
-CO Frances Sou
-MN Suki Wong
-MN Man Cheung
-MN Aggie Lee
-MN Rosetta Chan	
-MN Kelly Chan
-MO Frances Sou
-MI Suki Wong
-MI Rosetta Chan	
-OH  (  Milton) Andrew Cheung
-OI  (International) Rosetta Chan
-OI  (International) Suki Wong
-MG  ( Concept) Aggie Lee
-MG  (Shanghai) Max Liu
-MG  (Shanghai) Phoenix Huang
-MB  (Shanghai) Susie Song
-MGL (  Milton) Macy Wong
-MGL (  Milton) Leo Chau
-MLA (   Mills) Carson Sham	
-OPT ( OptSafe) Jeffrey Cheng
-MLH (   Mills) Cyril Yeung
-MLH (   Mills) Carson Sham
-
-
 
 1. easy path and stable(wordpress or php or asp.net)
 2. trend (what field is making money)
@@ -585,9 +463,6 @@ What i have learnt in this company: C#mvc, dnn, hr system, composer
 99. github blog & java(think in java) & ThinkPHP & dynamic nav & sharepoint
 
 
-
-港股反彈，預期A股會反彈
-要睇港交所既A股會唔會升定先，如果有，A股放假後會升
 
 
 
@@ -694,3 +569,4 @@ $#
 吸收傷害      +30%    +15%      +25%    +20%    +20%    +40%    +10%      +20%
 技能                                      有      有
 
+做D有效既野

@@ -1,0 +1,93 @@
+Mstsc: 10.0.1.111
+Login: adm_corp_a
+Password: IT13579cn
+
+intranet.cn
+in123456cn
+
+dnn
+Login: it-admin
+Password: M0reD0g
+
+10.0.1.44
+login: mosreport
+password: 10.0.1.44
+
+10.0.1.44 phpmyadmin
+mosreport
+t2vVRG3iry
+sudo su -
+
+10.0.1.44:8069
+henry.chan@thinkact.com.hk
+xPgYa4TUL4
+database password
+3edc$RFV
+
+10.0.1.38 phpmyadmin
+root
+me-sql@milton!
+
+mos admin
+administrator
+m0s.itcsupport!
+
+site: https://milton-exhibits.com/en/index.html
+SFTP host: web.milton-corp.com
+User: miltonexhibits
+Passphrase: 6Htz@WXms7
+
+Link: http://milton-exhibits.com/admin/auth/show_login.html
+Login name: evalam@milton-cn.com
+Password: evalam@milton-cn.com
+
+
+
+
+opt-safe.com
+i-leadgen.com
+outsmart.com.hk
+
+support@frontiersdigital.com
+$P$BNsEHWH95X/kBmUHj3OqqJsdb9Pqz81
+optsafe
+$P$B4Fi1pDFNSORafpaBA8X/yFnA9NnIH.
+
+FileZilla 
+SFTP host: web.milton-corp.com
+User: miltonexhibits
+Passphrase: 6Htz@WXms7
+Port 22
+
+PUTTY
+IP: 202.66.8.177
+Port 22
+Login: itadmin
+Password: GeFH47oh+Q
+Login: root
+Password: v]8k4CZwTK
+Login: qrsitecms
+Password: t8pMXbnTzz7K
+Login: outsmart
+Password:
+Login: outsmart.com.hk
+Password: outsmart.2018
+
+mysql
+Login: qrsitecms
+Password: t8pMXbnTzz7K
+Login: i-leadgen
+Password: fd1221@1221
+
+ConceptComs
+http://www.conceptcoms.hk/wp-admin
+Login: concept
+Password: concept2017passwordcoms
+OptSafe
+http://uat.opt-safe.com/wp-admin/
+Login: optsafe
+Password: 8K&Cu74V3tvlJF
+outsmart
+https://cms.milton-corp.com/admin
+Login: Portfolio
+Pwd: o9pL4b7V22rohe
