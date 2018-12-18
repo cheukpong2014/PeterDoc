@@ -32,14 +32,19 @@ mos admin
 administrator
 m0s.itcsupport!
 
+SFTP
 site: https://milton-exhibits.com/en/index.html
 SFTP host: web.milton-corp.com
 User: miltonexhibits
 Passphrase: 6Htz@WXms7
+milton password: %TGB5tgb^YHN6yhn
 
-Link: http://milton-exhibits.com/admin/auth/show_login.html
-Login name: evalam@milton-cn.com
-Password: evalam@milton-cn.com
+/home/miltonexhibits/public_html/application/config# vi database.php
+t2vVRG3iryt2vVRG3i@!
+
+Link: https://milton-exhibits.com/admin/auth/show_login.html
+Login name: emilycheung@milton-cn.com
+Password: fdfo*tYT334
 
 
 
@@ -56,7 +61,7 @@ $P$B4Fi1pDFNSORafpaBA8X/yFnA9NnIH.
 FileZilla 
 SFTP host: web.milton-corp.com
 User: miltonexhibits
-Passphrase: 6Htz@WXms7
+Passphrase: %TGB5tgb^YHN6yhn
 Port 22
 
 PUTTY

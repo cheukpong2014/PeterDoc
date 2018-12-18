@@ -1,0 +1,3 @@
+Simple Resx Editor
+WinMerge
+SQL Server Management Studio

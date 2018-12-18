@@ -1,99 +1,11 @@
-開show
-開project - GC/SD
-開job card
+需要一氣呵成
+milton\stephen.li.ma 要改TEAM名，同Team Collaborations 要其他同事睇到佢條Team
 
-submit左之後發覺有錯，想改
-有得申請delete/cancel travel form
-
-OK. Quotation 要可以同時做
-OK. step1.3 delete it
-OK. delete estimate
-OK. job card summary 錯左
-OK. 要加GM assign approver step
-OK. need reason 要畫圖
-OK. Quotation 要同一時間create，呢到個flow係要重新set 過
-  ok一齊CREATE，但之後要LINK埋一齊先可以PRINT出黎? (其實好難阻止，因為可以PRINT個網頁出黎)
-  ok一係就唔俾改個amount，咁就要一定要有SHOW NAME, DURATION, CLIENT NAME
-OK. 幾個backward flow 都冇考慮到
-  ok. approver not approve job card, 就會返轉頭改job card
-  ok. Quot. not sign 都要返轉頭改job card，出多次Quot.
-  ok. 有機會淨係改Quot.
-
-**. Post sohw Job Card要詳細好多，講埋點改 同 改job card column (跟job card同埋有support document) 同 要加最頂果個menu bar
-**Income VAT(6%) at step1.1 can it input by user?
-//. ask Kelly about the loss type
-//. Account confirm要整多個module 出黎
-//. 決定Show, Project, JobCard有咩field (有兩個Proj Type
-corresponding
-//拎job card template，同問下D template 有咩分別，FOR 咩PROJECT 
-//need job completion form module?
-//need claim module?
-
-appraisal Goal: 3-4
-
-1. sub-workflow (revise sales order, revise PO)
-revise sales order & invoice
-add 1: add SO & invoice
-reduce 1: 加一個負數SO
-reduce 2: reduce SO amount and reduce second invoice amount
-reduce 3: delete Quotation,SO,invoice and re-create one
-
-revise PO
-add 1: add PO
-reduce 1: 加一個負數PO
-reduce 2: delete PO and re-create one
-
-
-appraisal approval line add team name
-
-
-down payment, outstanding
-
-need : rect -> producture/action
-no need: only decision/condition
-
-1. add supplier, account flow
-2. what document is needed in the flow
-3.
-
-1. 每一個step 都要入account, 如果想改，要account approve
-2. 最尾係用debit note credit note 就OK ，定係要quotation amemment
-3. How to define Job card no., project no., 
-Job card no. -> Project No+card seq
-ES: Project No   -> show code + stand code
-洗唔洗所有team 都用同一個project no.
-4. Per非ly人 (會用GC flow) , JV 點處理
-5. when create PO? before send quotation or after send quotation?
-6. who create sales order?
-7. revise job card, PO, quotation and invoice, need approval
-8. Job card 要有designer
-9. 唔知洗唔洗check invoice amount must < sales order amount
-10. booth plan 好重要，想3D
-
-幾時找錢，決定找錢
-收到client 錢先再找錢
+remove function remove 第4個goal, 第5個goal既野會replace入去
 
 
 
 
-down payment
-balance
-outstanding invoice
-
-按金
-refundable deposit
-
-實報實收
-
-
-1. multi
-2. region (need to remind developer)
-3. 
-4. Output need what data. where the data come from
-
-
-sudo vi header.php
-sudo vi footer.php
 
 <link rel="shortcut icon" href="https://i-leadgen.com/wp-content/uploads/2013/01/favicon.ico" />
 
@@ -111,67 +23,10 @@ update wp_postmeta set meta_value = replace(meta_value, 'http://', 'https://');
 //update wp_users   set user_login   = replace(user_login,   'optssafe',             'optsafe');
 //update wp_options set option_value = replace(option_value, 'http://i-leadgen.com/wp-content/uploads', 'https://i-leadgen.com/wp-content/uploads');
 
-畫GC flow
-
-1. 1PO多Project: 影相，唔想每個booth 都開一個PO
-2. >50萬，要CEO/GM sign, >50萬 senior account manager sign
-3. 想要WIP, Personal Claim
-4. GP太低要approve
-5. Pre show cost 要有多vendor
-6. Everyone can see supplier，但要分region
-7. 洗唔洗分agent, organizer, exhibitor
-8. customer master page
-9. customer always duplicate
-     唔同team 唔同industry type
-	         唔同step
-			 唔同job card
-10. 非常需要copy po/quotation
-11. Team Head 睇到自己team customer list
-12. customer list會綁at least兩個sales
-13. pre-show果時個job card會係咁改?
-        同一個show不同booth
-		同一個card不同vendor
-14. 如果兩個sales 一齊resign，要send email 俾GM去assign新sales
-15. 好多時完左show先會出PO，先知個cost係幾多
-16. 用email domain黎分公司
-17. 1個人多BU多TEAM多POSITION
-18. 其實分BU有冇用，點解要分BU?
-19. 可以睇到所有公司，但公司contact就唔俾睇
-20. 不同地區會有不同子公司
-21. ACC CODE最多10個位，要invisible同search到
-22. industry type想show到中文
-23. pricelist 要invisible
-24. exhibitor 要入customer file，但exhibitor要入咩data (要有咩data先追到數)名，電話，email，地址
-25. customer file要有tax rate
-26. 要有account code先可以出invoice
-27. check到相似名，就問係唔係同一間公司
-			 
-1. flow chart
-2. report/document needed
-3. permission chart
-4. screen capture of each page
-5. sub-process chart
-6. report oriented, ask admin what report they want and how this report come out
-7. who can view/edit/delete that process and who approve this process
-
-project - tony
-gc 會做mh
-outsmart hk 都係mh d 人去做
-分sales
-增值稅
-
-
-
 
 eOffer security, 如果唔係super user 入左去eOffer page, 要redirect out.
 you have already sent your apply. please try again after 15 minutes
 
-eAppraisal:
-要改eAppraisal
-叫sg同sh 俾多次D 資料
-1 call sh,sg,bj,gz staff to update a full list of team collaboration, eAppraisal, eProbation
-2 add sg hr to eAppraisal
-3 改new staff form
 
 
 eClaim function:
@@ -257,38 +112,7 @@ $("body").delegate(".atOrgCurr", "change", function () {
 }
 
 
-1. resigned staff
-2. Bill Chan eTravel approval line
-2. Bill Chan eAppraisal approval line
 
-
-I found that Dolibarr and Odoo are the most popular framework from Henry's suggestion. So I compare these two framework.
-
-1. Odoo has more Contributors in github
-https://github.com/odoo/odoo
-https://github.com/Dolibarr/dolibarr
-2. Odoo has more functionality
-http://erp.softwareinsider.com/compare/246-486/Odoo-vs-Dolibarr-ERP-And-CRM
-3. Odoo is popular in china community but dolibarr is not.
-4. Odoo supports iphone/android app and mobile web
-5. both support multi language
-6. can support little change in each module
-7. support google drive/cloud
-
-
-5. prepare all the job last year/do appraisal form
-
-
-process to test appraisal
-1. delete and insert data
-2. kick off
-3. change peter approver to vincent
-4. add dummy acc
-
-
-2. mos user guide take note
-3. check difference between mos system and mos user guide
-bold the primary key
 
 approval line check region again for new user before row 200
 
@@ -338,14 +162,8 @@ report
 9. customer contact 有自己打，亦都有跟order
 
 
-66863722
 
 
-BYOD
-唔見左電話點RESTORE Data
-點樣jail break，點樣自己升級/降級手機
-有冇apps 推介
-點樣用VPN去bilibili
 
 點知有冇cancel
 SAMPLE, 有冇重複，
@@ -429,18 +247,6 @@ mos - need to learn framework
 1. INVOICE 有D有2個INVOICE (MGD177347,MHC177440,MIF177409 still have problem)
 4. ajax change bu option
 
-2. 要知USER既WORKFLOW先，然後要知MOS GC同SD既正確流程，同埋要知USER做錯D咩
-
-problem
-0. 唔知個PROJECT係唔係CANCEL左，因為DEL左SQL
-0. 唔知有冇重覆，因為冇咩INFO睇到
-0. no proj amount
-0. 最重要，我分唔到個order係pending 定invoiced
-1. 因為Invoice Status=P果時係出唔到PDF，所以Invoice Status=P or C都放係pending到
-2. 加多個on cancel
-3. on procesing唔分date range, on confirmed跟invoice date,on cancelled 跟order status = C#
-4. 重寫report
-5. 學framework
 
 要教USER正確既MOS入DATA 流程
 要封住某D位唔俾USER 亂咁入DATA
