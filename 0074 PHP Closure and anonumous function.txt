@@ -1,0 +1,30 @@
+//现代 PHP 新特性系列（五） —— 闭包和匿名函数
+
+
+//Create Closure
+<?php
+$greet = function ($name) {
+    return sprintf("Hello %s\r\n", $name);
+};
+
+echo $greet('LaravelAcademy.org');
+
+Result: Hello LaravelAcademy.org
+
+
+//pass variable to closure
+public function saveOrFail(array $options = [])
+{
+	return $this->getConnection()->transaction(function () use ($options) {
+		return $this->save($options);
+	});
+}
+
+//pass multi variable to closure
+public function forceFill(array $attributes)
+{
+	$model = $this;
+    return static::unguarded(function () use ($model, $attributes) {
+        return $model->fill($attributes);
+    });
+}

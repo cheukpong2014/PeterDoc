@@ -1,10 +1,60 @@
-需要一氣呵成
-milton\stephen.li.ma 要改TEAM名，同Team Collaborations 要其他同事睇到佢條Team
+petertang@milton-exhibits.com
+http://www.designforchinaplas.com/
 
-remove function remove 第4個goal, 第5個goal既野會replace入去
+//McAfee danger site
+OK.https -> designforchinaplas
+OK.extend https cert
+react native
+OK.找卡數
+Training
+
+•	What you are working on so far in Milton 
+日常工作，包括
+
+backup and change password.
+
+3 5
+ian 
+
+1. 在MOS database取出資料給同事 和 MOS report https://10.0.1.44/pro/
+2. Change any website and server error on milton page. eg. change the webpage layout, youtube link to picture, change http to https (auto redirect link, change cdn to https, picture link to https ) , debug email sending error, 加cookie alert
+3. 處理同事入職離職時在內聯網的改動 eg. appraisal, eClaim, eTravel, Team Collaboration, MGTP, Share+
+
+https://10.0.1.44/mockup/
+
+jquery 4.5
+html   4.5
+css    3.5
+.net   2
+PHP    2    https://www.youtube.com/watch?v=KsinW-MGqPc
 
 
+$('Table.dataTable tbody tr td:nth(5)').prepend('<button>123</button>');
 
+appraisal 一定要改!
+
+XNDA0NzM1MjYzMg
+
+tony yeung
+OI -> OS
+
+assign 
+
+
+3 appraisal need change pdf
+1. 錯weighting既要俾個list出黎
+2. 錯weighting既要平均返個weight
+3. year start 錯weighting既要俾個list出黎
+default weighting 應該要係0
+
+579,585,590,615,634,645,646,657,661,669,676,683,703
+
+18/19 Elaine
+
+casin
+carol
+
+bonnie wong
 
 
 <link rel="shortcut icon" href="https://i-leadgen.com/wp-content/uploads/2013/01/favicon.ico" />
@@ -22,11 +72,6 @@ update wp_postmeta set meta_value = replace(meta_value, 'http://', 'https://');
 
 //update wp_users   set user_login   = replace(user_login,   'optssafe',             'optsafe');
 //update wp_options set option_value = replace(option_value, 'http://i-leadgen.com/wp-content/uploads', 'https://i-leadgen.com/wp-content/uploads');
-
-
-eOffer security, 如果唔係super user 入左去eOffer page, 要redirect out.
-you have already sent your apply. please try again after 15 minutes
-
 
 
 eClaim function:
@@ -111,11 +156,6 @@ $("body").delegate(".atOrgCurr", "change", function () {
 	formula();
 }
 
-
-
-
-approval line check region again for new user before row 200
-
 1個人有多個department，多功能多工作
 入職離職
 過期DATA
@@ -125,136 +165,10 @@ approval line check region again for new user before row 200
 ADMIN幫人地開FORM
 need some procedure to handle delete/update data.
 
-flex system
-
-//debug: 1. customer report column not match
-//debug: 2. customer report row not match
-//debug: 3. customer report has error 
-add: add search criteria to cusomter report
-add: add venue, location, sales person column to cusomter report
-//debug: report1 needs debug
-revise: add more information to abnormal data report(DON'T MAKE user Think)
-debug: report 1 -  issued invoice amount error
-debug: export all the raw data and then calculate to generate the report 1 manually
-
-
-
-
-
-
-report
-!! exhibitor ( BOOTH_NUMBER )
-!! search exhibitor
-3. add comment, ??? to the program.
-4. customer add contact 
-// add search criteria to excel
-!! order by
-
-
-
-
-1. 3個BU 放埋一齊
-2. 加PROJECT CUSTOMER NAME 同PROJECT INDUSTRY TYPE
-3. seach 要search 哂project bu, order bu 同 invoice bu?
-4. customer name 要search 哂
-7. cusomter name 轉quotation and invoice customer name
-8. 有project customer contact同order customer contact
-9. customer contact 有自己打，亦都有跟order
-
-
-
-
-
-點知有冇cancel
-SAMPLE, 有冇重複，
-give where and order clause 
-order invocie project amount既關係
-冇project amount
-3. report1 暫時未有Order
-4. report1 暫時未有Export
-Crteria:
-(
-(1. select from project table 2. left join invoice table (where invoice date between a and b or (invoice date is null and order date between a and b)))
-3. create a column to save ExcelAmount and ExcelStatus
-4. group by project code - sum(ExcelAmount), max(ExcelStatus), GROUP_CONCAT( ExcelCode SEPARATOR ', ')
-5. add amount, code, status(case ) together
-(if one order is invoiced, the project status is On Invoiced else the project status is On Quotation)
-)
-
-if order no project, need to add quotation
-union order date
-
-
-- PO Items
-- Currency
-- Deliver_address
-- Payment Term
-- Requisitioner
-- Project Selected
-
-order 有個customer, project 有個customer 唔知有咩分別
-invoice就可以簡order or customer
-create a project will generate 3 record
-on invoice amount，有好多重複record
-on quotation amount，user冇入
-on cancel amount，user冇入
-
-
-not enough data to make a report based on project 
-only can make a report based on quotation
-要要求user傾緊quotation果時就入mos，傾唔成就轉cancel留返個record
-同user講，公司最主要想知有咩客係流失左
-d status 成日都衝突，record又重複入
-要要求user將所有order一齊轉，唔好一個一個轉
-要同USER講同一個PROJECT，ORDER DATE要一樣
-
-report2
-customer name, project code, quotation no(add together with link) or invoice no(add together with link), then subtotal by each currency
-sql:
-m1(order  ) - order no(add together),customer name(add together), order amt(add together or show one), (cannot show status because has many status)
-m4(project) - project no,event name, chi event name, status
-m5(invoice) - invoice amt(add together)
-group by proj_id
-3. where project id is not null
-order by (can choose)project code, quotation amount(proj amt)
-
-
-
-//add status and id 
-//default sort by amount
-send report 1 sample to eddie
-discuss report 1 with henry
-sd - generate 唔到quotation
-1. re-read ths mos user guide and take notes
-2. prepare orderwithdetails
-3. read mos source code
-4. ask user mos flow (pre show cost, post show cost)
-5. syn with note book
-6. be careful the config file
-7. highlight new created record or new edited record
-
-冇效率(睇書, 學python, 返工)
-report 5 係張有問題既record list出黎
-可能係status 唔岩，(order status 係pendding or cancel，但create左invoice)(可能project cancel左，但係create 左invoice or order status = finish)
-可以係record 重複左
-可能係order status 係finished，但冇開invoice
-
-mos - customer report
-mos - report needs mobile layout
-mos - need index page
-mos - need to go on internet
-mos - need to learn framework
-1. INVOICE 有D有2個INVOICE (MGD177347,MHC177440,MIF177409 still have problem)
-4. ajax change bu option
-
-
-要教USER正確既MOS入DATA 流程
-要封住某D位唔俾USER 亂咁入DATA
-
 
 1. easy path and stable(wordpress or php or asp.net)
 2. trend (what field is making money)
-3. cannot be replaaced. i should have skill that others don't have (zacti dnn)
+3. cannot be replaced. i should have skill that others don't have (zacti dnn)
 
 What i have learnt in this company: C#mvc, dnn, hr system, composer
 0. css3 & SASS & html5
@@ -277,12 +191,14 @@ What i have learnt in this company: C#mvc, dnn, hr system, composer
 
 
 
-熱誠
-質素保證
-少講野
 
 
-信長之野望
+
+
+
+
+
+
 
 近戰正常流 1.火甲->毒泉 2.-30% 3.吹箭/法術書->吉地 4.毒刀 
 

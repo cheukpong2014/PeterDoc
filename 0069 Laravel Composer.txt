@@ -1,0 +1,30 @@
+//最佳实践系列（一）—— 漫谈 PHP 组件、框架、Composer 那些事
+//CMD - generate composer.json & composer.lock
+composer require guzzlehttp/guzzle
+composer require league/csv
+composer update //update package new verson
+
+//scan.php
+<?php
+require 'vendor/autoload.php'; //使用composer自动加载器
+$client = new GuzzleHttp\Client(); //实例Guzzle Http客户端
+//打开并迭代处理CSV
+$csv = League\Csv\Reader::createFromPath($argv[1]);
+foreach ($csv as $csvRow) {
+    try {
+        //发送HTTP GET请求
+        $httpResponse = $client->get($csvRow[0]);
+
+        //检查HTTP响应的状态码
+        if($httpResponse->getStatusCode() >= 400) {
+            throw new Exception();
+        }
+    } catch (Exception $e) {
+            //把死链发给标准输出
+            echo $csvRow[0] . PHP_EOL;
+    }
+}
+?>
+
+//CMD run program
+php scan.php urls.csv

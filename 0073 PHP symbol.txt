@@ -1,0 +1,33 @@
+在php中有同学经常搞不明白->，=>，::，$this->的作用，下面通过例子讲解下。
+
+
+1. ->用来引用一个类的属性（变量）、方法（函数）, 可以把->理解成调用的意思
+<?php
+Class a{
+	Var $id;
+	Function add(){
+		$this->id=”test”;
+		echo “abc”;
+	}
+}
+$b = new a;
+$b->add();  //调用类a中的add()方法， 输出为abc
+Echo $b->id; //调用类a中的属性id，输出为test
+?>
+
+
+2. =>是用来定义数组用的, =>用来定义数组的
+$arr1 = array(0=>'php',1=>'is',the=>'the');
+Echo $arra[0],$arr1[1],$arr[‘the’];   //对应输出设置的值
+
+
+3. ：：用来直接调用类中的属性或方法，正常的情况我们用实例化方法来调用类中的属性或方法，但使用：：可以不需要实例化对象，直接调用即可。
+
+Class b{
+	Var $name=”test”;
+	Function Getname(){
+		Echo “test is good”；
+	}
+}
+直接调用：
+Echo b::Getname()；//输出为test is good

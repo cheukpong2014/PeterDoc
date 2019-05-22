@@ -1,0 +1,36 @@
+//最佳实践系列（三）—— PHP 安全三板斧：过滤、验证和转义之过滤篇 & Laravel底层SQL注入规避
+
+我们在开发应用时，一般有个约定：不要信任任何来自不受自己控制的数据源中的数据。例如以下这些外部源：
+
+0036059600
+
+$_GET
+$_POST
+$_REQUEST
+$_COOKIE
+$argv
+php://stdin
+php://input
+file_get_contents()
+远程数据库
+远程API
+来自客户端的数据
+
+//1、过滤输入 (htmlentities vs html_entity_decode) don't use htmlspecialchars
+//or use HTMLPurifier https://laravelacademy.org/post/3914.html
+<?php
+$input = "<p><script>alert('Laravel学院');</script></p>"；
+echo htmlentities($input, ENT_QUOTES, 'UTF-8');
+
+//2. SQL查询 (PDO)
+//or use Laravel update
+
+//3. 用户资料信息
+//更多filter_var的使用请参考PHP官方文档：http://php.net/manual/zh/function.filter-var.php，相应的移除过滤器请参考：http://php.net/manual/zh/filter.filters.sanitize.php。
+<?php
+$email = 'yaojinbu@163.com';
+$emailSafe = filter_var($email, FILTER_SANITIZE_EMAIL);
+
+
+https://laravelacademy.org/post/4628.html
+https://laravelacademy.org/post/4699.html

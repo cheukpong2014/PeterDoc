@@ -1,0 +1,13 @@
+Putty
+su -
+cd /home
+ls
+cd /etc
+cd apache2
+cd sites-available
+vi i-leadgen.com.conf
+i  (insert mode)
+change text
+ESC
+:wq!   quit with save
+:q     quit without save

@@ -1,0 +1,52 @@
+<?php
+//1
+namespace LaravelAcademy\ModernPHP;
+//2
+use Illuminate\Http\Response as Res;
+$res = new Res(‘Oops’, 400);
+$res->send();
+//3
+use func
+//4
+use constant
+//5 多重导入
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+//6 一个文件使用多个命名空间
+namespace Foo {
+    //声明类、接口、函数、常量
+}
+namespace Bar {
+    //声明类、接口、函数、常量
+}
+//7 在命名空间中引用全局的代码时，需要在类、接口、函数或常量前加\符号：
+throw new \Exception();
+//8 Trait - use Trait in Class
+namespace App\Http\Controllers\Auth;
+use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+class LoginController extends Controller  //extend class
+{
+    use AuthenticatesUsers;               //use Trait
+    protected $redirectTo = '/home';
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
+}
+//9 Create Trait - same as create class
+//10 Trait - use more than one Trait and use insteadof
+//Trait中还支持定义抽象方法和静态方法，其中抽象方法必须在使用它的类中实现。
+namespace App\Http\Controllers;
+
+use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+
+class Controller extends BaseController
+{
+    use AuthorizesRequests, ValidatesRequests {
+		AuthorizesRequests::authorize insteadof ValidatesRequests
+		AuthorizesRequests::Login insteadof ValidatesRequests
+    }
+}
