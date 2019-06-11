@@ -1,6 +1,6 @@
 <?php
-$conn = mysqli_connect('localhost','root','');
-mysqli_query($conn,'use note');
+$conn = mysqli_connect('localhost','petertan_Plan','petertan_Plan');
+mysqli_query($conn,'use petertan_Plan');
 if(!empty($_POST)){
 	$content = $_POST['content'];
 	$newContent = addslashes($content);

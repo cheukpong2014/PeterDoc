@@ -1,5 +1,0 @@
-Ch2.
-if(Score==100)
-  Response.Write("Good");
-else
-  Response.Write("Bad");

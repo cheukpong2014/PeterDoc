@@ -1,0 +1,7 @@
+<Directory "/home/bccl/public_html/">
+allow from all
+AllowOverride All
+Options +FollowSymlinks
+</Directory>
+
+sudo systemctl restart apache2

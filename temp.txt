@@ -1,6 +1,30 @@
 petertang@milton-exhibits.com
 http://www.designforchinaplas.com/
 
+1. Elaine appraisal
+2. eClaim app
+3. eClaim PHP version
+4. FMS follow up
+5. Marco CRM just like salesforce
+6. MOS change to Flex system 
+7. Report system - https://www.alfresco.com/
+8. Kick off 應該會出error，因為insert 既column唔同左
+9. 要試下submit 同kickoff先知有冇error
+10. IsSupervisory 要分0104同General
+11. eClaim要有mobile版
+12. 要寫ES同EC既Calendar
+
+Problem
+1. mills events has malware
+2. milton exhibits has malware (need backup database)
+3. designforchinaplas has malware
+Solution
+1. 轉走 mills events 同 designforchinaplas 去新server?
+2. backup milton exhibits database
+3. restore 2019-04-23 backup
+4. replace .access file on  mills.events
+5. 
+
 //McAfee danger site
 OK.https -> designforchinaplas
 OK.extend https cert
@@ -16,7 +40,7 @@ backup and change password.
 3 5
 ian 
 
-1. 在MOS database取出資料給同事 和 MOS report https://10.0.1.44/pro/
+1. 在MOS database 取出資料給同事 和 MOS report https://10.0.1.44/pro/
 2. Change any website and server error on milton page. eg. change the webpage layout, youtube link to picture, change http to https (auto redirect link, change cdn to https, picture link to https ) , debug email sending error, 加cookie alert
 3. 處理同事入職離職時在內聯網的改動 eg. appraisal, eClaim, eTravel, Team Collaboration, MGTP, Share+
 
@@ -42,9 +66,9 @@ assign
 
 
 3 appraisal need change pdf
-1. 錯weighting既要俾個list出黎
-2. 錯weighting既要平均返個weight
-3. year start 錯weighting既要俾個list出黎
+1. 錯 weighting 既要俾個 list 出黎
+2. 錯 weighting 既要平均返個 weight
+3. year start 錯 weighting 既要俾個 list 出黎
 default weighting 應該要係0
 
 579,585,590,615,634,645,646,657,661,669,676,683,703
@@ -156,13 +180,13 @@ $("body").delegate(".atOrgCurr", "change", function () {
 	formula();
 }
 
-1個人有多個department，多功能多工作
+1個人有多個 department ，多功能多工作
 入職離職
-過期DATA
-分REGION，分DEPARTMENT
+過期 DATA
+分 REGION ，分DEPARTMENT
 權限制
-1個USER要做兩個APPRAISAL FORM
-ADMIN幫人地開FORM
+1個 USER 要做兩個 APPRAISAL FORM
+ADMIN 幫人地開 FORM
 need some procedure to handle delete/update data.
 
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>note</title>
+	<title>Plan</title>
 	<style>
 		#container{
 			margin: 0 auto;
@@ -42,6 +42,9 @@
 			<form id="tt">
 				<div id="t1" class="tc"></div>
 				<div id="t2" class="tc"></div>
+				<div style="clear: left;"></div>
+				<div id="t3" class="tc"></div>
+				<div id="t4" class="tc"></div>
 			</form>
 			<div id="clear"></div>
 			<button id="update">update</button><br><br><br>
@@ -131,13 +134,15 @@
 				}
 				$('#t1').append(tableCreate(0,12));
 				$('#t2').append(tableCreate(12,24));
+				$('#t3').append(tableCreate(24,36));
+				$('#t4').append(tableCreate(36,48));
 
 				$.ajax({
 					url: 'getTimeTable.php',
 					type: 'get',
 					success:function(data){
 						var content = JSON.parse(data);
-						for(var x=1;x<=24;x++){
+						for(var x=1;x<=48;x++){
 							var id = 't'+x;
 							$('input[name="'+id+'"]').val(content[id]);
 						}

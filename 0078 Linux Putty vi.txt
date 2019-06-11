@@ -1,7 +1,7 @@
 Putty
 su -
 cd /home
-ls
+ls -al
 cd /etc
 cd apache2
 cd sites-available

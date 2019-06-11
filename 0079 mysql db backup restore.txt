@@ -1,0 +1,5 @@
+$ mysqldump -h localhost -uroot -ppassword \
+--add-drop-table --extended-insert --default-character-set=utf8 \
+--databases discuz > backup-file.sql
+
+mysqldump -u用户名 -p --opt dbname | mysql --host remote_host -C dbname2

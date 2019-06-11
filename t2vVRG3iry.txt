@@ -84,6 +84,15 @@ mysql Login: designforchinapl
 mysql Password: UQm#oCO0)8gzGQ%i7wi%y4aj
 UQm#oCO0)8gzGQ%i7wi%y4aj
 
+9.
+Login: opt-safe
+Password: 7y4NdvDNBFDe
+
+10.
+Login: i-leadgen
+Password: fd1221@1221
+
+
 mysql
 mysql Login: i-leadgen
 mysql Password: fd1221@1221
