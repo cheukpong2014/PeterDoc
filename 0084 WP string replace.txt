@@ -1,0 +1,13 @@
+https://www.designforchinaplas.com
+
+UPDATE wp_options
+SET option_value = REPLACE(option_value, 'https://www.designforchinaplas.com', 'http://test.midas-asia.com')
+WHERE option_value LIKE '%https://www.designforchinaplas.com%'
+
+
+
+UPDATE wp_posts SET guid = replace(guid, 'https://www.designforchinaplas.com','http://test.midas-asia.com');
+
+UPDATE wp_posts SET post_content = replace(post_content, 'https://www.designforchinaplas.com', 'http://test.midas-asia.com');
+
+UPDATE wp_postmeta SET meta_value = replace(meta_value,'https://www.designforchinaplas.com','http://test.midas-asia.com');

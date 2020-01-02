@@ -1,44 +1,109 @@
-petertang@milton-exhibits.com
-http://www.designforchinaplas.com/
+Appraisal PDF 一定要執
 
-1. Elaine appraisal
+
+Vinexpo 1. click 要框住，click其他地方唔會冇左個框 2. agree 果到要加checkbox
+
+errmsg_PerformanceRatingScoreEmpty.Text
+errmsg_PerformanceRatingSelfScoreEmpty.Text
+
+setYearEndPerformanceTable
+
+supervisor 見唔到 core competency
+要睇下supervisor1 save唔save到
+Probation:
+check validation，唔洗check goal review
+old recod 唔show 13條 <- 要比多個field佢有得簡填goal review定係 13 條
+13條要validation < 似有，唔齊會出error
+要改埋PDF
+
+front end要計多次分
+
+用唔同browser，IE 唔見左個FOOTER
+
+7. milton website add anti virus
+5. select StaffDepartment, Count(StaffDepartment) from eAppraisal_ApprovalLine where Enabled = 'Y' group by StaffDepartment
+4. IT helpdesk ticket
+3. eAppraisal
+OK. eTravel revise (google docs generate pdf api)
+		passport 用, 黎分唔同user，因為冇時間，但其實我可以用jquery整多個input，同Elaine講要D時間
+		send email 要email template, 要PDF 
+OK. 差reminder email (Securli,HKSQ)
+OK. HKSQ website 要寫，但我冇任何資料，但9月1日要交? (要新CMS，要問Shandy拎HTML)
+OK. export customer record
+OK. Securli
+OK. set up yetiforce
+
+9BX84DWL
+hkecia
+srfp
+
+270
+1052
+1883***
+5-
+177*
+12*
+97
+1*
+405
+35
+808*
+3988*
+62
+2318
+610
+
+CRM requirements
+Input page – check input
+-Check duplicate customer
+-Can input customer contact
+-Can link to project
+-Assign sales
+Assigned sale receive email with system link
+Assigned sale update project status
+Assigned sale record activities with customers
+Team head can view all teammates record
+Report
+-Total revenue
+-Total pipelines
+-Total win
+-Total lost
+
+331 at 3.42  50k
+610 at 4.55  90k
+240 at 0.88
+1098 at 13.20
+548
+177增加派息較慢 at below 10
+1883 at 2.83 40k
+808 at 2.95 15k
+
+Server: email.milton.hk
+Domain: mx-dc-a.milton.hk
+
+8. Kick off 應該會出error，因為insert 既column唔同左
+10. IsSupervisory 要分0104同General
+9. 要試下submit 同kickoff先知有冇error
+
 2. eClaim app
 3. eClaim PHP version
-4. FMS follow up
-5. Marco CRM just like salesforce
-6. MOS change to Flex system 
-7. Report system - https://www.alfresco.com/
-8. Kick off 應該會出error，因為insert 既column唔同左
-9. 要試下submit 同kickoff先知有冇error
-10. IsSupervisory 要分0104同General
 11. eClaim要有mobile版
-12. 要寫ES同EC既Calendar
 
-Problem
-1. mills events has malware
-2. milton exhibits has malware (need backup database)
-3. designforchinaplas has malware
-Solution
-1. 轉走 mills events 同 designforchinaplas 去新server?
-2. backup milton exhibits database
-3. restore 2019-04-23 backup
-4. replace .access file on  mills.events
-5. 
+N. Probation 要有13條，同delete part a
+N. Probation 要兩層approver(比分)
+N. Appraisal 要有Weight filled同Weight remaining
+N. Appraisal (Start, Mid, End) 要加多1個Approver，要向Elaine confirm
 
-//McAfee danger site
-OK.https -> designforchinaplas
-OK.extend https cert
-react native
-OK.找卡數
-Training
+//1. Edit Delete 放最後
+//3. show name 變條link
+//2. hide Group ID
+//4. paging need to stack place
+//set permission who can edit
+//set superuser
+//hide id
 
-•	What you are working on so far in Milton 
-日常工作，包括
 
-backup and change password.
 
-3 5
-ian 
 
 1. 在MOS database 取出資料給同事 和 MOS report https://10.0.1.44/pro/
 2. Change any website and server error on milton page. eg. change the webpage layout, youtube link to picture, change http to https (auto redirect link, change cdn to https, picture link to https ) , debug email sending error, 加cookie alert
@@ -53,16 +118,11 @@ css    3.5
 PHP    2    https://www.youtube.com/watch?v=KsinW-MGqPc
 
 
-$('Table.dataTable tbody tr td:nth(5)').prepend('<button>123</button>');
 
-appraisal 一定要改!
 
-XNDA0NzM1MjYzMg
 
-tony yeung
-OI -> OS
 
-assign 
+
 
 
 3 appraisal need change pdf
@@ -71,31 +131,8 @@ assign
 3. year start 錯 weighting 既要俾個 list 出黎
 default weighting 應該要係0
 
-579,585,590,615,634,645,646,657,661,669,676,683,703
-
-18/19 Elaine
-
-casin
-carol
-
-bonnie wong
 
 
-<link rel="shortcut icon" href="https://i-leadgen.com/wp-content/uploads/2013/01/favicon.ico" />
-
-<h1 class="logo"><a href="https://i-leadgen.com"><img src="https://i-leadgen.com/wp-content/uploads/2013/01/ilead_ios7.png" alt="" title=""></a></h1>
-
-<?php $footer_left = '<p><img src="https://i-leadgen.com/wp-content/uploads/2013/07/Milton-Exhibits-Logo_R.gif" align="left" title="">© 2013 All Rights Reserved. Milton Exhibits Group 版權所有 不得轉載</p>'; ?>
-
-
-//update wp_options set option_value = replace(option_value, 'http://i-leadgen.com/wp-content/uploads', 'https://i-leadgen.com/wp-content/uploads') where option_id = 511;
-update wp_options set option_value = 'https://i-leadgen.com' where option_id in (1,36);
-update wp_posts set post_content = replace(post_content, 'http://', 'https://');
-update wp_postmeta set meta_value = replace(meta_value, 'http://', 'https://');
-
-
-//update wp_users   set user_login   = replace(user_login,   'optssafe',             'optsafe');
-//update wp_options set option_value = replace(option_value, 'http://i-leadgen.com/wp-content/uploads', 'https://i-leadgen.com/wp-content/uploads');
 
 
 eClaim function:
@@ -189,7 +226,6 @@ $("body").delegate(".atOrgCurr", "change", function () {
 ADMIN 幫人地開 FORM
 need some procedure to handle delete/update data.
 
-
 1. easy path and stable(wordpress or php or asp.net)
 2. trend (what field is making money)
 3. cannot be replaced. i should have skill that others don't have (zacti dnn)
@@ -209,13 +245,10 @@ What i have learnt in this company: C#mvc, dnn, hr system, composer
 
 
 
-
-
-
-
-
-
-
+首先，一定要講有咩分類，唔同分類有咩分別，類別入面會儲D咩，足唔足夠
+Report，有咩report會出到
+有冇mobile，有冇分group，有冇分role，有冇premission
+print screen contact, account?, opportunity
 
 
 

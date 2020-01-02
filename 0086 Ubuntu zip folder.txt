@@ -1,0 +1,1 @@
+tar -zcvf public_html.tar.gz public_html

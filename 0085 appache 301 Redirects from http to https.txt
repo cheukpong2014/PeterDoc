@@ -1,0 +1,10 @@
+Webmin 
+Servers > Nginx Webserve > Edit Configuration Files
+
+/etc/nginx/sites-available/domain.com.conf
+
+server {
+        server_name domain.com www.domain.com;
+        listen ipaddress:80;
+        rewrite ^/(.*) https://domain.com/$1 permanent;
+}

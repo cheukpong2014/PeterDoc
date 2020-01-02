@@ -1,0 +1,1 @@
+apt-get install php7.3 php7.3-mysql php7.3-cgi php7.3-cli
